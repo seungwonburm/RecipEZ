@@ -85,4 +85,12 @@
         android:text="Athlete or Singer"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="397dp" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="500dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
