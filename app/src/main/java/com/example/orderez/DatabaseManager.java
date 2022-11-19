@@ -51,12 +51,12 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public boolean insert(String first, String last, String email, String password, String security) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(FIRST, first);
-        contentValues.put(LAST, last);
-        contentValues.put(EMAIL, email);
+        contentValues.put(FIRST, first.toLowerCase());
+        contentValues.put(LAST, last.toLowerCase());
+        contentValues.put(EMAIL, email.toLowerCase());
         String encryptedMsg;
         try {
-          encryptedMsg = AESCrypt.encrypt(password, security.toLowerCase());
+          encryptedMsg = AESCrypt.encrypt(password, email.toLowerCase());
           contentValues.put(PASSWORD, encryptedMsg);
         }catch (GeneralSecurityException e){
             //handle error
