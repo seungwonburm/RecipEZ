@@ -12,9 +12,13 @@ import android.os.Bundle;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+    DatabaseManager theDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        theDb = new DatabaseManager(this);
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button loginbtn = (Button) findViewById(R.id.toLoginPagebtn);
