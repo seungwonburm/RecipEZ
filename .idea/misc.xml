@@ -14,6 +14,9 @@
         <entry key="app/src/main/res/layout/activity_register_page.xml" value="0.2649932861328125" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.20108695652173914" />
         <entry key="app/src/main/res/layout/fragment_add_item.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/fragment_item_list.xml" value="0.16302083333333334" />
+        <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.20404172099087353" />
+        <entry key="app/src/main/res/layout/setting_listview_item.xml" value="0.8554955081663269" />
         <entry key="app/src/main/res/menu/menu_list.xml" value="0.32708333333333334" />
       </map>
     </option>
