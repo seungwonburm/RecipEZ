@@ -25,7 +25,7 @@ public class LogInPage extends AppCompatActivity {
         setContentView(R.layout.activity_log_in_page);
 
         theDb = new DatabaseManager(this);
-        login = (Button) findViewById(R.id.login);
+        login = (Button) findViewById(R.id.loginbtLogin);
         emailLogin = (EditText) findViewById(R.id.emailLogin);
         passwordLogin = (EditText) findViewById(R.id.passwordLogin);
 
@@ -38,6 +38,7 @@ public class LogInPage extends AppCompatActivity {
                 String email = emailLogin.getText().toString();
                 cursor =theDb.search(email);
                 if (cursor.getCount()<=0){
+
                     Toast.makeText(getApplicationContext(), "Login Failed!!", Toast.LENGTH_LONG).show();
                 }
                 else if (cursor.moveToFirst() && cursor != null) {
@@ -48,10 +49,14 @@ public class LogInPage extends AppCompatActivity {
                         System.out.println("");
                         if (decrypted.equals(email)){
                             Toast.makeText(getApplicationContext(),"Login Successful!",Toast.LENGTH_LONG).show();
+                            Intent gotohomepage = new Intent(getApplicationContext(),HomePage.class);
+                            startActivity(gotohomepage);
+
                         }
                     }catch (GeneralSecurityException e){
                         //handle error - could be due to incorrect password or tampered encryptedMsg
                         Toast.makeText(getApplicationContext(), "Login Failed!", Toast.LENGTH_LONG).show();
+
                     }
 
 
@@ -63,19 +68,12 @@ public class LogInPage extends AppCompatActivity {
             }
 
 
-            }
+                                 }
         );
 
-        Button RegisterBtn = (Button) findViewById(R.id.registerbtn);
-        RegisterBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent Registerpage = new Intent(getApplicationContext(), RegisterPage.class);
-                startActivity(Registerpage);
-            }
-        });
 
-        Button ForgotPasswordBtn = (Button) findViewById(R.id.ForgotPasswordBtn);
+
+        Button ForgotPasswordBtn = (Button) findViewById(R.id.forgotPasswordBtnLogin);
         ForgotPasswordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
