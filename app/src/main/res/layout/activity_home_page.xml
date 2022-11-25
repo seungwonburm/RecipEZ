@@ -21,6 +21,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:backgroundTint="#FFFFFF"
-        app:labelVisibilityMode="labeled"
+        app:labelVisibilityMode="unlabeled"
         app:menu="@menu/menu_list" />
 </LinearLayout>

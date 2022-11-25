@@ -5,13 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class HomePage extends AppCompatActivity {
 
     Homepage_Setting homepageHomeFragment;
     Homepage_ItemListFragment homepageItemListFragment;
+    BottomNavigationView bottomNavigationView;
 
 
     @Override
@@ -21,24 +24,23 @@ public class HomePage extends AppCompatActivity {
 
         homepageHomeFragment = new Homepage_Setting();
         homepageItemListFragment = new Homepage_ItemListFragment();
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container,homepageHomeFragment).commit();
-        NavigationBarView navigationBarMenu = findViewById(R.id.menus_setting);
-        navigationBarMenu.setOnItemReselectedListener(new NavigationBarView.OnItemReselectedListener() {
+        bottomNavigationView = findViewById(R.id.menus_setting);
+//
+        getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container,new Homepage_ItemListFragment()).commit();
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onNavigationItemReselected(@NonNull MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.itemListIcon:
                         getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container,homepageItemListFragment).commit();
-                        return;
+                        break;
                     case R.id.settingIcon:
                         getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container,homepageHomeFragment).commit();
-                        return;
+                        break;
                 }
-                return;
+                return false;
             }
         });
-
 
     }
 }

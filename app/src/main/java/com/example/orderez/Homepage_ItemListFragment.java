@@ -7,6 +7,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,6 +50,10 @@ public class Homepage_ItemListFragment extends Fragment {
         return fragment;
     }
 
+    ArrayList<itemList> itemNames;
+    ListView itemList_ListView;
+    private static ItemListAdapter itemListAdapter;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +67,35 @@ public class Homepage_ItemListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_item_list, container, false);
+        View contenView = inflater.inflate(R.layout.fragment_item_list, container, false);
+
+        itemNames = new ArrayList<>();
+        itemNames.add(new itemList("Banana"));
+        itemNames.add(new itemList("Banana2"));
+        itemNames.add(new itemList("Banana3"));
+        itemNames.add(new itemList("Banana4"));
+        itemNames.add(new itemList("Banana5"));
+        itemNames.add(new itemList("Banana6"));
+
+        itemList_ListView = (ListView) contenView.findViewById(R.id.listMenu);
+        itemListAdapter = new ItemListAdapter(getContext(),itemNames);
+
+        itemList_ListView.setAdapter(itemListAdapter);
+        
+
+        return contenView;
+    }
+
+}
+
+class itemList {
+    private String category;
+
+    public itemList(String category){
+        this.category = category;
+    }
+
+    public String getCategory(){
+        return category;
     }
 }
