@@ -7,6 +7,18 @@
     android:background="#FFFFFF"
     tools:context=".LogInPage">
 
+    <Button
+        android:id="@+id/backtomainBtnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Back to Main Page"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/forgotPasswordBtnLogin" />
+
     <EditText
         android:id="@+id/emailLogin"
         android:layout_width="wrap_content"
@@ -32,8 +44,8 @@
     <Button
         android:id="@+id/loginbtLogin"
         android:layout_width="210dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="28dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="Login"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +55,7 @@
     <Button
         android:id="@+id/forgotPasswordBtnLogin"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="Forgot Password"
         android:textSize="20sp"
@@ -55,11 +67,11 @@
         android:id="@+id/emailTextLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="120dp"
         android:text="E-Mail"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.295"
+        app:layout_constraintHorizontal_bias="0.292"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

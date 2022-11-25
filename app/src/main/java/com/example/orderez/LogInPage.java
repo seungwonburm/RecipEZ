@@ -17,7 +17,7 @@ import java.security.GeneralSecurityException;
 public class LogInPage extends AppCompatActivity {
     Cursor cursor;
     DatabaseManager theDb;
-    Button login;
+    Button login,ForgotPasswordBtn,backtoMain;
     EditText emailLogin, passwordLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +72,7 @@ public class LogInPage extends AppCompatActivity {
         );
 
 
-
-        Button ForgotPasswordBtn = (Button) findViewById(R.id.forgotPasswordBtnLogin);
+        ForgotPasswordBtn = (Button) findViewById(R.id.forgotPasswordBtnLogin);
         ForgotPasswordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,8 +81,14 @@ public class LogInPage extends AppCompatActivity {
             }
         });
 
-
-
+        backtoMain = (Button)  findViewById(R.id.backtomainBtnLogin);
+        backtoMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gobacktoMainPage = new Intent(getApplicationContext(),WelcomePage.class);
+                startActivity(gobacktoMainPage);
+            }
+        });
     }
 
 

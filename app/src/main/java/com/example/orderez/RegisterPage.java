@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 public class RegisterPage extends AppCompatActivity {
 
-    EditText email, first, last, password, security, passwordVerify;
-    Button register;
+    EditText email, first, last, password, passwordVerify;
+    Button register, back;
     DatabaseManager theDB;
 
 
@@ -30,7 +30,7 @@ public class RegisterPage extends AppCompatActivity {
 
 
 
-        register = (Button) findViewById(R.id.register);
+        register = (Button) findViewById(R.id.registerReg);
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +64,18 @@ public class RegisterPage extends AppCompatActivity {
                 }
             }
         });
+
+        back = (Button) findViewById(R.id.backtomainBtnReg);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent backtoLoginPage = new Intent(getApplicationContext(), WelcomePage.class);
+                startActivity(backtoLoginPage);
+            }
+        });
+
+
+
     }
 
 
