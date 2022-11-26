@@ -23,6 +23,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private static final String LAST = "last";
     private static final String EMAIL = "email";
     private static final String SECURITY = "security";
+    private static final String SECURITY_ANS = "security_ans";
     private static final String PASSWORD = "password";
 
 
@@ -37,7 +38,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         String sqlCreate = "create table " + TABLE_NAME + " ( " + ID;
         sqlCreate += " integer primary key autoincrement, " + FIRST;
         sqlCreate += " text, " + LAST + " text, " + EMAIL + " text, ";
-        sqlCreate += PASSWORD + " text ) ";
+        sqlCreate += PASSWORD + " text, " + SECURITY + " text, " + SECURITY_ANS + " text ) ";
 
         db.execSQL(sqlCreate);
     }
@@ -48,7 +49,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insert(String first, String last, String email, String password) {
+    public boolean insert(String first, String last, String email, String password, String security, String security_ans) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(FIRST, first.toLowerCase());
@@ -61,6 +62,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
         }catch (GeneralSecurityException e){
             //handle error
         }
+        contentValues.put(SECURITY, security.toLowerCase());
+        contentValues.put(SECURITY_ANS, security_ans.toLowerCase());
 
 
 

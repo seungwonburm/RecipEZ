@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class RegisterPage extends AppCompatActivity {
 
-    EditText email, first, last, password, passwordVerify;
+    EditText email, first, last, password, passwordVerify, security_ans;
     Button register, back;
     DatabaseManager theDB;
     Spinner spinner;
@@ -30,12 +30,15 @@ public class RegisterPage extends AppCompatActivity {
         last = (EditText) findViewById(R.id.lastnameReg);
         password = (EditText) findViewById(R.id.passwordReg);
         passwordVerify = (EditText) findViewById(R.id.passwordVerifyReg);
+        security_ans = (EditText) findViewById(R.id.security_ans);
 
 
         spinner = (Spinner) findViewById(R.id.spinner22);
         ArrayAdapter spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.Questions, android.R.layout.simple_spinner_item);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
+        String text = spinner.getSelectedItem().toString();
+
 
 
         register = (Button) findViewById(R.id.registerReg);
@@ -45,7 +48,7 @@ public class RegisterPage extends AppCompatActivity {
             public void onClick(View view) {
 
                 boolean added = false;
-                if (!first.getText().toString().equals("") && !last.getText().toString().equals("") && !email.getText().toString().equals("") && !passwordVerify.getText().toString().equals("") ){
+                if (!first.getText().toString().equals("") && !last.getText().toString().equals("") && !email.getText().toString().equals("") && !passwordVerify.getText().toString().equals("") && !security_ans.getText().toString().equals("") ){
                     int result =theDB.verify(email.getText().toString());
                     if (result == -1){
                         added = false;
@@ -56,7 +59,7 @@ public class RegisterPage extends AppCompatActivity {
                     } else if (!password.getText().toString().equals(passwordVerify.getText().toString())) {
                         Toast.makeText(getApplicationContext(), "Passwords Do Not Match!", Toast.LENGTH_LONG).show();
                     } else {
-                        added = theDB.insert(first.getText().toString(), last.getText().toString(), email.getText().toString(), password.getText().toString());
+                        added = theDB.insert(first.getText().toString(), last.getText().toString(), email.getText().toString(), password.getText().toString(), text, security_ans.getText().toString());
                     }
 
 

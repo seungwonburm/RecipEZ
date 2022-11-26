@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="Questions">
-        <item>How are u?</item>
-        <item>How are u?2</item>
-        <item>How are u?3</item>
-        <item>How are u?4</item>
+        <item>In what city were you born?</item>
+        <item>What is the name of your favorite pet?</item>
+        <item>What is your mother\'s maiden name?</item>
+        <item>What high school did you attend?</item>
     </string-array>
 
 

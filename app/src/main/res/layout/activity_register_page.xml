@@ -84,6 +84,17 @@
                 android:scrollbarSize="10sp"
                 android:spinnerMode="dropdown" />
 
+            <EditText
+                android:id="@+id/security_ans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:ems="10"
+                android:layout_gravity="center"
+                android:hint="security_ans"
+                android:inputType="textPersonName" />
+
+
             <Button
                 android:id="@+id/registerReg"
                 android:layout_width="wrap_content"
