@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class RegisterPage extends AppCompatActivity {
@@ -14,6 +16,7 @@ public class RegisterPage extends AppCompatActivity {
     EditText email, first, last, password, passwordVerify;
     Button register, back;
     DatabaseManager theDB;
+    Spinner spinner;
 
 
     @Override
@@ -28,6 +31,11 @@ public class RegisterPage extends AppCompatActivity {
         password = (EditText) findViewById(R.id.passwordReg);
         passwordVerify = (EditText) findViewById(R.id.passwordVerifyReg);
 
+
+        spinner = (Spinner) findViewById(R.id.spinner22);
+        ArrayAdapter spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.Questions, android.R.layout.simple_spinner_item);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinnerAdapter);
 
 
         register = (Button) findViewById(R.id.registerReg);

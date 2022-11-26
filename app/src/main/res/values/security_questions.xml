@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Questions">
+        <item>How are u?</item>
+        <item>How are u?2</item>
+        <item>How are u?3</item>
+        <item>How are u?4</item>
+    </string-array>
+
+
+
+</resources>
