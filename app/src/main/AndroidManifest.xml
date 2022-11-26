@@ -14,6 +14,12 @@
         android:theme="@style/Theme.OrderEZ"
         tools:targetApi="31">
         <activity
+            android:name=".Setting_Account"
+            android:exported="false" />
+        <activity
+            android:name=".Setting_User_Profile"
+            android:exported="false" />
+        <activity
             android:name=".AddnewItems"
             android:exported="false" />
         <activity

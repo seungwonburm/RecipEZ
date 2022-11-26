@@ -1,8 +1,10 @@
 package com.example.orderez;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -67,7 +69,7 @@ public class Homepage_Setting extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -83,6 +85,17 @@ public class Homepage_Setting extends Fragment {
         settingAdapter = new SettingAdapter(getContext(),settingNames);
 
         settingListView.setAdapter(settingAdapter);
+
+        settingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if (i == 0){
+                    startActivity(new Intent(getActivity(),Setting_Account.class));
+                }else if (i == 1){
+                    startActivity(new Intent(getActivity(),Setting_User_Profile.class));
+                }
+            }
+        });
 
         return contentView;
     }
