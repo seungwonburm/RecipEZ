@@ -66,18 +66,23 @@
                 android:inputType="textPassword" />
 
             <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
+                android:id="@+id/securityQuestionsReg"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="60dp"
-                android:text="Security Questions" />
+                android:text="Security Questions"
+                android:textSize="25sp"
+                app:autoSizeMaxTextSize="20sp"
+                app:autoSizeMinTextSize="35sp" />
 
             <Spinner
                 android:id="@+id/spinner22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:spinnerMode = "dropdown"
-                />
+                android:layout_gravity="center"
+                android:scrollbarSize="10sp"
+                android:spinnerMode="dropdown" />
 
             <Button
                 android:id="@+id/registerReg"

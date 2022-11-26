@@ -36,10 +36,12 @@
         android:id="@+id/welcomeImageMain"
         android:layout_width="wrap_content"
         android:layout_height="250dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/registerTextMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="1.0"
         tools:src="@tools:sample/backgrounds/scenic"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
