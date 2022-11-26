@@ -83,14 +83,6 @@ public class Homepage_Setting extends Fragment {
         settingAdapter = new SettingAdapter(getContext(),settingNames);
 
         settingListView.setAdapter(settingAdapter);
-//        settingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
-//
-//                String selectedItem = (String) view.findViewById(R.id.settingCategoryText).getTag().toString();
-//                Toast.makeText(getContext(), "Clicked:  " + selectedItem, Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
         return contentView;
     }

@@ -1,13 +1,19 @@
 package com.example.orderez;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ListView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +23,7 @@ import java.util.List;
  * Use the {@link Homepage_ItemListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Homepage_ItemListFragment extends Fragment {
+public class Homepage_ItemListFragment extends Fragment{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -52,7 +58,9 @@ public class Homepage_ItemListFragment extends Fragment {
 
     ArrayList<itemList> itemNames;
     ListView itemList_ListView;
+    FloatingActionButton fab;
     private static ItemListAdapter itemListAdapter;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,8 +69,11 @@ public class Homepage_ItemListFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
+    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -81,12 +92,25 @@ public class Homepage_ItemListFragment extends Fragment {
         itemListAdapter = new ItemListAdapter(getContext(),itemNames);
 
         itemList_ListView.setAdapter(itemListAdapter);
-        
+
+        fab = (FloatingActionButton) contenView.findViewById(R.id.floatingActionButtonSetting);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(),AddnewItems.class));
+            }
+        });
 
         return contenView;
+
+
     }
 
+
+
 }
+
+
 
 class itemList {
     private String category;
