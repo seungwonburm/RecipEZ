@@ -60,6 +60,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
           encryptedMsg = AESCrypt.encrypt(password, email.toLowerCase());
           contentValues.put(PASSWORD, encryptedMsg);
         }catch (GeneralSecurityException e){
+            return false;
             //handle error
         }
         contentValues.put(SECURITY, security.toLowerCase());
@@ -86,6 +87,14 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor searchId(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery("select * from " + TABLE_NAME + " where id = ?  ", new String[]{id});
+
+        return cursor;
+    }
+
     public int verify(String email){
         SQLiteDatabase db = this.getWritableDatabase();
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -102,18 +111,22 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return 1;
     }
 
-    public Cursor update(String id, String first, String last, String email){
+    public boolean updatePW(String id, String email, String password){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(ID, id);
-        contentValues.put(FIRST,first);
-        contentValues.put(LAST,last);
-        contentValues.put(EMAIL, email);
+        String encryptedMsg;
+        try {
+            encryptedMsg = AESCrypt.encrypt(password, email.toLowerCase());
+            contentValues.put(PASSWORD, encryptedMsg);
+        }catch (GeneralSecurityException e){
+            //handle error
+            return false;
+        }
         db.update(TABLE_NAME, contentValues, "ID = ?", new String[] {id});
 
-        Cursor cursor = db.rawQuery("select * from " + TABLE_NAME + " where id = ?  ", new String[]{id});
-        return cursor;
+        return true;
     }
 
 //    public void delete(String id) {

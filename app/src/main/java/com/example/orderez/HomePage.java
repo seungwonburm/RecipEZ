@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,6 +30,8 @@ public class HomePage extends AppCompatActivity {
         homepageHomeFragment = new Homepage_Setting();
         homepageItemListFragment = new Homepage_ItemListFragment();
         bottomNavigationView = findViewById(R.id.menus_setting);
+
+
 //
         getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container,new Homepage_ItemListFragment()).commit();
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

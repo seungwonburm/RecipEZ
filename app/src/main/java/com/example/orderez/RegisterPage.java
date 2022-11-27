@@ -33,7 +33,7 @@ public class RegisterPage extends AppCompatActivity {
         security_ans = (EditText) findViewById(R.id.security_ans);
 
 
-        spinner = (Spinner) findViewById(R.id.spinner22);
+        spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.Questions, android.R.layout.simple_spinner_item);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
@@ -48,7 +48,7 @@ public class RegisterPage extends AppCompatActivity {
             public void onClick(View view) {
 
                 boolean added = false;
-                if (!first.getText().toString().equals("") && !last.getText().toString().equals("") && !email.getText().toString().equals("") && !passwordVerify.getText().toString().equals("") && !security_ans.getText().toString().equals("") ){
+                if (!first.getText().toString().equals("") && !last.getText().toString().equals("") && !email.getText().toString().equals("") && !passwordVerify.getText().toString().equals("") && !security_ans.getText().toString().equals("") && !password.getText().toString().equals("") ){
                     int result =theDB.verify(email.getText().toString());
                     if (result == -1){
                         added = false;

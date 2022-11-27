@@ -80,6 +80,14 @@ public class Homepage_ItemListFragment extends Fragment{
         // Inflate the layout for this fragment
         View contenView = inflater.inflate(R.layout.fragment_item_list, container, false);
 
+//        Bundle bundle = getArguments();
+//        String text = bundle.getString("id");
+
+
+//        Intent receive_intent = getActivity().getIntent();
+//        String id = receive_intent.getStringExtra("id");
+
+
         itemNames = new ArrayList<>();
         itemNames.add(new itemList("Banana"));
         itemNames.add(new itemList("Banana2"));

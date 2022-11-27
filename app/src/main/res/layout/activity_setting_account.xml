@@ -7,7 +7,7 @@
     tools:context=".Setting_Account">
 
     <TextView
-        android:id="@+id/settingAccountUsername"
+        android:id="@+id/welcome_user"
         android:layout_width="218dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/settingAccountEmail"
+        android:id="@+id/welcome_email"
         android:layout_width="218dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
