@@ -13,7 +13,7 @@ public class HomePage extends AppCompatActivity {
 
     Homepage_Setting homepageSetting;
     Homepage_ItemList homepageItemList;
-    Homepage_Calendar_Month homepageCalendarMonth;
+
     BottomNavigationView bottomNavigationView;
 
 
@@ -24,7 +24,7 @@ public class HomePage extends AppCompatActivity {
 
         homepageSetting = new Homepage_Setting();
         homepageItemList = new Homepage_ItemList();
-        homepageCalendarMonth = new Homepage_Calendar_Month();
+
         bottomNavigationView = findViewById(R.id.menus_setting);
 
 
@@ -32,7 +32,7 @@ public class HomePage extends AppCompatActivity {
         Intent userId = getIntent();
         String idinString = userId.getStringExtra("userId");
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container,new Homepage_Calendar_Month()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container,new Homepage_ItemList()).commit();
 
         Bundle bundle = new Bundle();
         bundle.putString("userId",idinString);
@@ -48,9 +48,9 @@ public class HomePage extends AppCompatActivity {
                     case R.id.settingIcon:
                         getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container, homepageSetting).commit();
                         break;
-                    case R.id.calendarIcon:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container, homepageCalendarMonth).commit();
-                        break;
+//                    case R.id.calendarIcon:
+//                        getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container, homepageCalendarMonth).commit();
+//                        break;
                 }
                 return false;
             }

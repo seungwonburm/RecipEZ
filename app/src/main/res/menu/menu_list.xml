@@ -9,7 +9,6 @@
         android:id="@+id/itemListIcon"
         android:title="Items"
         />
-
     <item
         android:icon="@drawable/ic_baseline_settings_24"
         android:id="@+id/settingIcon"
