@@ -3,22 +3,17 @@ package com.example.orderez;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.animation.Animation;
 
-import com.google.android.material.animation.AnimationUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationBarView;
 
 public class HomePage extends AppCompatActivity {
 
-    Homepage_Setting homepageHomeFragment;
-    Homepage_ItemListFragment homepageItemListFragment;
+    Homepage_Setting homepageSetting;
+    Homepage_ItemList homepageItemList;
+    Homepage_Calendar_Month homepageCalendarMonth;
     BottomNavigationView bottomNavigationView;
 
 
@@ -27,22 +22,34 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        homepageHomeFragment = new Homepage_Setting();
-        homepageItemListFragment = new Homepage_ItemListFragment();
+        homepageSetting = new Homepage_Setting();
+        homepageItemList = new Homepage_ItemList();
+        homepageCalendarMonth = new Homepage_Calendar_Month();
         bottomNavigationView = findViewById(R.id.menus_setting);
 
 
-//
-        getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container,new Homepage_ItemListFragment()).commit();
+
+        Intent userId = getIntent();
+        String idinString = userId.getStringExtra("userId");
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container,new Homepage_Calendar_Month()).commit();
+
+        Bundle bundle = new Bundle();
+        bundle.putString("userId",idinString);
+        homepageItemList.setArguments(bundle);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.itemListIcon:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container,homepageItemListFragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container, homepageItemList).commit();
                         break;
                     case R.id.settingIcon:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container,homepageHomeFragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container, homepageSetting).commit();
+                        break;
+                    case R.id.calendarIcon:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container, homepageCalendarMonth).commit();
                         break;
                 }
                 return false;

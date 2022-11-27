@@ -19,7 +19,7 @@ public class LogInPage extends AppCompatActivity {
     DatabaseManager theDb;
     Button login,ForgotPasswordBtn,backtoMain;
     EditText emailLogin, passwordLogin;
-    Homepage_ItemListFragment homepage;
+    Homepage_ItemList homepage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,14 +49,14 @@ public class LogInPage extends AppCompatActivity {
                         String decrypted = AESCrypt.decrypt(passwordLogin.getText().toString(), pw);
                         System.out.println("");
                         if (decrypted.equals(email)){
-                            Intent intent = getIntent();
-
 
                             String id = cursor.getString(cursor.getColumnIndexOrThrow("id"));
 
-                            String text = intent.getStringExtra("id");
+                            Intent sendUserId = new Intent (LogInPage.this,HomePage.class);
+                            sendUserId.putExtra("userId",id);
+                            startActivity(sendUserId);
 
-                            homepage = new Homepage_ItemListFragment();
+                            homepage = new Homepage_ItemList();
                             Bundle bundle = new Bundle();
                             bundle.putString("id", id);
                             homepage.setArguments(bundle);

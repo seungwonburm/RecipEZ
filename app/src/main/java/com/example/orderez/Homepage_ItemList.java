@@ -20,10 +20,10 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Homepage_ItemListFragment#newInstance} factory method to
+ * Use the {@link Homepage_ItemList#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Homepage_ItemListFragment extends Fragment{
+public class Homepage_ItemList extends Fragment{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +34,7 @@ public class Homepage_ItemListFragment extends Fragment{
     private String mParam1;
     private String mParam2;
 
-    public Homepage_ItemListFragment() {
+    public Homepage_ItemList() {
         // Required empty public constructor
     }
 
@@ -47,8 +47,8 @@ public class Homepage_ItemListFragment extends Fragment{
      * @return A new instance of fragment ItemListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Homepage_ItemListFragment newInstance(String param1, String param2) {
-        Homepage_ItemListFragment fragment = new Homepage_ItemListFragment();
+    public static Homepage_ItemList newInstance(String param1, String param2) {
+        Homepage_ItemList fragment = new Homepage_ItemList();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -80,12 +80,7 @@ public class Homepage_ItemListFragment extends Fragment{
         // Inflate the layout for this fragment
         View contenView = inflater.inflate(R.layout.fragment_item_list, container, false);
 
-//        Bundle bundle = getArguments();
-//        String text = bundle.getString("id");
 
-
-//        Intent receive_intent = getActivity().getIntent();
-//        String id = receive_intent.getStringExtra("id");
 
 
         itemNames = new ArrayList<>();
@@ -95,6 +90,12 @@ public class Homepage_ItemListFragment extends Fragment{
         itemNames.add(new itemList("Banana4"));
         itemNames.add(new itemList("Banana5"));
         itemNames.add(new itemList("Banana6"));
+
+        Bundle bundle = getArguments();
+        if (bundle != null){
+            itemNames.add(new itemList(bundle.getString("userID")));
+        }
+
 
         itemList_ListView = (ListView) contenView.findViewById(R.id.listMenu);
         itemListAdapter = new ItemListAdapter(getContext(),itemNames);
