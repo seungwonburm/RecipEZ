@@ -1,4 +1,4 @@
-package com.example.orderez;
+package com.example.orderez.settingCategories;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.orderez.DatabaseManager;
+import com.example.orderez.R;
 
 public class Setting_Account extends AppCompatActivity {
 

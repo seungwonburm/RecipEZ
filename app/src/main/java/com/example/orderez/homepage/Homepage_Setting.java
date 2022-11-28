@@ -1,9 +1,10 @@
-package com.example.orderez;
+package com.example.orderez.homepage;
 
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -13,7 +14,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.orderez.R;
+import com.example.orderez.settingCategories.Setting_Account;
+import com.example.orderez.settingCategories.Setting_User_Profile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,14 +96,54 @@ public class Homepage_Setting extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i == 0){
-                    startActivity(new Intent(getActivity(),Setting_Account.class));
+                    startActivity(new Intent(getActivity(), Setting_Account.class));
                 }else if (i == 1){
-                    startActivity(new Intent(getActivity(),Setting_User_Profile.class));
+                    startActivity(new Intent(getActivity(), Setting_User_Profile.class));
                 }
             }
         });
 
         return contentView;
+    }
+
+    public static class SettingAdapter extends ArrayAdapter implements AdapterView.OnItemClickListener {
+
+        private Context context;
+        private List list;
+
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
+        }
+
+        class ViewHolder {
+            public TextView category_name;
+        }
+
+        public SettingAdapter(@NonNull Context context, ArrayList list) {
+
+            super(context,0,list);
+            this.context = context;
+            this.list = list;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent){
+            final ViewHolder viewHolder;
+            if (convertView == null){
+                LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+                convertView = layoutInflater.inflate(R.layout.setting_listview_item, parent, false);
+            }
+            viewHolder = new ViewHolder();
+            viewHolder.category_name = (TextView) convertView.findViewById(R.id.settingCategoryText);
+            final settingList setList = (settingList) list.get(position);
+
+            viewHolder.category_name.setText(setList.getCategory());
+
+
+            return convertView;
+        }
+
     }
 }
 

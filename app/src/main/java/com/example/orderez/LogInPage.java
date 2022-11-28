@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.orderez.homepage.HomePage;
+import com.example.orderez.homepage.Homepage_ItemList;
+import com.example.orderez.homepage.Homepage_calendar_month;
 import com.scottyab.aescrypt.AESCrypt;
 
 import java.security.GeneralSecurityException;
@@ -52,7 +55,7 @@ public class LogInPage extends AppCompatActivity {
 
                             String id = cursor.getString(cursor.getColumnIndexOrThrow("id"));
 
-                            Intent sendUserId = new Intent (LogInPage.this,HomePage.class);
+                            Intent sendUserId = new Intent (LogInPage.this, HomePage.class);
                             sendUserId.putExtra("userId",id);
                             startActivity(sendUserId);
 
@@ -62,7 +65,7 @@ public class LogInPage extends AppCompatActivity {
                             homepage.setArguments(bundle);
 
                             Toast.makeText(getApplicationContext(),"Login Successful!",Toast.LENGTH_LONG).show();
-                            Intent gotohomepage = new Intent(getApplicationContext(),HomePage.class);
+                            Intent gotohomepage = new Intent(getApplicationContext(), HomePage.class);
 
                             startActivity(gotohomepage);
 

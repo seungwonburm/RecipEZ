@@ -1,9 +1,11 @@
-package com.example.orderez;
+package com.example.orderez.settingCategories;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.orderez.R;
 
 public class Setting_User_Profile extends AppCompatActivity {
 
