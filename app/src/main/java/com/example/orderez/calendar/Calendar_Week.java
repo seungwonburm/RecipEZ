@@ -1,9 +1,8 @@
-package com.example.orderez.homepage;
+package com.example.orderez.calendar;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +14,7 @@ import com.example.orderez.R;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Homepage_calendar_week extends AppCompatActivity {
+public class Calendar_Week extends AppCompatActivity {
 
     TextView monthYearText; //Year and Month Textview
     LocalDate selectedDate;
@@ -24,7 +23,7 @@ public class Homepage_calendar_week extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_homepage_calendar_week);
+        setContentView(R.layout.activity_calendar_week);
 
         //Default set
         monthYearText = findViewById(R.id.monthYearText);

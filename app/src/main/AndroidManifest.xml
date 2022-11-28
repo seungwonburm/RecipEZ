@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.orderez">
+    package="com.example.orderez" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="true"
@@ -12,18 +15,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OrderEZ"
-        tools:targetApi="31">
+        tools:targetApi="31" >
         <activity
-            android:name=".Calendar"
+            android:name=".Homepage_scheduleList"
+            android:exported="false"
+            android:label="@string/title_activity_homepage_schedule_list"
+            android:theme="@style/Theme.OrderEZ.NoActionBar" />
+        <activity
+            android:name=".calendar.Calendar_Month"
             android:exported="false" />
         <activity
-            android:name=".Homapage_calendar_week"
+            android:name=".calendar.Calendar_Week"
             android:exported="false" />
         <activity
-            android:name=".settingCategories.Setting_Account"
+            android:name=".homepage.settingCategories.Setting_Account"
             android:exported="false" />
         <activity
-            android:name=".settingCategories.Setting_User_Profile"
+            android:name=".homepage.settingCategories.Setting_User_Profile"
             android:exported="false" />
         <activity
             android:name=".homepage.AddnewItems"
@@ -32,23 +40,36 @@
             android:name=".homepage.HomePage"
             android:exported="false" />
         <activity
-            android:name=".ForgotPassword"
+            android:name=".intro.ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".RegisterPage"
+            android:name=".intro.RegisterPage"
             android:exported="false" />
         <activity
-            android:name=".LogInPage"
+            android:name=".intro.LogInPage"
             android:exported="false" />
         <activity
-            android:name=".WelcomePage"
-            android:exported="true">
+            android:name=".intro.WelcomePage"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+<!--        <meta-data-->
+<!--            android:name="com.google.android.gms.vision"-->
+<!--            android:value="@integer/google_play_services_version">-->
+
+<!--        </meta-data>-->
+
+<!--        <meta-data-->
+<!--            android:name="com.google.android.gms.API_KEY"-->
+<!--            android:value="AIzaSyDm6gF49i7i&#45;&#45;69VTEReQLQhXOiza2YldM">-->
+
+<!--        </meta-data>-->
+
     </application>
 
 </manifest>

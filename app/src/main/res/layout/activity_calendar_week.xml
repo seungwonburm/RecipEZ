@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".homepage.Homepage_calendar_week"
+    tools:context=".calendar.Calendar_Week"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"

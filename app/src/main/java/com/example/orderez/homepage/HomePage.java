@@ -3,18 +3,19 @@ package com.example.orderez.homepage;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.orderez.R;
+import com.example.orderez.calendar.Calendar_Month;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomePage extends AppCompatActivity {
 
     Homepage_Setting homepageSetting;
     Homepage_ItemList homepageItemList;
-    Homepage_calendar_month homepageCalendarMonth;
     BottomNavigationView bottomNavigationView;
 
 
@@ -25,7 +26,7 @@ public class HomePage extends AppCompatActivity {
 
         homepageSetting = new Homepage_Setting();
         homepageItemList = new Homepage_ItemList();
-        homepageCalendarMonth = new Homepage_calendar_month();
+
         bottomNavigationView = findViewById(R.id.menus_setting);
 
 
@@ -37,21 +38,22 @@ public class HomePage extends AppCompatActivity {
         homepageItemList.setArguments(bundle);
 
 
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container, homepageCalendarMonth).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container, homepageSetting).commit();
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.itemListIcon:
+                    case R.id.itemListIcon_02:
                         getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container, homepageItemList).commit();
                         break;
-                    case R.id.settingIcon:
+                    case R.id.settingIcon_02:
                         getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container, homepageSetting).commit();
                         break;
-                    case R.id.calendarIcon:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container, homepageCalendarMonth).commit();
+                    case R.id.calendarIcon_02:
+                        Intent intent = new Intent(getApplicationContext(), Calendar_Month.class);
+                        startActivity(intent);
                         break;
                 }
                 return false;

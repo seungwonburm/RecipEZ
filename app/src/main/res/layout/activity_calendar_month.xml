@@ -1,47 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".homepage.Homepage_calendar_month">
-
-    <!-- TODO: Update blank fragment layout -->
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".calendar.Calendar_Month">
 
     <LinearLayout
+        android:id="@+id/header_month"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        tools:layout_editor_absoluteX="-57dp"
+        tools:layout_editor_absoluteY="108dp">
+
         <ImageButton
             android:id="@+id/pre_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src = "@drawable/ic_baseline_arrow_back_24" />
-
-        <TextView
-            android:id="@+id/monthYearText"
+            android:src="@drawable/ic_baseline_arrow_back_24" />
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:textSize="25sp" />
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/monthYearText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textSize="25sp" />
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scrollbarSize="10sp"
+                android:spinnerMode="dropdown" />
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/next_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src = "@drawable/ic_baseline_arrow_forward_24"/>
+            android:src="@drawable/ic_baseline_arrow_forward_24" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/montoSun"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -105,31 +115,21 @@
             android:textColor = "@android:color/holo_blue_dark"/>
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_month"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/menus_calendar_month"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-    </LinearLayout>
-
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButtonCalendar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:backgroundTint="#ffffff"
-        android:elevation="6dp"
-        android:src="@drawable/ic_baseline_add_circle_24"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="15dp"
-        app:pressedTranslationZ="12dp" />
-
-
+        android:layout_gravity="bottom"
+        app:backgroundTint="#FFFFFF"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/menu_calendar" />
 
 
 </LinearLayout>
-
-
-</FrameLayout>

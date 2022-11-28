@@ -1,4 +1,4 @@
-package com.example.orderez;
+package com.example.orderez.intro;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
+
+import com.example.orderez.DatabaseManager;
+import com.example.orderez.R;
+import com.example.orderez.intro.LogInPage;
+import com.example.orderez.intro.RegisterPage;
 
 public class WelcomePage extends AppCompatActivity {
     DatabaseManager theDb;

@@ -18,8 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.orderez.R;
-import com.example.orderez.settingCategories.Setting_Account;
-import com.example.orderez.settingCategories.Setting_User_Profile;
+import com.example.orderez.homepage.settingCategories.Setting_Account;
+import com.example.orderez.homepage.settingCategories.Setting_User_Profile;
 
 import java.util.ArrayList;
 import java.util.List;

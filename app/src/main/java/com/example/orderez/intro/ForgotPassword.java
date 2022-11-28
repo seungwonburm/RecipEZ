@@ -1,4 +1,4 @@
-package com.example.orderez;
+package com.example.orderez.intro;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +14,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.orderez.DatabaseManager;
+import com.example.orderez.R;
 
 public class ForgotPassword extends AppCompatActivity {
     Spinner spinner;
@@ -107,7 +110,7 @@ public class ForgotPassword extends AppCompatActivity {
 
                     if (added == true){
                         Toast.makeText(getApplicationContext(), "Successfully Updated Password", Toast.LENGTH_LONG).show();
-                        Intent LogInPage = new Intent(getApplicationContext(), LogInPage.class);
+                        Intent LogInPage = new Intent(getApplicationContext(), com.example.orderez.intro.LogInPage.class);
                         startActivity(LogInPage);
                     }
                     else

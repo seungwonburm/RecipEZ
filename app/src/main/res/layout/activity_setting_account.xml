@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".settingCategories.Setting_Account">
+    tools:context=".homepage.settingCategories.Setting_Account">
 
     <TextView
         android:id="@+id/welcome_user"

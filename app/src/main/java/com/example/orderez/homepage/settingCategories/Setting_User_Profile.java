@@ -1,4 +1,4 @@
-package com.example.orderez.settingCategories;
+package com.example.orderez.homepage.settingCategories;
 
 import androidx.appcompat.app.AppCompatActivity;
 

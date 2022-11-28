@@ -1,4 +1,4 @@
-package com.example.orderez;
+package com.example.orderez.intro;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,9 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.orderez.DatabaseManager;
+import com.example.orderez.R;
+import com.example.orderez.calendar.Calendar_Month;
 import com.example.orderez.homepage.HomePage;
 import com.example.orderez.homepage.Homepage_ItemList;
-import com.example.orderez.homepage.Homepage_calendar_month;
 import com.scottyab.aescrypt.AESCrypt;
 
 import java.security.GeneralSecurityException;
@@ -65,7 +67,7 @@ public class LogInPage extends AppCompatActivity {
                             homepage.setArguments(bundle);
 
                             Toast.makeText(getApplicationContext(),"Login Successful!",Toast.LENGTH_LONG).show();
-                            Intent gotohomepage = new Intent(getApplicationContext(), Calendar.class);
+                            Intent gotohomepage = new Intent(getApplicationContext(), Calendar_Month.class);
 
                             startActivity(gotohomepage);
 
@@ -102,7 +104,7 @@ public class LogInPage extends AppCompatActivity {
         backtoMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent gobacktoMainPage = new Intent(getApplicationContext(),WelcomePage.class);
+                Intent gobacktoMainPage = new Intent(getApplicationContext(), WelcomePage.class);
                 startActivity(gobacktoMainPage);
             }
         });

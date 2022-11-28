@@ -1,4 +1,4 @@
-package com.example.orderez;
+package com.example.orderez.intro;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.orderez.DatabaseManager;
+import com.example.orderez.R;
 
 public class RegisterPage extends AppCompatActivity {
 
@@ -65,7 +68,7 @@ public class RegisterPage extends AppCompatActivity {
 
                     if (added == true){
                         Toast.makeText(getApplicationContext(), "Data Added", Toast.LENGTH_LONG).show();
-                        Intent LogInPage = new Intent(getApplicationContext(), LogInPage.class);
+                        Intent LogInPage = new Intent(getApplicationContext(), com.example.orderez.intro.LogInPage.class);
                         startActivity(LogInPage);
                     }
                     else
