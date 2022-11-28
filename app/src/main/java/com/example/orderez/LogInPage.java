@@ -65,7 +65,7 @@ public class LogInPage extends AppCompatActivity {
                             homepage.setArguments(bundle);
 
                             Toast.makeText(getApplicationContext(),"Login Successful!",Toast.LENGTH_LONG).show();
-                            Intent gotohomepage = new Intent(getApplicationContext(), HomePage.class);
+                            Intent gotohomepage = new Intent(getApplicationContext(), Calendar.class);
 
                             startActivity(gotohomepage);
 
