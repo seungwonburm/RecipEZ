@@ -9,9 +9,10 @@
         <entry key="app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2555" />
         <entry key="app/src/main/res/drawable/ic_baseline_format_list_bulleted_24.xml" value="0.3305" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.172" />
-        <entry key="app/src/main/res/layout/activity_addnew_items.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_addnew_items.xml" value="0.3570380316840278" />
+        <entry key="app/src/main/res/layout/activity_address_api.xml" value="0.3770833333333333" />
         <entry key="app/src/main/res/layout/activity_calendar.xml" value="0.31423297826794616" />
-        <entry key="app/src/main/res/layout/activity_calendar_month.xml" value="0.3694581280788177" />
+        <entry key="app/src/main/res/layout/activity_calendar_month.xml" value="0.38222830979982014" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.30978260869565216" />
         <entry key="app/src/main/res/layout/activity_homapage_calendar_week.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.25" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,8 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="-57dp"
-        tools:layout_editor_absoluteY="108dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/pre_btn"
@@ -21,11 +22,13 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/ic_baseline_arrow_back_24" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/monthYearText"
                 android:layout_width="wrap_content"
@@ -33,6 +36,7 @@
                 android:layout_weight="1"
                 android:textAlignment="center"
                 android:textSize="25sp" />
+
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="wrap_content"
@@ -54,73 +58,90 @@
         android:id="@+id/montoSun"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="58dp"
         android:orientation="horizontal"
-        android:weightSum="7">
+        android:weightSum="7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/header_month">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="SUN"
-            android:textSize="20sp"
             android:textAlignment="center"
-            android:textColor = "@android:color/holo_red_dark"/>
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="20sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="MON"
-            android:textSize="20sp"
             android:textAlignment="center"
-            android:textColor = "@android:color/black"/>
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TUE"
-            android:textSize="20sp"
             android:textAlignment="center"
-            android:textColor = "@android:color/black"/>
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="WED"
-            android:textSize="20sp"
             android:textAlignment="center"
-            android:textColor = "@android:color/black"/>
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="THU"
-            android:textSize="20sp"
             android:textAlignment="center"
-            android:textColor = "@android:color/black"/>
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="FRI"
-            android:textSize="20sp"
             android:textAlignment="center"
-            android:textColor = "@android:color/black"/>
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="SAT"
-            android:textSize="20sp"
             android:textAlignment="center"
-            android:textColor = "@android:color/holo_blue_dark"/>
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_month"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/header_month">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menus_calendar_month"
@@ -129,7 +150,10 @@
         android:layout_gravity="bottom"
         app:backgroundTint="#FFFFFF"
         app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_calendar" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

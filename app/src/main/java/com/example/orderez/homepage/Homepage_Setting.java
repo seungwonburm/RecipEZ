@@ -18,8 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.orderez.R;
-import com.example.orderez.homepage.settingCategories.Setting_Account;
-import com.example.orderez.homepage.settingCategories.Setting_User_Profile;
+//import com.example.orderez.homepage.settingCategories.Setting_Account;
+//import com.example.orderez.homepage.settingCategories.Setting_User_Profile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,7 +85,6 @@ public class Homepage_Setting extends Fragment {
         settingNames = new ArrayList<>();
         settingNames.add(new settingList("User Profile"));
         settingNames.add(new settingList("Account setting"));
-        settingNames.add(new settingList("what else?"));
 
         settingListView = (ListView) contentView.findViewById(R.id.settingMenu);
         settingAdapter = new SettingAdapter(getContext(),settingNames);
@@ -96,9 +95,9 @@ public class Homepage_Setting extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i == 0){
-                    startActivity(new Intent(getActivity(), Setting_Account.class));
+//                    startActivity(new Intent(getActivity(), Setting_Account.class));
                 }else if (i == 1){
-                    startActivity(new Intent(getActivity(), Setting_User_Profile.class));
+//                    startActivity(new Intent(getActivity(), Setting_User_Profile.class));
                 }
             }
         });
