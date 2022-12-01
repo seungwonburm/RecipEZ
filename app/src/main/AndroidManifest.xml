@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.orderez" >
     <!-- Internet permission -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- Check internet is connected -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Check internet is connected -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -16,35 +15,54 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OrderEZ"
-        tools:targetApi="31" >
+        tools:targetApi="30" >
         <activity
-            android:name=".AddressApi"
+            android:name=".homepage.settingCategories.Homepage_SettingCategories"
             android:exported="false" />
         <activity
-            android:name=".Homepage_scheduleList"
+            android:name=".Homepage_SettingList"
+            android:exported="false" />
+        <activity
+            android:name=".Homepage_settingpage"
             android:exported="false"
+            android:label="@string/title_activity_homepage_settingpage"
             android:theme="@style/Theme.OrderEZ.NoActionBar" />
+        <!--
+             TODO: Before you run your application, you need a Google Maps API key.
+
+             To get one, follow the directions here:
+
+                https://developers.google.com/maps/documentation/android-sdk/get-api-key
+
+             Once you have your API key (it starts with "AIza"), define a new property in your
+             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
+             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC-EcrxUl7WyVRBd8oyITifAy_hbZfj_QI" />
+
         <activity
-            android:name=".calendar.Calendar_Month"
-            android:exported="false" />
+            android:name=".homepage.Homepage_Calendar_Month"
+            android:exported="true" />
         <activity
-            android:name=".calendar.Calendar_Week"
-            android:exported="false" />
+            android:name=".homepage.Homepage_Calendar_Week"
+            android:exported="true" />
         <activity
             android:name=".homepage.AddnewItems"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".homepage.HomePage"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".intro.ForgotPassword"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".intro.RegisterPage"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".intro.LogInPage"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".intro.WelcomePage"
             android:exported="true" >

@@ -9,13 +9,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.orderez.R;
-import com.example.orderez.calendar.Calendar_Month;
+import com.example.orderez.homepage.settingCategories.Homepage_SettingCategories;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomePage extends AppCompatActivity {
 
-    Homepage_Setting homepageSetting;
     Homepage_ItemList homepageItemList;
+    Homepage_Calendar_Month homepageMonthCalendar;
     BottomNavigationView bottomNavigationView;
 
 
@@ -24,8 +24,8 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        homepageSetting = new Homepage_Setting();
         homepageItemList = new Homepage_ItemList();
+        homepageMonthCalendar = new Homepage_Calendar_Month();
 
         bottomNavigationView = findViewById(R.id.menus_setting);
 
@@ -38,7 +38,7 @@ public class HomePage extends AppCompatActivity {
         homepageItemList.setArguments(bundle);
 
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container, homepageSetting).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container, homepageItemList).commit();
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")
@@ -49,11 +49,12 @@ public class HomePage extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container, homepageItemList).commit();
                         break;
                     case R.id.settingIcon_02:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container, homepageSetting).commit();
+                        Intent intent = new Intent(getApplicationContext(), Homepage_SettingCategories.class);
+                        startActivity(intent);
                         break;
                     case R.id.calendarIcon_02:
-                        Intent intent = new Intent(getApplicationContext(), Calendar_Month.class);
-                        startActivity(intent);
+                        Intent calendarIntent = new Intent(getApplicationContext(),Homepage_Calendar_Month.class);
+                        startActivity(calendarIntent);
                         break;
                 }
                 return false;

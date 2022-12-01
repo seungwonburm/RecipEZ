@@ -6,7 +6,6 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -14,16 +13,15 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 
 import com.example.orderez.R;
-import com.example.orderez.calendar.Calendar_Month;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Locale;
 
 public class AddnewItems extends AppCompatActivity {
 
     Button submit_Btn;
+
 
     Calendar pickDates = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener fromDataPicker = new DatePickerDialog.OnDateSetListener() {
@@ -68,31 +66,7 @@ public class AddnewItems extends AppCompatActivity {
 
 
 
-        final EditText et_from_time = (EditText) findViewById(R.id.from_Time);
-        et_from_time.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar mcurrentTime = Calendar.getInstance();
-                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
-                int minute = mcurrentTime.get(Calendar.MINUTE);
-                TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(AddnewItems.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        String state = "AM";
-                        // 선택한 시간이 12를 넘을경우 "PM"으로 변경 및 -12시간하여 출력 (ex : PM 6시 30분)
-                        if (selectedHour > 12) {
-                            selectedHour -= 12;
-                            state = "PM";
-                        }
-                        // EditText에 출력할 형식 지정
-                        et_from_time.setText(state + " " + selectedHour + ": " + selectedMinute);
-                    }
-                }, hour, minute, false); // true의 경우 24시간 형식의 TimePicker 출현
-                mTimePicker.setTitle("Select Time");
-                mTimePicker.show();
-            }
-        });
+
 
 
 
@@ -105,38 +79,14 @@ public class AddnewItems extends AppCompatActivity {
             }
         });
 
-        final EditText et_to_time = (EditText) findViewById(R.id.to_Time);
-        et_to_time.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar mcurrentTime = Calendar.getInstance();
-                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
-                int minute = mcurrentTime.get(Calendar.MINUTE);
-                TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(AddnewItems.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        String state = "AM";
-                        // 선택한 시간이 12를 넘을경우 "PM"으로 변경 및 -12시간하여 출력 (ex : PM 6시 30분)
-                        if (selectedHour > 12) {
-                            selectedHour -= 12;
-                            state = "PM";
-                        }
-                        // EditText에 출력할 형식 지정
-                        et_to_time.setText(state + " " + selectedHour + ": " + selectedMinute);
-                    }
-                }, hour, minute, false); // true의 경우 24시간 형식의 TimePicker 출현
-                mTimePicker.setTitle("Select Time");
-                mTimePicker.show();
-            }
-        });
+
 
         submit_Btn = (Button) findViewById(R.id.submit_schedule);
         submit_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //데이터 옮기기 (연도, 달, 월 ,시간), memo, title ec). toDate.get(Calendar.YEAR)
-                Intent goBacktoCalendar = new Intent(getApplicationContext(), Calendar_Month.class);
+                Intent goBacktoCalendar = new Intent(getApplicationContext(), Homepage_Calendar_Month.class);
                 startActivity(goBacktoCalendar);
             }
         });

@@ -1,4 +1,4 @@
-package com.example.orderez.calendar;
+package com.example.orderez.homepage;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +14,7 @@ import com.example.orderez.R;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Calendar_Week extends AppCompatActivity {
+public class Homepage_Calendar_Week extends AppCompatActivity {
 
     TextView monthYearText; //Year and Month Textview
     LocalDate selectedDate;

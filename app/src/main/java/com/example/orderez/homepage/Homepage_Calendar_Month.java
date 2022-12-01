@@ -1,4 +1,4 @@
-package com.example.orderez.calendar;
+package com.example.orderez.homepage;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -16,8 +16,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.orderez.R;
-import com.example.orderez.homepage.AddnewItems;
-import com.example.orderez.homepage.HomePage;
+import com.example.orderez.homepage.settingCategories.Homepage_SettingCategories;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.time.LocalDate;
@@ -25,9 +24,12 @@ import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class Calendar_Month extends AppCompatActivity {
+public class Homepage_Calendar_Month extends AppCompatActivity {
     TextView monthYearText; //Year and Month Textview
     RecyclerView recyclerView;
+
+    Homepage_SettingCategories homepageSetting;
+    Homepage_ItemList homepageItemList;
 
     //Bottom Navigation bar
     BottomNavigationView bottomNavigationView;
@@ -76,17 +78,17 @@ public class Calendar_Month extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.addIcon_MenuCal:
-                        Intent addSchedule = new Intent(getApplicationContext(), AddnewItems.class);
-                        startActivity(addSchedule);
+                    case R.id.itemListIcon_02:
+                        Intent intent = new Intent(getApplicationContext(),HomePage.class);
+                        startActivity(intent);
                         break;
-                    case R.id.calendarIcon_MenuCal:
-                        Intent resetView = new Intent(getApplicationContext(), Calendar_Month.class);
-                        startActivity(resetView);
+                    case R.id.settingIcon_02:
+                        Intent intent2 = new Intent(getApplicationContext(),Homepage_SettingCategories.class);
+                        startActivity(intent2);
                         break;
-                    case R.id.settingIcon_MenuCal:
-                        Intent setting = new Intent (getApplicationContext(), HomePage.class);
-                        startActivity(setting);
+                    case R.id.calendarIcon_02:
+                        Intent refresh = new Intent(getApplicationContext(),Homepage_Calendar_Month.class);
+                        startActivity(refresh);
                         break;
                 }
 

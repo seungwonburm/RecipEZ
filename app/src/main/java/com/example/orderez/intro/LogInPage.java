@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.example.orderez.DatabaseManager;
 import com.example.orderez.R;
-import com.example.orderez.calendar.Calendar_Month;
 import com.example.orderez.homepage.HomePage;
 import com.example.orderez.homepage.Homepage_ItemList;
 import com.scottyab.aescrypt.AESCrypt;
@@ -61,13 +60,14 @@ public class LogInPage extends AppCompatActivity {
                             sendUserId.putExtra("userId",id);
                             startActivity(sendUserId);
 
+
                             homepage = new Homepage_ItemList();
                             Bundle bundle = new Bundle();
                             bundle.putString("id", id);
                             homepage.setArguments(bundle);
 
                             Toast.makeText(getApplicationContext(),"Login Successful!",Toast.LENGTH_LONG).show();
-                            Intent gotohomepage = new Intent(getApplicationContext(), Calendar_Month.class);
+                            Intent gotohomepage = new Intent(getApplicationContext(), HomePage.class);
 
                             startActivity(gotohomepage);
 

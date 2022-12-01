@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".calendar.Calendar_Month">
+    tools:context=".homepage.Homepage_Calendar_Month">
 
     <LinearLayout
         android:id="@+id/header_month"
@@ -153,7 +153,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_calendar" />
+        app:menu="@menu/menu_list" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
