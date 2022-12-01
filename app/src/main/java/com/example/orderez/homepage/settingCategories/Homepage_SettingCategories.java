@@ -2,53 +2,91 @@ package com.example.orderez.homepage.settingCategories;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.orderez.R;
+import com.example.orderez.homepage.HomePage;
 
 public class Homepage_SettingCategories extends AppCompatActivity {
 
-    ImageButton userProfile,accountSetting;
-    TextView userProfile_tv, accountSetting_tv;
+    ImageButton account_settings_icon,change_password_icon;
+    TextView account_settings_text, change_password_text;
+    LinearLayout account_settings_linear, change_password_linear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage_setting_categories);
 
+        Intent intent = getIntent();
+        String str = intent.getStringExtra("userId");
 
-        userProfile = findViewById(R.id.setting_userprofile_icon);
-        userProfile.setOnClickListener(new View.OnClickListener() {
+
+
+        account_settings_linear = (LinearLayout) findViewById(R.id.account_settings_linear);
+        change_password_linear = (LinearLayout) findViewById(R.id.change_password_linear);
+
+        account_settings_icon = findViewById(R.id.account_settings_icon);
+        account_settings_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent gotoAccountSettings = new Intent(getApplicationContext(), AccountSettings.class);
+                gotoAccountSettings.putExtra("userId", str);
+                startActivity(gotoAccountSettings);
 
             }
         });
 
-        userProfile_tv = findViewById(R.id.setting_userprofile_tv);
-        userProfile_tv.setOnClickListener(new View.OnClickListener() {
+        account_settings_text = findViewById(R.id.account_settings_text);
+        account_settings_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent gotoAccountSettings = new Intent(getApplicationContext(), AccountSettings.class);
+                gotoAccountSettings.putExtra("userId", str);
+                startActivity(gotoAccountSettings);
             }
         });
 
-        accountSetting = findViewById(R.id.setting_account_icon);
-        accountSetting.setOnClickListener(new View.OnClickListener() {
+        account_settings_linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent gotoAccountSettings = new Intent(getApplicationContext(), AccountSettings.class);
+                gotoAccountSettings.putExtra("userId", str);
+                startActivity(gotoAccountSettings);
             }
         });
 
-        accountSetting_tv = findViewById(R.id.setting_account_tv);
-        accountSetting_tv.setOnClickListener(new View.OnClickListener() {
+        change_password_icon = findViewById(R.id.change_password_icon);
+        change_password_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent gotoChangePassword = new Intent(getApplicationContext(), ChangePassword.class);
+                gotoChangePassword.putExtra("userId", str);
+                startActivity(gotoChangePassword);
+            }
+        });
 
+        change_password_text = findViewById(R.id.change_password_text);
+        change_password_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gotoChangePassword = new Intent(getApplicationContext(), ChangePassword.class);
+                gotoChangePassword.putExtra("userId", str);
+                startActivity(gotoChangePassword);
+            }
+        });
+
+        change_password_linear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gotoChangePassword = new Intent(getApplicationContext(), ChangePassword.class);
+                gotoChangePassword.putExtra("userId", str);
+                startActivity(gotoChangePassword);
             }
         });
     }

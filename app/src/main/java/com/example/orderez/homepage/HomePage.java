@@ -29,13 +29,10 @@ public class HomePage extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.menus_setting);
 
+        Intent intent = getIntent();
+        String str = intent.getStringExtra("userId");
 
 
-        Intent userId = getIntent();
-        String idinString = userId.getStringExtra("userId");
-        Bundle bundle = new Bundle();
-        bundle.putString("userId",idinString);
-        homepageItemList.setArguments(bundle);
 
 
         getSupportFragmentManager().beginTransaction().replace(R.id.homepage_container, homepageItemList).commit();
@@ -50,6 +47,7 @@ public class HomePage extends AppCompatActivity {
                         break;
                     case R.id.settingIcon_02:
                         Intent intent = new Intent(getApplicationContext(), Homepage_SettingCategories.class);
+                        intent.putExtra("userId", str);
                         startActivity(intent);
                         break;
                     case R.id.calendarIcon_02:
@@ -60,6 +58,9 @@ public class HomePage extends AppCompatActivity {
                 return false;
             }
         });
+
+
+
 
     }
 }

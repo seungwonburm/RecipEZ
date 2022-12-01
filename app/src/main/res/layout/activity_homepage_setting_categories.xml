@@ -20,44 +20,49 @@
 
 
     <LinearLayout
-        android:id="@+id/setting_userprofile_title"
+        android:id="@+id/account_settings_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:clickable="true"
+        >
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/setting_userprofile_icon"
+            android:id="@+id/account_settings_icon"
             android:src="@drawable/ic_baseline_settings_24"/>
 
         <TextView
-            android:id="@+id/setting_userprofile_tv"
+            android:id="@+id/account_settings_text"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="User Profile"
-            android:textSize="25sp"/>
+            android:clickable="true"
+            android:text="Account Settings"
+            android:textSize="25sp" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/setting_account_title"
+        android:id="@+id/change_password_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:clickable="true">
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/setting_account_icon"
+            android:id="@+id/change_password_icon"
             android:src="@drawable/ic_baseline_settings_24"/>
 
         <TextView
-            android:id="@+id/setting_account_tv"
+            android:id="@+id/change_password_text"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Account setting"
-            android:textSize="25sp"/>
+            android:clickable="true"
+            android:text="Change Password"
+            android:textSize="25sp" />
 
     </LinearLayout>
 

@@ -14,6 +14,7 @@ import com.example.orderez.DatabaseManager;
 import com.example.orderez.R;
 import com.example.orderez.homepage.HomePage;
 import com.example.orderez.homepage.Homepage_ItemList;
+import com.example.orderez.homepage.settingCategories.AccountSettings;
 import com.scottyab.aescrypt.AESCrypt;
 
 import java.security.GeneralSecurityException;
@@ -56,20 +57,17 @@ public class LogInPage extends AppCompatActivity {
 
                             String id = cursor.getString(cursor.getColumnIndexOrThrow("id"));
 
-                            Intent sendUserId = new Intent (LogInPage.this, HomePage.class);
-                            sendUserId.putExtra("userId",id);
-                            startActivity(sendUserId);
+                            Intent intent = new Intent(getApplicationContext(), HomePage.class);
+                            intent.putExtra("userId", id);
 
 
-                            homepage = new Homepage_ItemList();
-                            Bundle bundle = new Bundle();
-                            bundle.putString("id", id);
-                            homepage.setArguments(bundle);
+//                            homepage = new Homepage_ItemList();
+//                            Bundle bundle = new Bundle();
+//                            bundle.putString("id", id);
+//                            homepage.setArguments(bundle);
 
                             Toast.makeText(getApplicationContext(),"Login Successful!",Toast.LENGTH_LONG).show();
-                            Intent gotohomepage = new Intent(getApplicationContext(), HomePage.class);
-
-                            startActivity(gotohomepage);
+                            startActivity(intent);
 
                         }
                     }catch (GeneralSecurityException e){
@@ -87,7 +85,7 @@ public class LogInPage extends AppCompatActivity {
             }
 
 
-                                 }
+        }
         );
 
 
