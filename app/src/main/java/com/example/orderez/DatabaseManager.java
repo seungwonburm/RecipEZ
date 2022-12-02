@@ -26,16 +26,17 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private static final String USERS_SECURITY_ANS = "security_ans";
     private static final String USERS_PASSWORD = "password";
 
-    private static final String TABLE_GROCERY = "Grocery";
-    private static final String GROCERY_ID = USERS_ID;
-    private static final String GROCERY_FOOD = "food";
-    private static final String GROCERY_QUANTITY = "quantity";
-    private static final String GROCERY_CONSUMPTION = "consumption";
-    private static final String GROCERY_DATE = "date";
-    private static final String GROCERY_AMOUNT = "amount";
-    private static final String GROCERY_USERS_ID= "users_id";
-
-
+    private static final String TABLE_ITEM = "Item";
+    private static final String ITEM_ID = USERS_ID;
+    private static final String ITEM_FOOD = "food";
+    private static final String ITEM_QUANTITY = "quantity";
+    private static final String ITEM_CONSUMPTION = "consumption";
+    private static final String ITEM_START_DATE = "start_date";
+    private static final String ITEM_END_DATE = "end_date";
+    private static final String ITEM_UNIT = "unit";
+    private static final String ITEM_AMOUNT = "amount";
+    private static final String ITEM_MEMO = "memo";
+    private static final String ITEM_USERS_ID= "users_id";
 
 
     public DatabaseManager(Context context) {
@@ -49,9 +50,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
         sqlCreate_users += " text, " + USERS_LAST + " text, " + USERS_EMAIL + " text, ";
         sqlCreate_users += USERS_PASSWORD + " text, " + USERS_SECURITY + " text, " + USERS_SECURITY_ANS + " text ) ";
 
-        String sqlCreate_grocery = "create table " + TABLE_GROCERY + " ( " + GROCERY_ID;
-        sqlCreate_grocery += " integer primary key autoincrement, " + GROCERY_FOOD + " text, " + GROCERY_QUANTITY;
-        sqlCreate_grocery += " text, " + GROCERY_CONSUMPTION + " text, " + GROCERY_AMOUNT + " text, " + GROCERY_DATE + " text, " + GROCERY_USERS_ID + " integer ) ";
+        String sqlCreate_grocery = "create table " + TABLE_ITEM + " ( " + ITEM_ID;
+        sqlCreate_grocery += " integer primary key autoincrement, " + ITEM_FOOD + " text, " + ITEM_QUANTITY;
+        sqlCreate_grocery += " text, " + ITEM_CONSUMPTION + " text, " + ITEM_AMOUNT + " text, " + ITEM_START_DATE + " text, ";
+        sqlCreate_grocery += ITEM_END_DATE + " text, " + ITEM_UNIT + " text, " + ITEM_MEMO + " text, " + ITEM_USERS_ID + " integer ) ";
 
         db.execSQL(sqlCreate_users);
         db.execSQL(sqlCreate_grocery);
@@ -60,7 +62,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists " + TABLE_USERS);
-        db.execSQL("drop table if exists " + TABLE_GROCERY);
+        db.execSQL("drop table if exists " + TABLE_ITEM);
         onCreate(db);
     }
 
@@ -80,9 +82,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
         }
         contentValues.put(USERS_SECURITY, security.toLowerCase());
         contentValues.put(USERS_SECURITY_ANS, security_ans.toLowerCase());
-
-
-
 
         long result = db.insert(TABLE_USERS, null, contentValues);
 
