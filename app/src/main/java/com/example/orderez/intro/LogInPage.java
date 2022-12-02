@@ -1,6 +1,9 @@
 package com.example.orderez.intro;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -25,6 +28,7 @@ public class LogInPage extends AppCompatActivity {
     Button login,ForgotPasswordBtn,backtoMain;
     EditText emailLogin, passwordLogin;
     Homepage_ItemList homepage;
+    Fragment fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +39,10 @@ public class LogInPage extends AppCompatActivity {
         emailLogin = (EditText) findViewById(R.id.emailLogin);
         passwordLogin = (EditText) findViewById(R.id.passwordLogin);
 
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        final  Homepage_ItemList myObj = new Homepage_ItemList();
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,14 +65,16 @@ public class LogInPage extends AppCompatActivity {
 
                             String id = cursor.getString(cursor.getColumnIndexOrThrow("id"));
 
+
+
+                            Bundle bundle = new Bundle();
+                            bundle.putString("userId", id);
+
+                            myObj.setArguments(bundle);
+                            fragmentTransaction.add(R.id.frameLayout, myObj).commit();
+
                             Intent intent = new Intent(getApplicationContext(), HomePage.class);
                             intent.putExtra("userId", id);
-
-
-//                            homepage = new Homepage_ItemList();
-//                            Bundle bundle = new Bundle();
-//                            bundle.putString("id", id);
-//                            homepage.setArguments(bundle);
 
                             Toast.makeText(getApplicationContext(),"Login Successful!",Toast.LENGTH_LONG).show();
                             startActivity(intent);

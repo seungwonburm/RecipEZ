@@ -30,6 +30,15 @@ import java.util.List;
  */
 public class Homepage_ItemList extends Fragment{
 
+//    public interface SendEventListner{
+//        void sendMessage(String s);
+//    }
+
+
+
+//    private SendEventListner sendEventListner;
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -38,6 +47,7 @@ public class Homepage_ItemList extends Fragment{
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String id;
 
     public Homepage_ItemList() {
         // Required empty public constructor
@@ -76,7 +86,19 @@ public class Homepage_ItemList extends Fragment{
         }
 
 
+
     }
+
+//    @Override
+//    public void onAttach (Context context){
+//        super.onAttach(context);
+//        if (getActivity() != null && getActivity() instanceof SendEventListner){
+//            sendEventListner = (SendEventListner) getActivity();
+//        }
+//    }
+
+
+
 
     @Nullable
     @Override
@@ -85,7 +107,12 @@ public class Homepage_ItemList extends Fragment{
         // Inflate the layout for this fragment
         View contenView = inflater.inflate(R.layout.fragment_item_list, container, false);
 
+//여기서는 데이터를 배열 처럼 처음부터 끝까지 훑으면서 테이터를 하나 씩 넣는 과정을 할거임 여기에 데이터가 어떻게 펼쳐지는지에 따라 코드가 다르니 내일 데이터 하고 나서 얘기해보면서 만들어야할거같음
 
+        Bundle bundle = getArguments();
+        if (bundle!= null){
+            id = bundle.getString("userId");
+        }
 
 
         itemNames = new ArrayList<>();
@@ -96,22 +123,24 @@ public class Homepage_ItemList extends Fragment{
         itemNames.add(new itemList("Banana5"));
         itemNames.add(new itemList("Banana6"));
 
-        Bundle bundle = getArguments();
-        if (bundle != null){
-            itemNames.add(new itemList(bundle.getString("userID")));
-        }
-
 
         itemList_ListView = (ListView) contenView.findViewById(R.id.listMenu);
         itemListAdapter = new ItemListAdapter(getContext(),itemNames);
 
         itemList_ListView.setAdapter(itemListAdapter);
 
+
         fab = (FloatingActionButton) contenView.findViewById(R.id.floatingActionButtonSetting);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), AddnewItems.class));
+
+                Intent intent = new Intent(getContext(), AddnewItems.class);
+//                if (sendEventListner != null){
+//                    sendEventListner.sendMessage(id);
+//                }
+                startActivity(intent);
+
             }
         });
 

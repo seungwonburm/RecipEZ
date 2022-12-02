@@ -15,6 +15,7 @@ import java.util.Locale;
 
 public class DatabaseManager extends SQLiteOpenHelper {
 
+
     private static final String DATABASE_NAME = "OrderEZ";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_USERS = "Users";
@@ -27,16 +28,20 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private static final String USERS_PASSWORD = "password";
 
     private static final String TABLE_ITEM = "Item";
-    private static final String ITEM_ID = USERS_ID;
-    private static final String ITEM_FOOD = "food";
-    private static final String ITEM_QUANTITY = "quantity";
-    private static final String ITEM_CONSUMPTION = "consumption";
+    private static final String ITEM_ID = "id";
+    private static final String ITEM_NAME = "name";
+//    private static final String ITEM_QUANTITY = "quantity";
+//    private static final String ITEM_CONSUMPTION = "consumption";
     private static final String ITEM_START_DATE = "start_date";
+    private static final String ITEM_DAYS = "days";
+    private static final String ITEM_FREQUENCY = "frequency";
     private static final String ITEM_END_DATE = "end_date";
-    private static final String ITEM_UNIT = "unit";
-    private static final String ITEM_AMOUNT = "amount";
+    private static final String ITEM_UNIT_ONE = "unit_one";
+    private static final String ITEM_UNIT_ENTIRE = "unit_entire";
+    private static final String ITEM_AMOUNT_ONE = "amount_one";
+    private static final String ITEM_AMOUNT_ENTIRE = "amount_entire";
     private static final String ITEM_MEMO = "memo";
-    private static final String ITEM_USERS_ID= "users_id";
+    private static final String ITEM_USERS_ID= "user_id";
 
 
     public DatabaseManager(Context context) {
@@ -45,15 +50,17 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+
         String sqlCreate_users = "create table " + TABLE_USERS + " ( " + USERS_ID;
         sqlCreate_users += " integer primary key autoincrement, " + USERS_FIRST;
         sqlCreate_users += " text, " + USERS_LAST + " text, " + USERS_EMAIL + " text, ";
         sqlCreate_users += USERS_PASSWORD + " text, " + USERS_SECURITY + " text, " + USERS_SECURITY_ANS + " text ) ";
 
         String sqlCreate_grocery = "create table " + TABLE_ITEM + " ( " + ITEM_ID;
-        sqlCreate_grocery += " integer primary key autoincrement, " + ITEM_FOOD + " text, " + ITEM_QUANTITY;
-        sqlCreate_grocery += " text, " + ITEM_CONSUMPTION + " text, " + ITEM_AMOUNT + " text, " + ITEM_START_DATE + " text, ";
-        sqlCreate_grocery += ITEM_END_DATE + " text, " + ITEM_UNIT + " text, " + ITEM_MEMO + " text, " + ITEM_USERS_ID + " integer ) ";
+        sqlCreate_grocery += " integer primary key autoincrement, " + ITEM_NAME + " text, " + ITEM_UNIT_ONE;
+        sqlCreate_grocery += " text, " + ITEM_UNIT_ENTIRE + " text, " + ITEM_AMOUNT_ONE + " text, " + ITEM_START_DATE + " text, " + ITEM_DAYS + " text, " + ITEM_FREQUENCY + " text, ";
+        sqlCreate_grocery +=  ITEM_END_DATE + " text, " + ITEM_AMOUNT_ENTIRE + " text, " + ITEM_MEMO + " text, " + ITEM_USERS_ID + " text ) ";
 
         db.execSQL(sqlCreate_users);
         db.execSQL(sqlCreate_grocery);
@@ -84,6 +91,34 @@ public class DatabaseManager extends SQLiteOpenHelper {
         contentValues.put(USERS_SECURITY_ANS, security_ans.toLowerCase());
 
         long result = db.insert(TABLE_USERS, null, contentValues);
+
+        if (result == -1) {
+            return false;
+        } else
+            return true;
+
+    }
+
+    public boolean insertItem(String item_name, String start_date, String end_date, String days, String frequency, String unit_one, String unit_entire, String amount_one, String amount_entire, String memo, String user_id) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ITEM_NAME, item_name.toLowerCase());
+        contentValues.put(ITEM_START_DATE, start_date.toLowerCase());
+        contentValues.put(ITEM_END_DATE, end_date.toLowerCase());
+        contentValues.put(ITEM_DAYS, days.toLowerCase());
+        contentValues.put(ITEM_FREQUENCY, frequency.toLowerCase());
+
+        contentValues.put(ITEM_UNIT_ONE, unit_one.toLowerCase());
+        contentValues.put(ITEM_UNIT_ENTIRE, unit_entire.toLowerCase());
+
+        contentValues.put(ITEM_AMOUNT_ONE, amount_one.toLowerCase());
+        contentValues.put(ITEM_AMOUNT_ENTIRE, amount_entire.toLowerCase());
+
+        contentValues.put(ITEM_MEMO, memo.toLowerCase());
+        contentValues.put(ITEM_USERS_ID, user_id.toLowerCase());
+
+        long result = db.insert(TABLE_ITEM, null, contentValues);
 
         if (result == -1) {
             return false;
