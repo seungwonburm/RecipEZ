@@ -115,8 +115,7 @@ public class AddnewItems extends AppCompatActivity{
                 if (goodOrNot){
                     calculateRate(str_title, str_amountTotal,str_amountOne,unitOne, unitTotal, str_rateNum, selectedRate, pickDates, mem);
                     Intent goBacktoHomepage = new Intent(getApplicationContext(), HomePage.class);
-                    intent.putExtra("userId", id);
-                    finish();
+                    goBacktoHomepage.putExtra("userId", id);
                     startActivity(goBacktoHomepage);
 
 //                    Toast.makeText(getApplicationContext(),"Data Added",Toast.LENGTH_SHORT).show();
