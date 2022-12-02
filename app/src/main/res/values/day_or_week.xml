@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dayOrweek">
+        <item>Select one</item>
+        <item>day(s)</item>
+        <item>week(s)</item>
+    </string-array>
+</resources>

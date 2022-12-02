@@ -47,7 +47,9 @@ public class Homepage_ItemList extends Fragment{
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private String id;
+    String id;
+
+
 
     public Homepage_ItemList() {
         // Required empty public constructor
@@ -73,7 +75,7 @@ public class Homepage_ItemList extends Fragment{
 
     ArrayList<itemList> itemNames;
     ListView itemList_ListView;
-    FloatingActionButton fab;
+
     private static ItemListAdapter itemListAdapter;
 
 
@@ -130,19 +132,8 @@ public class Homepage_ItemList extends Fragment{
         itemList_ListView.setAdapter(itemListAdapter);
 
 
-        fab = (FloatingActionButton) contenView.findViewById(R.id.floatingActionButtonSetting);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                Intent intent = new Intent(getContext(), AddnewItems.class);
-//                if (sendEventListner != null){
-//                    sendEventListner.sendMessage(id);
-//                }
-                startActivity(intent);
 
-            }
-        });
 
         return contenView;
 

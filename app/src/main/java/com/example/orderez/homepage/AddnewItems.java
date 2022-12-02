@@ -59,9 +59,9 @@ public class AddnewItems extends AppCompatActivity{
         oneTimeConsume = (EditText) findViewById(R.id.addItem_oneTimeConsume);
         rateTxT = (EditText) findViewById(R.id.addItem_rateAmount);
 
-//        Intent intent = getIntent();
-//        id = intent.getStringExtra("userId");
-        id="1";
+        Intent intent = getIntent();
+        id = intent.getStringExtra("userId");
+//        id="1";
 
 //        Homepage_ItemList fragment = new Homepage_ItemList();
 //        FragmentManager fragmentManager = getSupportFragmentManager();
@@ -115,7 +115,10 @@ public class AddnewItems extends AppCompatActivity{
                 if (goodOrNot){
                     calculateRate(str_title, str_amountTotal,str_amountOne,unitOne, unitTotal, str_rateNum, selectedRate, pickDates, mem);
                     Intent goBacktoHomepage = new Intent(getApplicationContext(), HomePage.class);
+                    intent.putExtra("userId", id);
+                    finish();
                     startActivity(goBacktoHomepage);
+
 //                    Toast.makeText(getApplicationContext(),"Data Added",Toast.LENGTH_SHORT).show();
 
                 }

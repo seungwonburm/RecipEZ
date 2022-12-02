@@ -7,16 +7,19 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.orderez.R;
 import com.example.orderez.homepage.settingCategories.Homepage_SettingCategories;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HomePage extends AppCompatActivity {
 
     Homepage_ItemList homepageItemList;
     Homepage_Calendar_Month homepageMonthCalendar;
     BottomNavigationView bottomNavigationView;
+    FloatingActionButton fab;
 
 
     @Override
@@ -32,6 +35,19 @@ public class HomePage extends AppCompatActivity {
         Intent intent = getIntent();
         String str = intent.getStringExtra("userId");
 
+        fab = (FloatingActionButton) findViewById(R.id.floatingActionButtonSetting);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent intent1 = new Intent(getApplicationContext(), AddnewItems.class);
+                intent1.putExtra("userId", str);
+                startActivity(intent1);
+
+            }
+        });
 
 
 
