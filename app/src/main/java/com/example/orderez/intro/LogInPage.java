@@ -56,7 +56,7 @@ public class LogInPage extends AppCompatActivity {
                         if (decrypted.equals(email)){
 
                             //데이터 전달하는 방식을 fragment에서 activity 방식으로 바꿔줘야함
-//                            String id = cursor.getString(cursor.getColumnIndexOrThrow("id"));
+                            String id = cursor.getString(cursor.getColumnIndexOrThrow("id"));
 //
 //                            Bundle bundle = new Bundle();
 //                            bundle.putString("userId", id);
@@ -65,7 +65,7 @@ public class LogInPage extends AppCompatActivity {
 //                            fragmentTransaction.add(R.id.frameLayout, myObj).commit();
 
                             Intent intent = new Intent(getApplicationContext(), Homepage_Items.class);
-//                            intent.putExtra("userId", id);
+                            intent.putExtra("userId", id);
 
                             Toast.makeText(getApplicationContext(),"Login Successful!",Toast.LENGTH_LONG).show();
                             startActivity(intent);

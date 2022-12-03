@@ -144,6 +144,14 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor searchItemId(String user_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery("select * from " + TABLE_ITEM + " where user_id = ?  ", new String[]{user_id});
+
+        return cursor;
+    }
+
     public int verify(String email){
         SQLiteDatabase db = this.getWritableDatabase();
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";

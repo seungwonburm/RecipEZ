@@ -36,6 +36,8 @@ public class Homepage_Calendar_Month extends AppCompatActivity {
     ItemList_Adapter itemList_adapter;
     FloatingActionButton addBtn;
 
+    String id;
+
     //Bottom Navigation bar
     BottomNavigationView bottomNavigationView;
 
@@ -45,6 +47,10 @@ public class Homepage_Calendar_Month extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_month);
+
+        Intent intent = getIntent();
+        id = intent.getStringExtra("userId");
+
 
 
 
