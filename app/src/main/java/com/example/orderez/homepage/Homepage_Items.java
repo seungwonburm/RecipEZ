@@ -85,7 +85,6 @@ public class Homepage_Items extends AppCompatActivity {
         itemList.setAdapter(itemList_adapter);
 
 
-
         //add Button
         addBtn = (FloatingActionButton) findViewById(R.id.floatingActionButton);
         addBtn.setOnClickListener(new View.OnClickListener() {
