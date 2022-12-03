@@ -99,10 +99,10 @@ public class Homepage_Items extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.itemListIcon_02:
-                        Intent intent = new Intent(getApplicationContext(), Homepage_Items.class);
-                        startActivity(intent);
-                        break;
+//                    case R.id.itemListIcon_02:
+//                        Intent intent = new Intent(getApplicationContext(), Homepage_Items.class);
+//                        startActivity(intent);
+//                        break;
                     case R.id.settingIcon_02:
                         Intent intent2 = new Intent(getApplicationContext(), Homepage_SettingCategories.class);
                         intent2.putExtra("userId", id);
@@ -110,6 +110,7 @@ public class Homepage_Items extends AppCompatActivity {
                         break;
                     case R.id.calendarIcon_02:
                         Intent refresh = new Intent(getApplicationContext(),Homepage_Calendar_Month.class);
+                        refresh.putExtra("userId", id);
                         startActivity(refresh);
                         break;
                 }

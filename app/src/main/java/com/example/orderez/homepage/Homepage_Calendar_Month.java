@@ -109,17 +109,21 @@ public class Homepage_Calendar_Month extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.itemListIcon_02:
-                        Intent intent = new Intent(getApplicationContext(), Homepage_Items.class);
-                        startActivity(intent);
+//                        Intent intent = new Intent(getApplicationContext(), Homepage_Items.class);
+//                        intent.putExtra("userId", id);
+//                        startActivity(intent);
+                        finish();
                         break;
                     case R.id.settingIcon_02:
                         Intent intent2 = new Intent(getApplicationContext(),Homepage_SettingCategories.class);
+                        intent2.putExtra("userId", id);
                         startActivity(intent2);
+                        finish();
                         break;
-                    case R.id.calendarIcon_02:
-                        Intent refresh = new Intent(getApplicationContext(),Homepage_Calendar_Month.class);
-                        startActivity(refresh);
-                        break;
+//                    case R.id.calendarIcon_02:
+//                        Intent refresh = new Intent(getApplicationContext(),Homepage_Calendar_Month.class);
+//                        startActivity(refresh);
+//                        break;
                 }
 
                 return false;

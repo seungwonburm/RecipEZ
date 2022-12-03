@@ -106,16 +106,20 @@ public class Homepage_SettingCategories extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.itemListIcon_02:
-                        Intent intent = new Intent(getApplicationContext(), Homepage_Items.class);
-                        startActivity(intent);
+//                        Intent intent = new Intent(getApplicationContext(), Homepage_Items.class);
+//                        intent.putExtra("userId", str);
+//                        startActivity(intent);
+                        finish();
                         break;
-                    case R.id.settingIcon_02:
-                        Intent intent2 = new Intent(getApplicationContext(), Homepage_SettingCategories.class);
-                        startActivity(intent2);
-                        break;
+//                    case R.id.settingIcon_02:
+//                        Intent intent2 = new Intent(getApplicationContext(), Homepage_SettingCategories.class);
+//                        startActivity(intent2);
+//                        break;
                     case R.id.calendarIcon_02:
                         Intent refresh = new Intent(getApplicationContext(), Homepage_Calendar_Month.class);
+                        refresh.putExtra("userId", str);
                         startActivity(refresh);
+                        finish();
                         break;
                 }
 
