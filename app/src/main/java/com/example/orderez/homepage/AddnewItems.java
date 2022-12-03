@@ -232,8 +232,9 @@ public class AddnewItems extends AppCompatActivity{
         float oneTimeAmount = Float.parseFloat(amountOne); //한번 먹을양 저장
         int frequency = 0;
         int rateVal = Integer.parseInt(rateNum); //먹는 횟수 저장
-        String endDate, frequencyStr;
-        String startDate  = startingDate.getTime().toString();
+        String endDate, frequencyStr, endDateOriginal;
+        String startDateOriginal  = startingDate.getTime().toString();
+        String startDate = startDateOriginal.substring(4,10) + startDateOriginal.substring(23);
         Boolean added = false;
 
         //Total amount unit, one time unit 저장
@@ -243,8 +244,8 @@ public class AddnewItems extends AppCompatActivity{
                 frequency = Math.round(temp/oneTimeAmount); //섭취 횟수 저장
                 frequencyStr = String.valueOf(frequency);
                 startingDate.add(Calendar.DATE,frequency/rateVal);
-                endDate = startingDate.getTime().toString(); // 끝나는 날짜 저장
-                //insertItem(String item_name, String start_date, String end_date, String days, String frequency, String unit_one, String unit_entire, String amount_one, String amount_entire, String memo, String user_id) {
+                endDateOriginal = startingDate.getTime().toString(); // 끝나는 날짜 저장
+                endDate = endDateOriginal.substring(4,10) + endDateOriginal.substring(23);
                 added = theDb.insertItem(title, startDate, endDate, rateNum, frequencyStr, unitOne, unitTotal, amountOne, amountTotal, memo, id);
 
             }else if (unitTotal.equals("kg") && unitOne.equals("g")){
@@ -253,21 +254,23 @@ public class AddnewItems extends AppCompatActivity{
                 frequencyStr = String.valueOf(frequency);
 
                 startingDate.add(Calendar.DATE,frequency/rateVal);
-                endDate = startingDate.getTime().toString(); // 끝나는 날짜 저장
+                endDateOriginal = startingDate.getTime().toString(); // 끝나는 날짜 저장
+                endDate = endDateOriginal.substring(4,10) + endDateOriginal.substring(23);
                 added = theDb.insertItem(title, startDate, endDate, rateNum, frequencyStr, unitOne, unitTotal, amountOne, amountTotal, memo, id);
             }else if (unitTotal.equals("oz") && unitOne.equals("lbs")){
                 float temp = totalAmount * 16;
                 frequency = Math.round(temp/oneTimeAmount);
                 frequencyStr = String.valueOf(frequency);
                 startingDate.add(Calendar.DATE,frequency/rateVal);
-                endDate = startingDate.getTime().toString(); // 끝나는 날짜 저장
+                endDateOriginal = startingDate.getTime().toString(); // 끝나는 날짜 저장
+                endDate = endDateOriginal.substring(4,10) + endDateOriginal.substring(23);
                 added = theDb.insertItem(title, startDate, endDate, rateNum, frequencyStr, unitOne, unitTotal, amountOne, amountTotal, memo, id);
             }else if (unitTotal.equals("Count") && unitOne.equals("Count")){
                 frequency = Math.round(totalAmount/oneTimeAmount);
                 frequencyStr = String.valueOf(frequency);
-
                 startingDate.add(Calendar.DATE,frequency/rateVal);
-                endDate = startingDate.getTime().toString(); // 끝나는 날짜 저장
+                endDateOriginal = startingDate.getTime().toString(); // 끝나는 날짜 저장
+                endDate = endDateOriginal.substring(4,10) + endDateOriginal.substring(23);
                 added = theDb.insertItem(title, startDate, endDate, rateNum, frequencyStr, unitOne, unitTotal, amountOne, amountTotal, memo, id);
             }
 
