@@ -3,10 +3,14 @@ package com.example.orderez.homepage;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.orderez.R;
@@ -18,7 +22,7 @@ public class Homepage_Calendar_Week extends AppCompatActivity {
 
     TextView monthYearText; //Year and Month Textview
     LocalDate selectedDate;
-
+    Spinner viewChange;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,23 @@ public class Homepage_Calendar_Week extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 selectedDate = selectedDate.plusMonths(1);
+            }
+        });
+
+        viewChange = (Spinner) findViewById(R.id.viewChangeDropdown);
+        ArrayAdapter viewChangeAdapter = ArrayAdapter.createFromResource(this,R.array.changeView,android.R.layout.simple_spinner_item);
+        viewChangeAdapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+        viewChange.setAdapter(viewChangeAdapter);
+        viewChange.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent newView = new Intent(getApplicationContext(),Homepage_Calendar_Month.class);
+                startActivity(newView);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
 

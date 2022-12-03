@@ -13,7 +13,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.orderez.R;
@@ -29,7 +32,7 @@ import java.util.ArrayList;
 public class Homepage_Calendar_Month extends AppCompatActivity {
     TextView monthYearText; //Year and Month Textview
     RecyclerView recyclerView, itemList_Calendar_Month;
-
+    Spinner viewChange;
     ItemList_Adapter itemList_adapter;
     FloatingActionButton addBtn;
 
@@ -42,6 +45,7 @@ public class Homepage_Calendar_Month extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_month);
+
 
 
         //Default set
@@ -69,6 +73,30 @@ public class Homepage_Calendar_Month extends AppCompatActivity {
                 setMonthView();
             }
         });
+
+
+
+
+
+        viewChange = (Spinner) findViewById(R.id.viewChangeDropdown);
+        ArrayAdapter viewChangeAdapter = ArrayAdapter.createFromResource(this,R.array.changeView,android.R.layout.simple_spinner_item);
+        viewChangeAdapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+        viewChange.setAdapter(viewChangeAdapter);
+//        viewChange.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                if (viewChange.toString().equals("Week")){
+//                    Intent newView = new Intent(getApplicationContext(),Homepage_Calendar_Week.class);
+//                    startActivity(newView);
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
 
         //add Button
         addBtn = (FloatingActionButton) findViewById(R.id.floatingActionButton);

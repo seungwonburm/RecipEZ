@@ -26,6 +26,13 @@
             android:text="Hi"
             android:textAlignment="center"
             android:textSize="25sp" />
+        <Spinner
+            android:id="@+id/viewChangeDropdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scrollbarSize="10sp"
+            android:spinnerMode="dropdown" />
 
         <ImageButton
             android:id="@+id/next_btn"
