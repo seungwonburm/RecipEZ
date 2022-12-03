@@ -104,8 +104,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(ITEM_NAME, item_name.toLowerCase());
-        contentValues.put(ITEM_START_DATE, start_date.toLowerCase());
-        contentValues.put(ITEM_END_DATE, end_date.toLowerCase());
+        contentValues.put(ITEM_START_DATE, start_date);
+        contentValues.put(ITEM_END_DATE, end_date);
         contentValues.put(ITEM_DAYS, days.toLowerCase());
         contentValues.put(ITEM_FREQUENCY, frequency.toLowerCase());
 

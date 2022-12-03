@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,16 +31,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Homepage_Calendar_Month extends AppCompatActivity {
-    TextView monthYearText; //Year and Month Textview
-    RecyclerView recyclerView, itemList_Calendar_Month;
-    Spinner viewChange;
-    ItemList_Adapter itemList_adapter;
-    FloatingActionButton addBtn;
-
-    String id;
+    private TextView monthYearText; //Year and Month Textview
+    private RecyclerView recyclerView, itemList_Calendar_Month;
+    private ItemList_Adapter itemList_adapter;
+    private FloatingActionButton addBtn;
+    private Button changeView;
+    private String id;
 
     //Bottom Navigation bar
-    BottomNavigationView bottomNavigationView;
+    private BottomNavigationView bottomNavigationView;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -59,6 +59,7 @@ public class Homepage_Calendar_Month extends AppCompatActivity {
         ImageButton preBtn = findViewById(R.id.pre_btn);
         ImageButton nextBtn = findViewById(R.id.next_btn);
         recyclerView = findViewById(R.id.recycler_month);
+        changeView = (Button) findViewById(R.id.changeView_monthtoWeek);
 
 //        Show present time
         CalendarUtil.selectedDate = LocalDate.now();
@@ -80,29 +81,14 @@ public class Homepage_Calendar_Month extends AppCompatActivity {
             }
         });
 
-
-
-
-
-        viewChange = (Spinner) findViewById(R.id.viewChangeDropdown);
-        ArrayAdapter viewChangeAdapter = ArrayAdapter.createFromResource(this,R.array.changeView,android.R.layout.simple_spinner_item);
-        viewChangeAdapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-        viewChange.setAdapter(viewChangeAdapter);
-//        viewChange.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//        changeView.setOnClickListener(new View.OnClickListener() {
 //            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                if (viewChange.toString().equals("Week")){
-//                    Intent newView = new Intent(getApplicationContext(),Homepage_Calendar_Week.class);
-//                    startActivity(newView);
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
+//            public void onClick(View view) {
+//                Intent gotoweeklyView = new Intent(getApplicationContext(), Homepage_Calendar_Week.class);
+//                startActivity(gotoweeklyView);
 //            }
 //        });
+
 
         //add Button
         addBtn = (FloatingActionButton) findViewById(R.id.floatingActionButton);
@@ -145,10 +131,13 @@ public class Homepage_Calendar_Month extends AppCompatActivity {
         itemList_Calendar_Month = findViewById(R.id.itemList_day);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
         itemList_Calendar_Month.setLayoutManager(layoutManager);
-        itemList_adapter = new ItemList_Adapter(getApplicationContext());
+        itemList_adapter = new ItemList_Adapter(this);
+        itemList_adapter.addItem(new ItemList_Manager("This", "is", "just", "Test"));
         itemList_Calendar_Month.setAdapter(itemList_adapter);
 
-        //이 밑에서 부터 코드 진행.
+
+
+        //이 밑에서 부터 데이터 꺼내주면 됌
 
 
 

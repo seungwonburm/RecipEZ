@@ -34,7 +34,7 @@ public class Homepage_Items extends AppCompatActivity {
 
     //Bottom Navigation bar
     BottomNavigationView bottomNavigationView_Month;
-
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +42,10 @@ public class Homepage_Items extends AppCompatActivity {
         setContentView(R.layout.activity_homepage_items);
 
         itemList = findViewById(R.id.itemList);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        layoutManager = new LinearLayoutManager(this);
         itemList.setLayoutManager(layoutManager);
 
-        itemList_adapter = new ItemList_Adapter(getApplicationContext());
-        itemList.setAdapter(itemList_adapter);
+        itemList_adapter = new ItemList_Adapter(this);
 
         theDb= new DatabaseManager(this);
 
@@ -54,9 +53,6 @@ public class Homepage_Items extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getStringExtra("userId");
 
-
-        //다른거 안건들고 이 밑에꺼만 요리하시면 되세용
-        //추가하는 방식은 밑에 코드와 동일함
         cursor = theDb.searchItemId(id);
 
         if (cursor.getCount()<=0){
@@ -81,7 +77,7 @@ public class Homepage_Items extends AppCompatActivity {
         }
         cursor.close();
 
-        itemList_adapter.addItem(new ItemList_Manager("1", "2", "3", "4"));
+        itemList_adapter.addItem(new ItemList_Manager("This", "is", "just", "Test"));
         itemList.setAdapter(itemList_adapter);
 
 
@@ -103,10 +99,10 @@ public class Homepage_Items extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-//                    case R.id.itemListIcon_02:
-//                        Intent intent = new Intent(getApplicationContext(), Homepage_Items.class);
-//                        startActivity(intent);
-//                        break;
+                    case R.id.itemListIcon_02:
+                        Intent intent = new Intent(getApplicationContext(), Homepage_Items.class);
+                        startActivity(intent);
+                        break;
                     case R.id.settingIcon_02:
                         Intent intent2 = new Intent(getApplicationContext(), Homepage_SettingCategories.class);
                         intent2.putExtra("userId", id);

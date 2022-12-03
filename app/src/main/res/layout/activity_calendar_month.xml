@@ -31,19 +31,19 @@
 
             <TextView
                 android:id="@+id/monthYearText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
+                android:gravity="center"
                 android:textSize="25sp" />
 
-            <Spinner
-                android:id="@+id/viewChangeDropdown"
-                android:layout_width="wrap_content"
+            <Button
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:scrollbarSize="10sp"
-                android:spinnerMode="dropdown" />
+                android:id="@+id/changeView_monthtoWeek"
+                android:textSize="10sp"
+                android:text="Change view"/>
         </LinearLayout>
 
         <ImageButton
@@ -58,12 +58,11 @@
         android:id="@+id/montoSun"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="58dp"
         android:orientation="horizontal"
         android:weightSum="7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/header_month">
+        app:layout_constraintTop_toBottomOf="@id/header_month">
 
         <TextView
             android:layout_width="wrap_content"
@@ -131,24 +130,23 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_month"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/itemList_day">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/itemList_day"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_month"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_month"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/montoSun" />
+
+
 
 
 

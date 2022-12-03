@@ -17,7 +17,7 @@
         <entry key="app/src/main/res/layout/activity_addnew_items.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_address_api.xml" value="0.3770833333333333" />
         <entry key="app/src/main/res/layout/activity_calendar.xml" value="0.31423297826794616" />
-        <entry key="app/src/main/res/layout/activity_calendar_month.xml" value="0.33495145631067963" />
+        <entry key="app/src/main/res/layout/activity_calendar_month.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_calendar_week.xml" value="0.20742187500000003" />
         <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.3707726520040761" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.30978260869565216" />
@@ -50,7 +50,7 @@
         <entry key="app/src/main/res/layout/fragment_item_list.xml" value="0.31651662190755203" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/itemlist_listview_item.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/itemlist_listview_item.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/layout/litemlist_listview.xml" value="0.20244565217391305" />
         <entry key="app/src/main/res/layout/setting_listview_item.xml" value="0.8554955081663269" />
         <entry key="app/src/main/res/menu/menu_calendar.xml" value="0.375" />

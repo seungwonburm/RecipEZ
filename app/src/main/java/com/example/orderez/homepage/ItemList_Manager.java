@@ -1,9 +1,9 @@
 package com.example.orderez.homepage;
 
 public class ItemList_Manager {
-    String title; //아이템 이름
-    String count; //얼마나 남았는지 표기하기 위한 정수
-    String startDate, endDate; //시작하는 날짜, 끝나는 날짜
+    String title;
+    String count;
+    String startDate, endDate;
 
     public ItemList_Manager(String title, String count, String startDate, String endDate) {
         this.title = title;
