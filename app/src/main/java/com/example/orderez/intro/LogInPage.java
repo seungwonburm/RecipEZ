@@ -15,9 +15,7 @@ import android.widget.Toast;
 
 import com.example.orderez.DatabaseManager;
 import com.example.orderez.R;
-import com.example.orderez.homepage.HomePage;
-import com.example.orderez.homepage.Homepage_ItemList;
-import com.example.orderez.homepage.settingCategories.AccountSettings;
+import com.example.orderez.homepage.Homepage_Items;
 import com.scottyab.aescrypt.AESCrypt;
 
 import java.security.GeneralSecurityException;
@@ -27,8 +25,6 @@ public class LogInPage extends AppCompatActivity {
     DatabaseManager theDb;
     Button login,ForgotPasswordBtn,backtoMain;
     EditText emailLogin, passwordLogin;
-    Homepage_ItemList homepage;
-    Fragment fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +35,6 @@ public class LogInPage extends AppCompatActivity {
         emailLogin = (EditText) findViewById(R.id.emailLogin);
         passwordLogin = (EditText) findViewById(R.id.passwordLogin);
 
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        final  Homepage_ItemList myObj = new Homepage_ItemList();
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,18 +55,17 @@ public class LogInPage extends AppCompatActivity {
                         System.out.println("");
                         if (decrypted.equals(email)){
 
-                            String id = cursor.getString(cursor.getColumnIndexOrThrow("id"));
+                            //데이터 전달하는 방식을 fragment에서 activity 방식으로 바꿔줘야함
+//                            String id = cursor.getString(cursor.getColumnIndexOrThrow("id"));
+//
+//                            Bundle bundle = new Bundle();
+//                            bundle.putString("userId", id);
+//
+//                            myObj.setArguments(bundle);
+//                            fragmentTransaction.add(R.id.frameLayout, myObj).commit();
 
-
-
-                            Bundle bundle = new Bundle();
-                            bundle.putString("userId", id);
-
-                            myObj.setArguments(bundle);
-                            fragmentTransaction.add(R.id.frameLayout, myObj).commit();
-
-                            Intent intent = new Intent(getApplicationContext(), HomePage.class);
-                            intent.putExtra("userId", id);
+                            Intent intent = new Intent(getApplicationContext(), Homepage_Items.class);
+//                            intent.putExtra("userId", id);
 
                             Toast.makeText(getApplicationContext(),"Login Successful!",Toast.LENGTH_LONG).show();
                             startActivity(intent);

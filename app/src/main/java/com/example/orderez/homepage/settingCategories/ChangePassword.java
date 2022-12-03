@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.example.orderez.DatabaseManager;
 import com.example.orderez.R;
-import com.example.orderez.homepage.HomePage;
 import com.scottyab.aescrypt.AESCrypt;
 
 import java.security.GeneralSecurityException;

@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_calendar_month_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_format_list_bulleted_24.xml" value="0.3305" />
         <entry key="app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1565" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.362" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.172" />
         <entry key="app/src/main/res/layout/activity_account_settings.xml" value="0.2924218219259511" />
         <entry key="app/src/main/res/layout/activity_addnew_items.xml" value="0.25" />
@@ -24,6 +25,7 @@
         <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_homepage_calendar_month.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/activity_homepage_calendar_week.xml" value="0.20697463768115942" />
+        <entry key="app/src/main/res/layout/activity_homepage_items.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/activity_homepage_schedule_list.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_homepage_setting_categories.xml" value="0.33060455322265625" />
         <entry key="app/src/main/res/layout/activity_homepage_setting_list.xml" value="0.1" />
@@ -48,7 +50,7 @@
         <entry key="app/src/main/res/layout/fragment_item_list.xml" value="0.31651662190755203" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/itemlist_listview_item.xml" value="0.1425925925925926" />
+        <entry key="app/src/main/res/layout/itemlist_listview_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/litemlist_listview.xml" value="0.20244565217391305" />
         <entry key="app/src/main/res/layout/setting_listview_item.xml" value="0.8554955081663269" />
         <entry key="app/src/main/res/menu/menu_calendar.xml" value="0.375" />

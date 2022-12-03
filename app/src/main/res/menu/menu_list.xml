@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:icon="@drawable/ic_baseline_calendar_month_24"
+        android:icon="@drawable/icon_calendar"
         android:id="@+id/calendarIcon_02"
         android:title="Schedules"/>
     <item
-        android:icon="@drawable/ic_baseline_format_list_bulleted_24"
+        android:icon="@drawable/icon_bullet_list"
         android:id="@+id/itemListIcon_02"
         android:title="Items"
         />
     <item
-        android:icon="@drawable/ic_baseline_settings_24"
+        android:icon="@drawable/icon_setting"
         android:id="@+id/settingIcon_02"
         android:title="Settings"/>
 

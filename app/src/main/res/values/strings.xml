@@ -33,4 +33,5 @@
     <string name="select_unit">Select Unit</string>
     <string name="do_you_want_to_use_cycle">Do you want to use Cycle?</string>
     <string name="rate">Rate</string>
+    <string name="title_activity_homepage_itemlist_up">Homepage_ItemlistUp</string>
 </resources>

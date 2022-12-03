@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.orderez">
+    package="com.example.orderez" >
     <!-- Internet permission -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- Check internet is connected -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -15,7 +15,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OrderEZ"
-        tools:targetApi="30">
+        tools:targetApi="30" >
+        <activity
+            android:name=".homepage.Homepage_Items"
+            android:exported="false" />
+        <activity
+            android:name=".Homepage_ItemlistUp"
+            android:exported="false"
+            android:label="@string/title_activity_homepage_itemlist_up"
+            android:theme="@style/Theme.OrderEZ.NoActionBar" />
         <activity
             android:name=".homepage.settingCategories.ChangePassword"
             android:exported="false" />
@@ -35,9 +43,6 @@
             android:name=".homepage.AddnewItems"
             android:exported="true" />
         <activity
-            android:name=".homepage.HomePage"
-            android:exported="true" />
-        <activity
             android:name=".intro.ForgotPassword"
             android:exported="true" />
         <activity
@@ -48,7 +53,7 @@
             android:exported="true" />
         <activity
             android:name=".intro.WelcomePage"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

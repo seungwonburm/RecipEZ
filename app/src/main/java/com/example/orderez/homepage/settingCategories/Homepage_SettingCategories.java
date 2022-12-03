@@ -1,16 +1,21 @@
 package com.example.orderez.homepage.settingCategories;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.orderez.R;
-import com.example.orderez.homepage.HomePage;
+import com.example.orderez.homepage.Homepage_Calendar_Month;
+import com.example.orderez.homepage.Homepage_Items;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Homepage_SettingCategories extends AppCompatActivity {
 
@@ -22,6 +27,9 @@ public class Homepage_SettingCategories extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage_setting_categories);
+
+        //Bottom Navigation bar
+        BottomNavigationView bottomNavigationView_Setting;
 
         Intent intent = getIntent();
         String str = intent.getStringExtra("userId");
@@ -87,6 +95,31 @@ public class Homepage_SettingCategories extends AppCompatActivity {
                 Intent gotoChangePassword = new Intent(getApplicationContext(), ChangePassword.class);
                 gotoChangePassword.putExtra("userId", str);
                 startActivity(gotoChangePassword);
+            }
+        });
+
+        bottomNavigationView_Setting= (BottomNavigationView) findViewById(R.id.item_menubar);
+        bottomNavigationView_Setting.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
+
+            @SuppressLint("NonConstantResourceId")
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.itemListIcon_02:
+                        Intent intent = new Intent(getApplicationContext(), Homepage_Items.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.settingIcon_02:
+                        Intent intent2 = new Intent(getApplicationContext(), Homepage_SettingCategories.class);
+                        startActivity(intent2);
+                        break;
+                    case R.id.calendarIcon_02:
+                        Intent refresh = new Intent(getApplicationContext(), Homepage_Calendar_Month.class);
+                        startActivity(refresh);
+                        break;
+                }
+
+                return false;
             }
         });
     }

@@ -1,9 +1,6 @@
 package com.example.orderez.homepage;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -14,7 +11,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.orderez.DatabaseManager;
@@ -114,7 +110,7 @@ public class AddnewItems extends AppCompatActivity{
                 boolean goodOrNot = errorChecker(unitTotal, unitOne,str_title,str_amountTotal,str_amountOne, str_rateNum,selectedRate);
                 if (goodOrNot){
                     calculateRate(str_title, str_amountTotal,str_amountOne,unitOne, unitTotal, str_rateNum, selectedRate, pickDates, mem);
-                    Intent goBacktoHomepage = new Intent(getApplicationContext(), HomePage.class);
+                    Intent goBacktoHomepage = new Intent(getApplicationContext(), Homepage_Items.class);
                     goBacktoHomepage.putExtra("userId", id);
                     startActivity(goBacktoHomepage);
 

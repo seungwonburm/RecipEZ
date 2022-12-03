@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import com.example.orderez.R;
 import com.example.orderez.homepage.settingCategories.Homepage_SettingCategories;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -26,10 +28,10 @@ import java.util.ArrayList;
 
 public class Homepage_Calendar_Month extends AppCompatActivity {
     TextView monthYearText; //Year and Month Textview
-    RecyclerView recyclerView;
+    RecyclerView recyclerView, itemList_Calendar_Month;
 
-    Homepage_SettingCategories homepageSetting;
-    Homepage_ItemList homepageItemList;
+    ItemList_Adapter itemList_adapter;
+    FloatingActionButton addBtn;
 
     //Bottom Navigation bar
     BottomNavigationView bottomNavigationView;
@@ -68,9 +70,17 @@ public class Homepage_Calendar_Month extends AppCompatActivity {
             }
         });
 
+        //add Button
+        addBtn = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gotoAddPage = new Intent(getApplicationContext(), AddnewItems.class);
+                startActivity(gotoAddPage);
+            }
+        });
+
         //Bottom navigation bar
-
-
         bottomNavigationView= (BottomNavigationView) findViewById(R.id.menus_calendar_month);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
 
@@ -79,7 +89,7 @@ public class Homepage_Calendar_Month extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.itemListIcon_02:
-                        Intent intent = new Intent(getApplicationContext(),HomePage.class);
+                        Intent intent = new Intent(getApplicationContext(), Homepage_Items.class);
                         startActivity(intent);
                         break;
                     case R.id.settingIcon_02:
@@ -95,6 +105,17 @@ public class Homepage_Calendar_Month extends AppCompatActivity {
                 return false;
             }
         });
+
+
+        //우선 아이템 리스트는 가져오긴 하는데, 날짜 별로 분류해서 데이터 출력해놓으면 될듯
+        itemList_Calendar_Month = findViewById(R.id.itemList_day);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
+        itemList_Calendar_Month.setLayoutManager(layoutManager);
+        itemList_adapter = new ItemList_Adapter(getApplicationContext());
+        itemList_Calendar_Month.setAdapter(itemList_adapter);
+
+        //이 밑에서 부터 코드 진행.
+
 
 
     }
@@ -123,6 +144,7 @@ public class Homepage_Calendar_Month extends AppCompatActivity {
 
 
     }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     private ArrayList<LocalDate> dayInMonthArray(LocalDate date){
         ArrayList<LocalDate> dayList = new ArrayList<>();
