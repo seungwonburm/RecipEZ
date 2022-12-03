@@ -76,7 +76,6 @@ public class Homepage_Items extends AppCompatActivity {
 
             itemList.setAdapter(itemList_adapter);
 
-
         } else if (cursor == null){
             Toast.makeText(getApplicationContext(), "NO DATA!!", Toast.LENGTH_LONG).show();
         }
