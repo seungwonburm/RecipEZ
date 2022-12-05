@@ -30,7 +30,7 @@ public class Homepage_Items extends AppCompatActivity {
     String id;
     DatabaseManager theDb;
     Cursor cursor;
-    String var0, var1, var2, var3;
+    String var0, var1, var2, var3, var4;
 
     //Bottom Navigation bar
     BottomNavigationView bottomNavigationView_Month;
@@ -63,11 +63,12 @@ public class Homepage_Items extends AppCompatActivity {
 
             do{
                 var0 = cursor.getString(cursor.getColumnIndexOrThrow("name"));
-                var1 = cursor.getString(cursor.getColumnIndexOrThrow("frequency"));
-                var2 = cursor.getString(cursor.getColumnIndexOrThrow("start_date"));
-                var3 = cursor.getString(cursor.getColumnIndexOrThrow("end_date"));
+                var1 = cursor.getString(cursor.getColumnIndexOrThrow("amount"));
+                var2 = cursor.getString(cursor.getColumnIndexOrThrow("unit"));
+                var3 = cursor.getString(cursor.getColumnIndexOrThrow("expire_date"));
+                var4 = cursor.getString(cursor.getColumnIndexOrThrow("memo"));
 
-                itemList_adapter.addItem(new ItemList_Manager(var0, var1, var2, var3));
+                itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1+var3, var4));
             } while (cursor.moveToNext());
 
             itemList.setAdapter(itemList_adapter);
