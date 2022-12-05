@@ -30,16 +30,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private static final String TABLE_ITEM = "Item";
     private static final String ITEM_ID = "id";
     private static final String ITEM_NAME = "name";
-//    private static final String ITEM_QUANTITY = "quantity";
-//    private static final String ITEM_CONSUMPTION = "consumption";
-    private static final String ITEM_START_DATE = "start_date";
-    private static final String ITEM_DAYS = "days";
-    private static final String ITEM_FREQUENCY = "frequency";
-    private static final String ITEM_END_DATE = "end_date";
-    private static final String ITEM_UNIT_ONE = "unit_one";
-    private static final String ITEM_UNIT_ENTIRE = "unit_entire";
-    private static final String ITEM_AMOUNT_ONE = "amount_one";
-    private static final String ITEM_AMOUNT_ENTIRE = "amount_entire";
+    private static final String ITEM_AMOUNT = "amount";
+    private static final String ITEM_UNIT = "unit";
+    private static final String ITEM_EXPIRE_DATE = "expire_date";
     private static final String ITEM_MEMO = "memo";
     private static final String ITEM_USERS_ID= "user_id";
 
@@ -57,13 +50,12 @@ public class DatabaseManager extends SQLiteOpenHelper {
         sqlCreate_users += " text, " + USERS_LAST + " text, " + USERS_EMAIL + " text, ";
         sqlCreate_users += USERS_PASSWORD + " text, " + USERS_SECURITY + " text, " + USERS_SECURITY_ANS + " text ) ";
 
-        String sqlCreate_grocery = "create table " + TABLE_ITEM + " ( " + ITEM_ID;
-        sqlCreate_grocery += " integer primary key autoincrement, " + ITEM_NAME + " text, " + ITEM_UNIT_ONE;
-        sqlCreate_grocery += " text, " + ITEM_UNIT_ENTIRE + " text, " + ITEM_AMOUNT_ONE + " text, " + ITEM_START_DATE + " text, " + ITEM_DAYS + " text, " + ITEM_FREQUENCY + " text, ";
-        sqlCreate_grocery +=  ITEM_END_DATE + " text, " + ITEM_AMOUNT_ENTIRE + " text, " + ITEM_MEMO + " text, " + ITEM_USERS_ID + " text ) ";
+        String sqlCreate_items = "create table " + TABLE_ITEM + " ( " + ITEM_ID;
+        sqlCreate_items += " integer primary key autoincrement, " + ITEM_NAME + " text, " + ITEM_AMOUNT;
+        sqlCreate_items += " text, " + ITEM_UNIT + " text, " + ITEM_EXPIRE_DATE + " text, " + ITEM_MEMO + " text, " + ITEM_USERS_ID + " text ) ";
 
         db.execSQL(sqlCreate_users);
-        db.execSQL(sqlCreate_grocery);
+        db.execSQL(sqlCreate_items);
     }
 
     @Override
@@ -98,25 +90,17 @@ public class DatabaseManager extends SQLiteOpenHelper {
             return true;
 
     }
-
-    public boolean insertItem(String item_name, String start_date, String end_date, String days, String frequency, String unit_one, String unit_entire, String amount_one, String amount_entire, String memo, String user_id) {
+//theDb.insertItem(str_title, str_amount, str_unit, str_expireDate, str_memo, id);
+    public boolean insertItem(String name, String amount, String expire_date, String unit, String memo, String user_id) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(ITEM_NAME, item_name.toLowerCase());
-        contentValues.put(ITEM_START_DATE, start_date);
-        contentValues.put(ITEM_END_DATE, end_date);
-        contentValues.put(ITEM_DAYS, days.toLowerCase());
-        contentValues.put(ITEM_FREQUENCY, frequency.toLowerCase());
-
-        contentValues.put(ITEM_UNIT_ONE, unit_one.toLowerCase());
-        contentValues.put(ITEM_UNIT_ENTIRE, unit_entire.toLowerCase());
-
-        contentValues.put(ITEM_AMOUNT_ONE, amount_one.toLowerCase());
-        contentValues.put(ITEM_AMOUNT_ENTIRE, amount_entire.toLowerCase());
-
-        contentValues.put(ITEM_MEMO, memo.toLowerCase());
-        contentValues.put(ITEM_USERS_ID, user_id.toLowerCase());
+        contentValues.put(ITEM_NAME, name);
+        contentValues.put(ITEM_AMOUNT, amount);
+        contentValues.put(ITEM_UNIT,unit);
+        contentValues.put(ITEM_EXPIRE_DATE, expire_date);
+        contentValues.put(ITEM_MEMO, memo);
+        contentValues.put(ITEM_USERS_ID, user_id);
 
         long result = db.insert(TABLE_ITEM, null, contentValues);
 

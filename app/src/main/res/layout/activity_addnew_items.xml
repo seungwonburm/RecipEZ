@@ -30,57 +30,13 @@
     <!--            tools:ignore="UseSwitchCompatOrMaterialXml" />-->
     <!--    </LinearLayout>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="1">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/addItem_enterTotal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="bottom|right"
-                android:inputType="numberDecimal"
-                android:hint="Please enter entire amount"/>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <Spinner
-                android:id="@+id/addItem_unitList"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="bottom|right"/>
-        </LinearLayout>
-    </LinearLayout>
-
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Comsume Rate"
+        android:text="Item Amount"
         android:textSize="20sp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Amount one at a time"
-        android:textSize="15sp" />
-
 
 
     <LinearLayout
@@ -100,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="bottom|right"
-                android:hint="How much do you want to consume at once?"
+                android:hint="Enter Amount"
                 android:inputType="number|numberDecimal" />
 
 
@@ -121,56 +77,17 @@
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Rate"
-        android:textSize="15sp" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_weight="1">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/addItem_rateAmount"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="numberDecimal|number"
-                android:gravity="right|bottom"
-                android:hint="Type number" />
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <Spinner
-                android:id="@+id/addItem_unitRate"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="bottom|right"/>
-        </LinearLayout>
-
-    </LinearLayout>
+        android:layout_weight="1"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Date"
+        android:text="Expiration Date"
         android:textSize="15sp" />
 
 
@@ -190,11 +107,11 @@
                 android:id="@+id/from_Date"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="bottom|center"
-                android:hint="Starting Date"
-                android:textSize="25sp"
                 android:clickable="true"
-                android:focusable="false" />
+                android:focusable="false"
+                android:gravity="bottom|center"
+                android:hint="Expiration Date"
+                android:textSize="25sp" />
         </LinearLayout>
 
 
