@@ -25,7 +25,7 @@
         <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_homepage_calendar_month.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/activity_homepage_calendar_week.xml" value="0.20697463768115942" />
-        <entry key="app/src/main/res/layout/activity_homepage_items.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_homepage_items.xml" value="0.348748779296875" />
         <entry key="app/src/main/res/layout/activity_homepage_schedule_list.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_homepage_setting_categories.xml" value="0.33060455322265625" />
         <entry key="app/src/main/res/layout/activity_homepage_setting_list.xml" value="0.1" />
@@ -51,7 +51,7 @@
         <entry key="app/src/main/res/layout/fragment_item_list.xml" value="0.31651662190755203" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/itemlist_listview_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/itemlist_listview_item.xml" value="0.40809936523437507" />
         <entry key="app/src/main/res/layout/list_random_recipe.xml" value="0.25364583333333335" />
         <entry key="app/src/main/res/layout/litemlist_listview.xml" value="0.20244565217391305" />
         <entry key="app/src/main/res/layout/setting_listview_item.xml" value="0.8554955081663269" />
