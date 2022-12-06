@@ -5,7 +5,7 @@
 Our App
 (description)
 
-API Package Installation
+API Information
 
-Attributes1
+Attributes
 Icons: 
