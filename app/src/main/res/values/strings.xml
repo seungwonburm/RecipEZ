@@ -1,4 +1,8 @@
 <resources>
+    <string name="api_key">ea26821d44334ba987585cacc2cbde81</string>
+    <string name="ingredient">potato, cilantro</string>
+    <integer name="ranking">2</integer>
+    <bool name="ignorePantry">true</bool>
     <string name="app_name">OrderEZ</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

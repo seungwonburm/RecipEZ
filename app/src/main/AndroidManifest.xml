@@ -20,11 +20,6 @@
             android:name=".homepage.Homepage_Items"
             android:exported="false" />
         <activity
-            android:name=".Homepage_ItemlistUp"
-            android:exported="false"
-            android:label="@string/title_activity_homepage_itemlist_up"
-            android:theme="@style/Theme.OrderEZ.NoActionBar" />
-        <activity
             android:name=".homepage.settingCategories.ChangePassword"
             android:exported="false" />
         <activity
@@ -50,6 +45,12 @@
             android:exported="true" />
         <activity
             android:name=".intro.LogInPage"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RecipeDetailsActivity"
             android:exported="true" />
         <activity
             android:name=".intro.WelcomePage"

@@ -8,12 +8,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.Binder;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.orderez.DatabaseManager;
+import com.example.orderez.MainActivity;
 import com.example.orderez.R;
 import com.example.orderez.homepage.settingCategories.Homepage_SettingCategories;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -27,6 +30,7 @@ public class Homepage_Items extends AppCompatActivity {
     RecyclerView itemList;
     ItemList_Adapter itemList_adapter;
     FloatingActionButton addBtn;
+    Button generate;
     String id;
     DatabaseManager theDb;
     Cursor cursor;
@@ -50,6 +54,14 @@ public class Homepage_Items extends AppCompatActivity {
         theDb= new DatabaseManager(this);
 
 
+        generate = (Button) findViewById(R.id.generate);
+        generate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gernateIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(gernateIntent);
+            }
+        });
         Intent intent = getIntent();
         id = intent.getStringExtra("userId");
 
