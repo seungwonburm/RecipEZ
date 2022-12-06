@@ -1,4 +1,4 @@
-package com.example.orderez.homepage;
+package com.example.orderez.Models;
 
 import java.time.LocalDate;
 
