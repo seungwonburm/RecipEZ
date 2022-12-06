@@ -1,4 +1,4 @@
-# OrderEZ
+# ~~OrderEZ~~ -> CookEZ
 
 Our App
 (description)
