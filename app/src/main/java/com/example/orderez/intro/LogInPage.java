@@ -103,8 +103,7 @@ public class LogInPage extends AppCompatActivity {
         backtoMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent gobacktoMainPage = new Intent(getApplicationContext(), WelcomePage.class);
-                startActivity(gobacktoMainPage);
+               finish();
             }
         });
     }

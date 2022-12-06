@@ -11,6 +11,7 @@ import com.example.orderez.Listeners.RandomRecipeResponseListener;
 import com.example.orderez.Listeners.RecipeDetailsListener;
 import com.example.orderez.Models.RecipeDetailsResponse;
 import com.example.orderez.Models.Root;
+import com.example.orderez.homepage.Homepage_Items;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ import retrofit2.http.Query;
 public class RequestManager { //This is our Request manager to request GET information from the API
     Context context;
     Retrofit retrofit = new Retrofit.Builder().baseUrl("https://api.spoonacular.com/").addConverterFactory(GsonConverterFactory.create()).build(); //We are using Retrofit because it assists us in turning HTTP API into a java interface for us. The code is based on their documentation
+    String recipe = Homepage_Items.recipe;
 
     public RequestManager(Context context) {
         this.context = context;
@@ -37,7 +39,7 @@ public class RequestManager { //This is our Request manager to request GET infor
         System.out.println("========getRandomRecipes START=============");
         CallRandomRecipes callRandomRecipes = retrofit.create(CallRandomRecipes.class); //Using retrofit we create java interface based on our api response we get
         System.out.println("==========RecipeAPICalled===========" + callRandomRecipes);
-        Call<ArrayList<Root>> call = callRandomRecipes.callRandomRecipe(context.getString(R.string.api_key), "10", context.getString(R.string.ingredient),2,true );
+        Call<ArrayList<Root>> call = callRandomRecipes.callRandomRecipe(context.getString(R.string.api_key), "10",recipe,2,true );
 //        Call<Root> call = callRandomRecipes.callRandomRecipe(context.getString(R.string.api_key), "10");
         System.out.println("=============Call========" + call.toString() + call.request());
         call.enqueue(new Callback<ArrayList<Root>>() {  //we enqueue our call with API response listener to know if we got back a response from it. this is different then fetch because this is directed towards api information

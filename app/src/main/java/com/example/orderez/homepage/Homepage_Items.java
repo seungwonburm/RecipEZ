@@ -35,6 +35,7 @@ public class Homepage_Items extends AppCompatActivity {
     DatabaseManager theDb;
     Cursor cursor;
     String var0, var1, var2, var3, var4;
+    public static String temp = "", recipe="";
 
     //Bottom Navigation bar
     BottomNavigationView bottomNavigationView_Month;
@@ -79,10 +80,11 @@ public class Homepage_Items extends AppCompatActivity {
                 var2 = cursor.getString(cursor.getColumnIndexOrThrow("unit"));
                 var3 = cursor.getString(cursor.getColumnIndexOrThrow("expire_date"));
                 var4 = cursor.getString(cursor.getColumnIndexOrThrow("memo"));
+                temp += var0 + ", ";
 
                 itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1+var3, var4));
             } while (cursor.moveToNext());
-
+            recipe = temp.substring(0,temp.length()-2);
             itemList.setAdapter(itemList_adapter);
 
         } else if (cursor == null){
@@ -94,6 +96,16 @@ public class Homepage_Items extends AppCompatActivity {
         itemList.setAdapter(itemList_adapter);
 
 
+        generate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent generateIntent = new Intent(getApplicationContext(), MainActivity.class);
+                generateIntent.putExtra("recipe", recipe);
+                startActivity(generateIntent);
+
+            }
+        });
+
         //add Button
         addBtn = (FloatingActionButton) findViewById(R.id.floatingActionButton);
         addBtn.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +114,7 @@ public class Homepage_Items extends AppCompatActivity {
                 Intent gotoAddPage = new Intent(getApplicationContext(), AddnewItems.class);
                 gotoAddPage.putExtra("userId", id);
                 startActivity(gotoAddPage);
+                finish();
             }
         });
         //Menu Bar

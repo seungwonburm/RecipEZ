@@ -17,7 +17,7 @@
         <entry key="app/src/main/res/layout/activity_addnew_items.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_address_api.xml" value="0.3770833333333333" />
         <entry key="app/src/main/res/layout/activity_calendar.xml" value="0.31423297826794616" />
-        <entry key="app/src/main/res/layout/activity_calendar_month.xml" value="0.3468185424804688" />
+        <entry key="app/src/main/res/layout/activity_calendar_month.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_calendar_week.xml" value="0.20742187500000003" />
         <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.3707726520040761" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.30978260869565216" />

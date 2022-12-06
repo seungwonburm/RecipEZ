@@ -83,8 +83,7 @@ public class RegisterPage extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent backtoLoginPage = new Intent(getApplicationContext(), WelcomePage.class);
-                startActivity(backtoLoginPage);
+                finish();
             }
         });
 

@@ -95,7 +95,7 @@ public class AddnewItems extends AppCompatActivity{
                 Intent goBacktoHomepage = new Intent(getApplicationContext(), Homepage_Items.class);
                 goBacktoHomepage.putExtra("userId", id);
                 startActivity(goBacktoHomepage);
-
+                finish();
             }
         });
 
