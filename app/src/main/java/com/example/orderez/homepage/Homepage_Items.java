@@ -37,6 +37,21 @@ public class Homepage_Items extends AppCompatActivity {
     String var0, var1, var2, var3, var4;
     public static String temp = "", recipe="";
 
+    private long backKeyPressedTime = 0;
+
+    public void onBackPressed() {
+        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+            backKeyPressedTime = System.currentTimeMillis();
+            Toast.makeText(this,"If you want to finish the app, press back button again", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //If user press back button in 2 seconds,
+        if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+            finish();
+        }
+    }
+
     //Bottom Navigation bar
     BottomNavigationView bottomNavigationView_Month;
     private RecyclerView.LayoutManager layoutManager;
@@ -125,19 +140,17 @@ public class Homepage_Items extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-//                    case R.id.itemListIcon_02:
-//                        Intent intent = new Intent(getApplicationContext(), Homepage_Items.class);
-//                        startActivity(intent);
-//                        break;
                     case R.id.settingIcon_02:
                         Intent intent2 = new Intent(getApplicationContext(), Homepage_SettingCategories.class);
                         intent2.putExtra("userId", id);
                         startActivity(intent2);
+                        finish();
                         break;
-                    case R.id.calendarIcon_02:
-                        Intent refresh = new Intent(getApplicationContext(),Homepage_Calendar_Month.class);
-                        refresh.putExtra("userId", id);
-                        startActivity(refresh);
+                    case R.id.itemListIcon_02:
+                        Intent intent1 = new Intent(getApplicationContext(), Homepage_Items.class);
+                        intent1.putExtra("userId",id);
+                        startActivity(intent1);
+                        finish();
                         break;
                 }
                 return false;

@@ -29,12 +29,6 @@
             android:name=".homepage.settingCategories.Homepage_SettingCategories"
             android:exported="false" />
         <activity
-            android:name=".homepage.Homepage_Calendar_Month"
-            android:exported="true" />
-        <activity
-            android:name=".homepage.Homepage_Calendar_Week"
-            android:exported="true" />
-        <activity
             android:name=".homepage.AddnewItems"
             android:exported="true" />
         <activity

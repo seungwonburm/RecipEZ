@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.orderez.R;
-import com.example.orderez.homepage.Homepage_Calendar_Month;
 import com.example.orderez.homepage.Homepage_Items;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -106,19 +105,15 @@ public class Homepage_SettingCategories extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.itemListIcon_02:
-//                        Intent intent = new Intent(getApplicationContext(), Homepage_Items.class);
-//                        intent.putExtra("userId", str);
-//                        startActivity(intent);
+                        Intent intent = new Intent(getApplicationContext(), Homepage_Items.class);
+                        intent.putExtra("userId", str);
+                        startActivity(intent);
                         finish();
                         break;
-//                    case R.id.settingIcon_02:
-//                        Intent intent2 = new Intent(getApplicationContext(), Homepage_SettingCategories.class);
-//                        startActivity(intent2);
-//                        break;
-                    case R.id.calendarIcon_02:
-                        Intent refresh = new Intent(getApplicationContext(), Homepage_Calendar_Month.class);
-                        refresh.putExtra("userId", str);
-                        startActivity(refresh);
+                    case R.id.settingIcon_02:
+                        Intent intent2 = new Intent(getApplicationContext(), Homepage_SettingCategories.class);
+                        intent2.putExtra("userId", str);
+                        startActivity(intent2);
                         finish();
                         break;
                 }
