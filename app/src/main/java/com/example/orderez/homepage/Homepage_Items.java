@@ -66,11 +66,13 @@ public class Homepage_Items extends AppCompatActivity {
         cursor = theDb.searchItemId(id);
 
         if (cursor.getCount()<=0){
-
+            generate.setEnabled(false);
             Toast.makeText(getApplicationContext(), "No Data Yet!!", Toast.LENGTH_LONG).show();
         }
         else if (cursor.moveToFirst() && cursor != null) {
-
+            generate.setEnabled(true);
+            temp = "";
+            recipe = "";
             do{
                 var0 = cursor.getString(cursor.getColumnIndexOrThrow("name"));
                 var1 = cursor.getString(cursor.getColumnIndexOrThrow("amount"));
@@ -79,27 +81,23 @@ public class Homepage_Items extends AppCompatActivity {
                 var4 = cursor.getString(cursor.getColumnIndexOrThrow("memo"));
                 temp += var0 + ", ";
 
-                itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1+var3, var4));
+                itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var4));
             } while (cursor.moveToNext());
             recipe = temp.substring(0,temp.length()-2);
             itemList.setAdapter(itemList_adapter);
 
         } else if (cursor == null){
+            generate.setEnabled(false);
             Toast.makeText(getApplicationContext(), "NO DATA!!", Toast.LENGTH_LONG).show();
         }
         cursor.close();
-
-
         itemList.setAdapter(itemList_adapter);
-
-
-
 
         generate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent generateIntent = new Intent(getApplicationContext(), MainActivity.class);
-                generateIntent.putExtra("recipe", recipe);
+//                generateIntent.putExtra("recipe", recipe);
                 startActivity(generateIntent);
 
             }

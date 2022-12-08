@@ -136,6 +136,13 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor searchItemNameId(String user_id, String item){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from " + TABLE_ITEM + " where user_id = ? AND name = ? ", new String[]{user_id, item});
+        return cursor;
+
+    }
+
     public int verify(String email){
         SQLiteDatabase db = this.getWritableDatabase();
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -170,13 +177,28 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return true;
     }
 
-//    public void delete(String id) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        String sqlDelete ="delete from " + TABLE_USERS + " where id = " + id;
-//        db.execSQL(sqlDelete);
-//        db.close();
-//
-//    }
+    public void updateItem(String item_id, String item, String date, String amount, String unit, String memo){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ITEM_NAME, item);
+        contentValues.put(ITEM_AMOUNT, amount);
+       // contentValues.put(ITEM_UNIT,unit);
+        contentValues.put(ITEM_EXPIRE_DATE, date);
+        contentValues.put(ITEM_MEMO, memo);
+
+        db.update(TABLE_ITEM, contentValues, "ID = ?", new String[] {item_id});
+
+    }
+
+    public void delete(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sqlDelete ="delete from " + TABLE_ITEM + " where id = " + id;
+        db.execSQL(sqlDelete);
+        db.close();
+
+    }
 
 
 //    public String[] autoComplete() {

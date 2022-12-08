@@ -41,29 +41,36 @@ public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.View
     public void onBindViewHolder(@NonNull ItemList_Adapter.ViewHolder holder, int position) {
         ItemList_Manager item = itemContatiner.get(position);
         holder.setItem(item);
+
         //ANDREW: use this code to get title
         holder.itemName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(((Activity)view.getContext()).getApplicationContext(), Update_Delete.class);
-                intent.putExtra("ItemName",holder.itemName.toString());
+                intent.putExtra("ItemName",holder.itemName.getText().toString());
+                intent.putExtra("userId", Homepage_Items.id);
                 ((Activity)view.getContext()).startActivity(intent);
+                ((Activity)view.getContext()).finish();
             }
         });
         holder.startDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(((Activity)view.getContext()).getApplicationContext(),Update_Delete.class);
-                intent.putExtra("ItemName",holder.itemName.toString());
+                intent.putExtra("ItemName",holder.itemName.getText().toString());
+                intent.putExtra("userId", Homepage_Items.id);
                 ((Activity)view.getContext()).startActivity(intent);
+                ((Activity)view.getContext()).finish();
             }
         });
         holder.count.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(((Activity)view.getContext()).getApplicationContext(),Update_Delete.class);
-                intent.putExtra("ItemName",holder.itemName.toString());
+                intent.putExtra("ItemName",holder.itemName.getText().toString());
+                intent.putExtra("userId", Homepage_Items.id);
                 ((Activity)view.getContext()).startActivity(intent);
+                ((Activity)view.getContext()).finish();
             }
         });
 
