@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.orderez.BackKeyHandler;
 import com.example.orderez.DatabaseManager;
 import com.example.orderez.MainActivity;
 import com.example.orderez.R;
@@ -37,20 +38,7 @@ public class Homepage_Items extends AppCompatActivity {
     String var0, var1, var2, var3, var4;
     public static String temp = "", recipe="";
 
-    private long backKeyPressedTime = 0;
-
-    public void onBackPressed() {
-        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
-            backKeyPressedTime = System.currentTimeMillis();
-            Toast.makeText(this,"If you want to finish the app, press back button again", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        //If user press back button in 2 seconds,
-        if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
-            finish();
-        }
-    }
+    private BackKeyHandler backKeyHandler = new BackKeyHandler(this);
 
     //Bottom Navigation bar
     BottomNavigationView bottomNavigationView_Month;
@@ -157,6 +145,13 @@ public class Homepage_Items extends AppCompatActivity {
             }
         });
 
+    }
+
+    //Overrides BackKeyHandler's onBackPressed method
+    //Finish the app if user clicks the back button twice in 2 seconds.
+    @Override
+    public void onBackPressed() {
+        backKeyHandler.onBackPressed();
     }
 
 

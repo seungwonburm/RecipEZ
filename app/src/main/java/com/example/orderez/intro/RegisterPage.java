@@ -11,21 +11,26 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.orderez.BackKeyHandler;
 import com.example.orderez.DatabaseManager;
 import com.example.orderez.R;
 
 public class RegisterPage extends AppCompatActivity {
 
-    EditText email, first, last, password, passwordVerify, security_ans;
-    Button register, back;
-    DatabaseManager theDB;
-    Spinner spinner;
+    //Make Variable private. prevent use in other activity.
+    private EditText email, first, last, password, passwordVerify, security_ans;
+    private Button register;
+    private DatabaseManager theDB;
+    private Spinner spinner;
+
+    private BackKeyHandler backKeyHandler = new BackKeyHandler(this);
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_page);
+
         theDB = new DatabaseManager(this);
 
         email = (EditText) findViewById(R.id.emailReg);
@@ -78,17 +83,14 @@ public class RegisterPage extends AppCompatActivity {
                 }
             }
         });
-
-        back = (Button) findViewById(R.id.backtomainBtnReg);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+    }// onCreate
 
 
-
+    //Overrides BackKeyHandler's onBackPressed method
+    //Finish the app if user clicks the back button twice in 2 seconds.
+    @Override
+    public void onBackPressed() {
+        backKeyHandler.onBackPressed_BacktoMain("You will lose your progress if you click back button again.");
     }
 
 

@@ -19,51 +19,56 @@
                 android:id="@+id/firstnameReg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="60dp"
                 android:ems="10"
-                android:layout_gravity="center"
                 android:hint="First Name"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textSize="25sp" />
 
             <EditText
                 android:id="@+id/lastnameReg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:layout_gravity="center"
                 android:hint="Last Name"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textSize="25sp" />
 
             <EditText
                 android:id="@+id/emailReg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="36dp"
                 android:ems="10"
-                android:layout_gravity="center"
                 android:hint="Email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textSize="25sp" />
 
             <EditText
                 android:id="@+id/passwordReg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:ems="10"
-                android:layout_gravity="center"
                 android:hint="Password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textSize="25sp" />
 
             <EditText
                 android:id="@+id/passwordVerifyReg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="12dp"
                 android:ems="10"
-                android:layout_gravity="center"
                 android:hint="Verifiy PW"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/securityQuestionsReg"
@@ -72,27 +77,28 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="60dp"
                 android:text="Security Questions"
-                android:textSize="25sp"
-                app:autoSizeMaxTextSize="20sp"
-                app:autoSizeMinTextSize="35sp" />
+                android:textSize="30sp"
+                app:autoSizeMaxTextSize="30sp"
+                app:autoSizeMinTextSize="45sp" />
 
             <Spinner
                 android:id="@+id/viewChangeDropdown"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:scrollbarSize="10sp"
+                android:scrollbarSize="20sp"
                 android:spinnerMode="dropdown" />
 
             <EditText
                 android:id="@+id/security_ans"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="60dp"
                 android:ems="10"
-                android:layout_gravity="center"
-                android:hint="security_ans"
-                android:inputType="textPersonName" />
+                android:hint="Type your answer"
+                android:inputType="textPersonName"
+                android:textSize="20sp" />
 
 
             <Button

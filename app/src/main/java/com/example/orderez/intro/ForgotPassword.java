@@ -15,17 +15,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.orderez.BackKeyHandler;
 import com.example.orderez.DatabaseManager;
 import com.example.orderez.R;
 
 public class ForgotPassword extends AppCompatActivity {
-    Spinner spinner;
-    Button button1, button2;
-    EditText email_forgot, password_forgot, security_ans_forgot, password_verify_forgot;
-    TextView newPasswordText;
-    DatabaseManager theDb;
-    Cursor cursor;
-    String var0, var1, var2, var3, var4;
+    private Spinner spinner;
+    private Button button1, button2;
+    private EditText email_forgot, password_forgot, security_ans_forgot, password_verify_forgot;
+    private TextView newPasswordText;
+    private DatabaseManager theDb;
+    private Cursor cursor;
+    private String var0, var1, var2, var3, var4;
+    private BackKeyHandler backKeyHandler = new BackKeyHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,5 +124,12 @@ public class ForgotPassword extends AppCompatActivity {
             }
         });
 
+    }// onCreate
+
+    //Overrides BackKeyHandler's onBackPressed method
+    //Finish the app if user clicks the back button twice in 2 seconds.
+    @Override
+    public void onBackPressed() {
+        backKeyHandler.onBackPressed_BacktoMain("You will lose your progress if you click back button again.");
     }
 }
