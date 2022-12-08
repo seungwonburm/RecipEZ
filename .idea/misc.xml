@@ -13,8 +13,24 @@
         <entry key="app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.362" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.172" />
+        <entry key="app/src/main/res/layout-land/activity_account_setting.xml" value="0.36070559610705594" />
+        <entry key="app/src/main/res/layout-land/activity_account_settings.xml" value="0.31666666666666665" />
+        <entry key="app/src/main/res/layout-land/activity_addnew_items.xml" value="0.25396575927734377" />
+        <entry key="app/src/main/res/layout-land/activity_change_password.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/activity_forgot_password.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/activity_homepage_items.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/activity_homepage_setting_categories.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/activity_log_in_page.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/activity_recipe_details.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/activity_register_page.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/activity_update_delete.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/activity_welcome.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/itemlist_listview_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/list_meal_ingredients.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/list_random_recipe.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_account_settings.xml" value="0.2924218219259511" />
-        <entry key="app/src/main/res/layout/activity_addnew_items.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_addnew_items.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_address_api.xml" value="0.3770833333333333" />
         <entry key="app/src/main/res/layout/activity_calendar.xml" value="0.31423297826794616" />
         <entry key="app/src/main/res/layout/activity_calendar_month.xml" value="0.25" />
@@ -25,17 +41,18 @@
         <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_homepage_calendar_month.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/activity_homepage_calendar_week.xml" value="0.20697463768115942" />
-        <entry key="app/src/main/res/layout/activity_homepage_items.xml" value="0.348748779296875" />
+        <entry key="app/src/main/res/layout/activity_homepage_items.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_homepage_schedule_list.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_homepage_setting_categories.xml" value="0.33060455322265625" />
         <entry key="app/src/main/res/layout/activity_homepage_setting_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_item.xml" value="0.21927083333333333" />
-        <entry key="app/src/main/res/layout/activity_log_in_page.xml" value="0.24592590332031253" />
+        <entry key="app/src/main/res/layout/activity_log_in_page.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.30978260869565216" />
         <entry key="app/src/main/res/layout/activity_recipe_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_register_page.xml" value="0.3186538696289063" />
         <entry key="app/src/main/res/layout/activity_setting_account.xml" value="0.2969901706189249" />
         <entry key="app/src/main/res/layout/activity_setting_user_profile.xml" value="0.19022289766970618" />
+        <entry key="app/src/main/res/layout/activity_update_delete.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.165" />
         <entry key="app/src/main/res/layout/addingproces.xml" value="0.375" />
         <entry key="app/src/main/res/layout/calendar_cell.xml" value="0.20697463768115942" />
@@ -58,6 +75,7 @@
         <entry key="app/src/main/res/layout/setting_listview_item.xml" value="0.8554955081663269" />
         <entry key="app/src/main/res/menu/menu_calendar.xml" value="0.375" />
         <entry key="app/src/main/res/menu/menu_list.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/menu/menu_sort.xml" value="0.30885416666666665" />
       </map>
     </option>
   </component>

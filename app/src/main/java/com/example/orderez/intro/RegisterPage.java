@@ -90,7 +90,7 @@ public class RegisterPage extends AppCompatActivity {
     //Finish the app if user clicks the back button twice in 2 seconds.
     @Override
     public void onBackPressed() {
-        backKeyHandler.onBackPressed_BacktoMain("You will lose your progress if you click back button again.");
+        backKeyHandler.onBackPressed_BacktoItemSetting("You will lose your progress if you click back button again.");
     }
 
 

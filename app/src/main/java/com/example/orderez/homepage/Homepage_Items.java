@@ -28,14 +28,14 @@ import java.security.GeneralSecurityException;
 
 public class Homepage_Items extends AppCompatActivity {
 
-    RecyclerView itemList;
-    ItemList_Adapter itemList_adapter;
-    FloatingActionButton addBtn;
-    Button generate;
-    String id;
-    DatabaseManager theDb;
-    Cursor cursor;
-    String var0, var1, var2, var3, var4;
+     RecyclerView itemList;
+     ItemList_Adapter itemList_adapter;
+     FloatingActionButton addBtn;
+     Button generate;
+    public static String id;
+     DatabaseManager theDb;
+     Cursor cursor;
+     String var0, var1, var2, var3, var4;
     public static String temp = "", recipe="";
 
     private BackKeyHandler backKeyHandler = new BackKeyHandler(this);
@@ -59,13 +59,7 @@ public class Homepage_Items extends AppCompatActivity {
 
 
         generate = (Button) findViewById(R.id.generate);
-        generate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent gernateIntent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(gernateIntent);
-            }
-        });
+
         Intent intent = getIntent();
         id = intent.getStringExtra("userId");
 
@@ -95,8 +89,10 @@ public class Homepage_Items extends AppCompatActivity {
         }
         cursor.close();
 
-        itemList_adapter.addItem(new ItemList_Manager("This", "is", "just", "Test"));
+
         itemList.setAdapter(itemList_adapter);
+
+
 
 
         generate.setOnClickListener(new View.OnClickListener() {

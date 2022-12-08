@@ -6,6 +6,7 @@ import android.widget.Toast;
 import android.os.Bundle;
 
 
+import com.example.orderez.homepage.Homepage_Items;
 import com.example.orderez.intro.WelcomePage;
 
 public class BackKeyHandler {
@@ -47,6 +48,36 @@ public class BackKeyHandler {
         if (System.currentTimeMillis() <= backKeypressedTime + 2000) {
             Intent gotoWelcome = new Intent(activity.getApplicationContext(),WelcomePage.class);
             activity.startActivity(gotoWelcome);
+            activity.finish();
+        }
+    }
+
+    public void onBackPressed_BacktoItem(String msgCustom) {
+        if (System.currentTimeMillis() > backKeypressedTime + 2000){
+            backKeypressedTime = System.currentTimeMillis();
+            backKeyProtocol(msgCustom);
+            return;
+        }
+        if (System.currentTimeMillis() <= backKeypressedTime + 2000) {
+            Intent gotoItem = new Intent(activity.getApplicationContext(), Homepage_Items.class);
+            gotoItem.putExtra("userId", Homepage_Items.id);
+            activity.startActivity(gotoItem);
+
+            activity.finish();
+        }
+    }
+
+    public void onBackPressed_BacktoItemSetting(String msgCustom) {
+        if (System.currentTimeMillis() > backKeypressedTime + 2000){
+            backKeypressedTime = System.currentTimeMillis();
+            backKeyProtocol(msgCustom);
+            return;
+        }
+        if (System.currentTimeMillis() <= backKeypressedTime + 2000) {
+            Intent gotoItem = new Intent(activity.getApplicationContext(), Homepage_Items.class);
+            gotoItem.putExtra("userId", Homepage_Items.id);
+            activity.startActivity(gotoItem);
+
             activity.finish();
         }
     }

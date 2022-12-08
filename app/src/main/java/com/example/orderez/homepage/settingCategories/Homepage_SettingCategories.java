@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.orderez.BackKeyHandler;
 import com.example.orderez.R;
 import com.example.orderez.homepage.Homepage_Items;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,6 +22,8 @@ public class Homepage_SettingCategories extends AppCompatActivity {
     ImageButton account_settings_icon,change_password_icon;
     TextView account_settings_text, change_password_text;
     LinearLayout account_settings_linear, change_password_linear;
+
+    private BackKeyHandler backKeyHandler = new BackKeyHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,5 +124,12 @@ public class Homepage_SettingCategories extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    //Overrides BackKeyHandler's onBackPressed method
+    //Finish the app if user clicks the back button twice in 2 seconds.
+    @Override
+    public void onBackPressed() {
+        backKeyHandler.onBackPressed();
     }
 }
