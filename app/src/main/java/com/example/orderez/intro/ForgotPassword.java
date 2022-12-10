@@ -18,6 +18,10 @@ import android.widget.Toast;
 import com.example.orderez.BackKeyHandler;
 import com.example.orderez.DatabaseManager;
 import com.example.orderez.R;
+import com.example.orderez.homepage.Homepage_Items;
+import com.scottyab.aescrypt.AESCrypt;
+
+import java.security.GeneralSecurityException;
 
 public class ForgotPassword extends AppCompatActivity {
     private Spinner spinner;
@@ -40,7 +44,7 @@ public class ForgotPassword extends AppCompatActivity {
         ArrayAdapter spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.Questions, android.R.layout.simple_spinner_item);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
-        String text = spinner.getSelectedItem().toString();
+
 
 
         button1 = (Button) findViewById(R.id.submit_forgot_1);
@@ -61,33 +65,42 @@ public class ForgotPassword extends AppCompatActivity {
             public void onClick(View view) {
                 String email = email_forgot.getText().toString();
                 cursor = theDb.search(email);
+                String text = spinner.getSelectedItem().toString();
+
                 if (cursor.getCount()<=0){
                     Toast.makeText(getApplicationContext(), "Account Not Found!", Toast.LENGTH_LONG).show();
                 }
                 else if (cursor.moveToFirst() && cursor != null){
-                    do{
-                        var0 = cursor.getString(cursor.getColumnIndexOrThrow("security"));
-                        var1 = cursor.getString(cursor.getColumnIndexOrThrow("security_ans"));
-                        var2 = cursor.getString(cursor.getColumnIndexOrThrow("id"));
-                        var3 = cursor.getString(cursor.getColumnIndexOrThrow("email"));
-                        var4 = cursor.getString(cursor.getColumnIndexOrThrow("password"));
 
+                    var0 = cursor.getString(cursor.getColumnIndexOrThrow("security"));
+                    var1 = cursor.getString(cursor.getColumnIndexOrThrow("security_ans"));
+                    var2 = cursor.getString(cursor.getColumnIndexOrThrow("id"));
+                    var3 = cursor.getString(cursor.getColumnIndexOrThrow("email"));
+                    var4 = cursor.getString(cursor.getColumnIndexOrThrow("password"));
 
-                    } while (cursor.moveToNext());
-
-                    if (!var0.equals(text.toLowerCase()) || !var1.equals(security_ans_forgot.getText().toString())){
+                    if (!var0.equals(text.toLowerCase()) ){
                         Toast.makeText(getApplicationContext(), "Account Not Found!!", Toast.LENGTH_LONG).show();
                     }else {
+                        try {
+                            String decrypted = AESCrypt.decrypt(security_ans_forgot.getText().toString(), var1);
+                            if (decrypted.equals(email)){
+                                if (view != null) {
+                                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                                }
+                                password_forgot.setVisibility(View.VISIBLE);
+                                password_verify_forgot.setVisibility(View.VISIBLE);
+                                button2.setVisibility(View.VISIBLE);
+                                newPasswordText.setVisibility(View.VISIBLE);
+                                button1.setVisibility(View.INVISIBLE);
 
-                        if (view != null) {
-                            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                            }
+                        }catch (GeneralSecurityException e){
+                            //handle error - could be due to incorrect password or tampered encryptedMsg
+                            Toast.makeText(getApplicationContext(), "Account Not Found!", Toast.LENGTH_LONG).show();
                         }
-                        password_forgot.setVisibility(View.VISIBLE);
-                        password_verify_forgot.setVisibility(View.VISIBLE);
-                        button2.setVisibility(View.VISIBLE);
-                        newPasswordText.setVisibility(View.VISIBLE);
-                        button1.setVisibility(View.INVISIBLE);
+
+
                     }
                 }else if (cursor == null){
                     Toast.makeText(getApplicationContext(), "NO DATA!!", Toast.LENGTH_LONG).show();
@@ -102,10 +115,10 @@ public class ForgotPassword extends AppCompatActivity {
             public void onClick(View view) {
                 boolean added = false;
                 if (!password_forgot.getText().toString().equals("") && !password_verify_forgot.getText().toString().equals("") ){
-                  if (!password_forgot.getText().toString().equals(password_verify_forgot.getText().toString())) {
+                    if (!password_forgot.getText().toString().equals(password_verify_forgot.getText().toString())) {
                         Toast.makeText(getApplicationContext(), "Passwords Do Not Match!", Toast.LENGTH_LONG).show();
                     }
-                  else {
+                    else {
                         added = theDb.updatePW(var2, var3, password_forgot.getText().toString());
                     }
 

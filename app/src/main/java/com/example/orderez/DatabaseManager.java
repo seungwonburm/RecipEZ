@@ -71,16 +71,19 @@ public class DatabaseManager extends SQLiteOpenHelper {
         contentValues.put(USERS_FIRST, first.toLowerCase());
         contentValues.put(USERS_LAST, last.toLowerCase());
         contentValues.put(USERS_EMAIL, email.toLowerCase());
-        String encryptedMsg;
+        String encryptedPwd, encryptedAns;
         try {
-            encryptedMsg = AESCrypt.encrypt(password, email.toLowerCase());
-            contentValues.put(USERS_PASSWORD, encryptedMsg);
+            encryptedPwd = AESCrypt.encrypt(password, email.toLowerCase());
+            encryptedAns = AESCrypt.encrypt(security_ans, email.toLowerCase());
+            contentValues.put(USERS_PASSWORD, encryptedPwd);
+            contentValues.put(USERS_SECURITY_ANS, encryptedAns);
+
         }catch (GeneralSecurityException e){
             return false;
             //handle error
         }
         contentValues.put(USERS_SECURITY, security.toLowerCase());
-        contentValues.put(USERS_SECURITY_ANS, security_ans.toLowerCase());
+
 
         long result = db.insert(TABLE_USERS, null, contentValues);
 
@@ -90,7 +93,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
             return true;
 
     }
-//theDb.insertItem(str_title, str_amount, str_unit, str_expireDate, str_memo, id);
+    //theDb.insertItem(str_title, str_amount, str_unit, str_expireDate, str_memo, id);
     public boolean insertItem(String name, String amount, String unit, String expire_date, String memo, String user_id) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -223,4 +226,3 @@ public class DatabaseManager extends SQLiteOpenHelper {
 //    }
 
 }
-

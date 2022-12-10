@@ -8,11 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
-import android.os.Binder;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,22 +25,30 @@ import com.example.orderez.R;
 import com.example.orderez.homepage.settingCategories.Homepage_SettingCategories;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.scottyab.aescrypt.AESCrypt;
 
-import java.security.GeneralSecurityException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class Homepage_Items extends AppCompatActivity {
 
-     RecyclerView itemList;
-     ItemList_Adapter itemList_adapter;
-     FloatingActionButton addBtn;
-     Button generate;
+    RecyclerView itemList;
+    ItemList_Adapter itemList_adapter;
+    FloatingActionButton addBtn;
+    Button generate;
     public static String id;
-     DatabaseManager theDb;
-     Cursor cursor;
-     String var0, var1, var2, var3, var4;
+    DatabaseManager theDb;
+    Cursor cursor;
+    String var0, var1, var2, var3, var4, currentDate;
+    Boolean noItem = false;
+    long dateDifference=Integer.MAX_VALUE, currentDifference=0;
     public static String temp = "", recipe="";
     TextView expFirst;
+    Spinner sortItems;
 
     private BackKeyHandler backKeyHandler = new BackKeyHandler(this);
 
@@ -59,8 +69,27 @@ public class Homepage_Items extends AppCompatActivity {
 
         theDb= new DatabaseManager(this);
 
-
         generate = (Button) findViewById(R.id.generate);
+
+        currentDate = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format(new Date());
+
+        sortItems = (Spinner) findViewById(R.id.itemSorting);
+        ArrayAdapter<CharSequence> sortAdapter = ArrayAdapter.createFromResource(this,R.array.Sorting,android.R.layout.simple_spinner_item);
+        sortAdapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+        sortItems.setAdapter(sortAdapter);
+
+        sortItems.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
         Intent intent = getIntent();
         id = intent.getStringExtra("userId");
@@ -69,9 +98,11 @@ public class Homepage_Items extends AppCompatActivity {
 
         if (cursor.getCount()<=0){
             generate.setEnabled(false);
+            noItem = true;
             Toast.makeText(getApplicationContext(), "No Data Yet!!", Toast.LENGTH_LONG).show();
         }
         else if (cursor.moveToFirst() && cursor != null) {
+            noItem = false;
             generate.setEnabled(true);
             temp = "";
             recipe = "";
@@ -83,12 +114,21 @@ public class Homepage_Items extends AppCompatActivity {
                 var4 = cursor.getString(cursor.getColumnIndexOrThrow("memo"));
                 temp += var0 + ", ";
 
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+                LocalDate start = LocalDate.parse(currentDate,formatter);
+                LocalDate end = LocalDate.parse(var3,formatter);
+                currentDifference=ChronoUnit.DAYS.between(start, end);
+                if (dateDifference>currentDifference){
+                    dateDifference = currentDifference;
+                }
+
                 itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var3, var4));
             } while (cursor.moveToNext());
             recipe = temp.substring(0,temp.length()-2);
             itemList.setAdapter(itemList_adapter);
 
         } else if (cursor == null){
+            noItem = true;
             generate.setEnabled(false);
             Toast.makeText(getApplicationContext(), "NO DATA!!", Toast.LENGTH_LONG).show();
         }
@@ -96,9 +136,25 @@ public class Homepage_Items extends AppCompatActivity {
         itemList.setAdapter(itemList_adapter);
 
         expFirst = (TextView) findViewById(R.id.expFirst);
-        //
 
 
+
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.DATE, Math.toIntExact(dateDifference));
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        String expiryDate = sdf.format(c.getTime());
+
+
+        String message = "Today's Date: " + currentDate +"\n";
+        if (noItem == true)
+            message += "There is no expiring items.";
+        else if (dateDifference<0)
+            message += "At least one item has expired on " + expiryDate;
+        else if (dateDifference==0)
+            message += "At least one item is expiring today";
+        else
+            message += "At least one item is expiring on " + expiryDate;
+        expFirst.setText(message + "");
 
         generate.setOnClickListener(new View.OnClickListener() {
             @Override

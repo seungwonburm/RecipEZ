@@ -83,9 +83,9 @@ public class AddnewItems extends AppCompatActivity{
                 String str_memo= memo.getText().toString();
                 String str_expireDateOriginal  = pickDates.getTime().toString();
                 String str_expireDate = str_expireDateOriginal.substring(4,10) + str_expireDateOriginal.substring(23);
+                String date = et_from_Date.getText().toString();
 
-
-               Boolean added = theDb.insertItem(str_title, str_amount, str_unit, str_expireDate, str_memo, id);
+               Boolean added = theDb.insertItem(str_title, str_amount, str_unit, date, str_memo, id);
                 if (added == true){
                     Toast.makeText(getApplicationContext(), "Data Added", Toast.LENGTH_LONG).show();
                 } else {

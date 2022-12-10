@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="UnitTypes">
+    <string-array name="Sorting">
         <item>Recently added</item>
         <item>A-Z</item>
         <item>Z-A</item>

@@ -45,7 +45,7 @@ public class RegisterPage extends AppCompatActivity {
         ArrayAdapter spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.Questions, android.R.layout.simple_spinner_item);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
-        String text = spinner.getSelectedItem().toString();
+
 
 
         backtoMain = (Button) findViewById(R.id.backtomainBtnReg);
@@ -78,6 +78,7 @@ public class RegisterPage extends AppCompatActivity {
                     } else if (!password.getText().toString().equals(passwordVerify.getText().toString())) {
                         Toast.makeText(getApplicationContext(), "Passwords Do Not Match!", Toast.LENGTH_LONG).show();
                     } else {
+                        String text = spinner.getSelectedItem().toString();
                         added = theDB.insert(first.getText().toString(), last.getText().toString(), email.getText().toString(), password.getText().toString(), text, security_ans.getText().toString());
                     }
 

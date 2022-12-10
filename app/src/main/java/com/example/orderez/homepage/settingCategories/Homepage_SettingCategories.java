@@ -19,8 +19,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Homepage_SettingCategories extends AppCompatActivity {
 
-    ImageButton account_settings_icon,change_password_icon;
-    TextView account_settings_text, change_password_text;
+    ImageButton account_settings_icon,change_password_icon, setting03_icon, setting04_icon;
+    TextView account_settings_text, change_password_text, setting03_text, setting04_text;
     LinearLayout account_settings_linear, change_password_linear;
 
     private BackKeyHandler backKeyHandler = new BackKeyHandler(this);
@@ -48,7 +48,6 @@ public class Homepage_SettingCategories extends AppCompatActivity {
                 Intent gotoAccountSettings = new Intent(getApplicationContext(), AccountSettings.class);
                 gotoAccountSettings.putExtra("userId", str);
                 startActivity(gotoAccountSettings);
-
             }
         });
 
@@ -99,6 +98,49 @@ public class Homepage_SettingCategories extends AppCompatActivity {
                 startActivity(gotoChangePassword);
             }
         });
+
+        setting03_icon = findViewById(R.id.setting03_icon);
+        setting03_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gotoSetting03 = new Intent (getApplicationContext(),Setting03.class);
+                gotoSetting03.putExtra("userId", str);
+                startActivity(gotoSetting03);
+            }
+        });
+
+        setting03_text = findViewById(R.id.setting03_text);
+        setting03_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gotoSetting03 = new Intent (getApplicationContext(),Setting03.class);
+                gotoSetting03.putExtra("userId", str);
+                startActivity(gotoSetting03);
+            }
+        });
+
+        setting04_icon = findViewById(R.id.setting04_icon);
+        setting04_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gotoSetting04 = new Intent (getApplicationContext(),Setting04.class);
+                gotoSetting04.putExtra("userId", str);
+                startActivity(gotoSetting04);
+            }
+        });
+
+        setting04_text = findViewById(R.id.setting04_text);
+        setting04_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gotoSetting04 = new Intent (getApplicationContext(),Setting04.class);
+                gotoSetting04.putExtra("userId", str);
+                startActivity(gotoSetting04);
+            }
+        });
+
+
+
 
         bottomNavigationView_Setting= (BottomNavigationView) findViewById(R.id.item_menubar);
         bottomNavigationView_Setting.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){

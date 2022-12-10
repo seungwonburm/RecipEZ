@@ -31,9 +31,7 @@ public class ItemList_Manager {
         this.count = count;
     }
 
-    public String getUnit() {
-        return unit;
-    }
+    public String getUnit() {return unit;}
 
     public void setUnit(String unit) {
         this.unit = unit;

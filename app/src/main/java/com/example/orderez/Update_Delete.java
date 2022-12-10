@@ -175,7 +175,7 @@ public class Update_Delete extends AppCompatActivity {
     }
 
     private void updateLabel(){
-        String format_default = "yyyy/MM/dd";
+        String format_default = "MM/dd/yyyy";
         SimpleDateFormat formatter = new SimpleDateFormat(format_default, Locale.US);
 
         EditText et_from_date = (EditText) findViewById(R.id.editExpirationDate);
