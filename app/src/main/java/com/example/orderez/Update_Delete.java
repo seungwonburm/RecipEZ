@@ -100,7 +100,6 @@ public class Update_Delete extends AppCompatActivity {
         unitAdapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         itemUnit.setAdapter(unitAdapter);
 
-
         submit = (Button) findViewById(R.id.editSubmitBtn);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
