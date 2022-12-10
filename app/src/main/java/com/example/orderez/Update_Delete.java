@@ -106,7 +106,6 @@ public class Update_Delete extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Update Process
-
                 var0 = itemName.getText().toString();
                 var3 = itemexpirationDate.getText().toString();
                 var1 = itemAmount.getText().toString();
