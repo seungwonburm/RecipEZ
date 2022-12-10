@@ -111,6 +111,7 @@ public class Update_Delete extends AppCompatActivity {
                 var2 = itemUnit.getSelectedItem().toString();
                 var4 = itemMemo.getText().toString();
 
+
                 if (var2.equals("Select one")){
                     Toast.makeText(getApplicationContext(),"Please select unit",Toast.LENGTH_SHORT).show();
                 }else {
