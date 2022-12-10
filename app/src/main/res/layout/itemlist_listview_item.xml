@@ -18,8 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical"
-            android:padding="1dp"
-            >
+            android:padding="1dp">
 
             <TextView
                 android:id="@+id/itemNameTV"
@@ -44,16 +43,39 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:layout_weight="1">
-                <TextView
-                    android:id="@+id/countTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="TextView"
-                    android:textSize="15sp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/itemDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center|right"
+                        android:text="TextView"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/countNum"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center|left"
+                        android:text="TextView"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -61,8 +83,10 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:layout_weight="1">
+
+
                 <TextView
-                    android:id="@+id/startDateTV"
+                    android:id="@+id/countUnit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -72,13 +96,14 @@
                     android:focusable="true" />
             </LinearLayout>
 
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:layout_weight="1">
                 <TextView
-                    android:id="@+id/endDateTV"
+                    android:id="@+id/itemMemo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"

@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.orderez.BackKeyHandler;
@@ -37,6 +38,7 @@ public class Homepage_Items extends AppCompatActivity {
      Cursor cursor;
      String var0, var1, var2, var3, var4;
     public static String temp = "", recipe="";
+    TextView expFirst;
 
     private BackKeyHandler backKeyHandler = new BackKeyHandler(this);
 
@@ -81,7 +83,7 @@ public class Homepage_Items extends AppCompatActivity {
                 var4 = cursor.getString(cursor.getColumnIndexOrThrow("memo"));
                 temp += var0 + ", ";
 
-                itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var4));
+                itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var3, var4));
             } while (cursor.moveToNext());
             recipe = temp.substring(0,temp.length()-2);
             itemList.setAdapter(itemList_adapter);
@@ -92,6 +94,11 @@ public class Homepage_Items extends AppCompatActivity {
         }
         cursor.close();
         itemList.setAdapter(itemList_adapter);
+
+        expFirst = (TextView) findViewById(R.id.expFirst);
+        //
+
+
 
         generate.setOnClickListener(new View.OnClickListener() {
             @Override

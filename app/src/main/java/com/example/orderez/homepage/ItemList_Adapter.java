@@ -33,7 +33,6 @@ public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.View
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View itemView = inflater.inflate(R.layout.itemlist_listview_item,parent,false);
-
         return new ViewHolder(itemView);
     }
 
@@ -42,7 +41,6 @@ public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.View
         ItemList_Manager item = itemContatiner.get(position);
         holder.setItem(item);
 
-        //ANDREW: use this code to get title
         holder.itemName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,7 +51,7 @@ public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.View
                 ((Activity)view.getContext()).finish();
             }
         });
-        holder.startDate.setOnClickListener(new View.OnClickListener() {
+        holder.expDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(((Activity)view.getContext()).getApplicationContext(),Update_Delete.class);
@@ -73,8 +71,26 @@ public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.View
                 ((Activity)view.getContext()).finish();
             }
         });
-
-
+        holder.itemUnit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(((Activity)view.getContext()).getApplicationContext(),Update_Delete.class);
+                intent.putExtra("ItemName",holder.itemName.getText().toString());
+                intent.putExtra("userId", Homepage_Items.id);
+                ((Activity)view.getContext()).startActivity(intent);
+                ((Activity)view.getContext()).finish();
+            }
+        });
+        holder.itemmemo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(((Activity)view.getContext()).getApplicationContext(),Update_Delete.class);
+                intent.putExtra("ItemName",holder.itemName.getText().toString());
+                intent.putExtra("userId", Homepage_Items.id);
+                ((Activity)view.getContext()).startActivity(intent);
+                ((Activity)view.getContext()).finish();
+            }
+        });
     }
 
 
@@ -89,23 +105,26 @@ public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.View
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder{
-        TextView itemName, count,startDate, endDate;
+        TextView itemName, count,expDate, itemmemo, itemUnit;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             itemName = itemView.findViewById(R.id.itemNameTV);
-            count = itemView.findViewById(R.id.countTV);
-            startDate = itemView.findViewById(R.id.startDateTV);
-            endDate = itemView.findViewById(R.id.endDateTV);
+            count = itemView.findViewById(R.id.itemDate);
+            expDate = itemView.findViewById(R.id.countNum);
+            itemmemo = itemView.findViewById(R.id.itemMemo);
+            itemUnit = itemView.findViewById(R.id.countUnit);
 
         }
         
         public void setItem(ItemList_Manager item){
             itemName.setText(item.title);
+            expDate.setText(item.expDate);
             count.setText(item.count);
-            startDate.setText(item.startDate);
-            endDate.setText(item.endDate);
+            itemUnit.setText(item.unit);
+            itemmemo.setText(item.memo);
+
 
         }
     }

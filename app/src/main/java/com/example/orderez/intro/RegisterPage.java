@@ -19,7 +19,7 @@ public class RegisterPage extends AppCompatActivity {
 
     //Make Variable private. prevent use in other activity.
     private EditText email, first, last, password, passwordVerify, security_ans;
-    private Button register;
+    private Button register, backtoMain;
     private DatabaseManager theDB;
     private Spinner spinner;
 
@@ -46,6 +46,17 @@ public class RegisterPage extends AppCompatActivity {
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
         String text = spinner.getSelectedItem().toString();
+
+
+        backtoMain = (Button) findViewById(R.id.backtomainBtnReg);
+        backtoMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gobackToMain = new Intent(getApplicationContext(),WelcomePage.class);
+                startActivity(gobackToMain);
+                finish();
+            }
+        });
 
 
 
@@ -75,6 +86,7 @@ public class RegisterPage extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Data Added", Toast.LENGTH_LONG).show();
                         Intent LogInPage = new Intent(getApplicationContext(), com.example.orderez.intro.LogInPage.class);
                         startActivity(LogInPage);
+                        finish();
                     }
                     else
                         Toast.makeText(getApplicationContext(), "Data Not Added", Toast.LENGTH_LONG).show();
@@ -90,8 +102,6 @@ public class RegisterPage extends AppCompatActivity {
     //Finish the app if user clicks the back button twice in 2 seconds.
     @Override
     public void onBackPressed() {
-        backKeyHandler.onBackPressed_BacktoItemSetting("You will lose your progress if you click back button again.");
+        backKeyHandler.onBackPressed_BacktoMain("You will lose your progress if you click back button again.");
     }
-
-
 }

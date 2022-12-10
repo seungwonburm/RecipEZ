@@ -45,7 +45,7 @@
                 android:orientation="horizontal"
                 android:layout_weight="1">
                 <TextView
-                    android:id="@+id/countTV"
+                    android:id="@+id/itemDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -62,7 +62,7 @@
                 android:orientation="horizontal"
                 android:layout_weight="1">
                 <TextView
-                    android:id="@+id/startDateTV"
+                    android:id="@+id/countNow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -78,7 +78,7 @@
                 android:orientation="horizontal"
                 android:layout_weight="1">
                 <TextView
-                    android:id="@+id/endDateTV"
+                    android:id="@+id/itemMemo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"

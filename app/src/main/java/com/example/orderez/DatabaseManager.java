@@ -91,7 +91,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     }
 //theDb.insertItem(str_title, str_amount, str_unit, str_expireDate, str_memo, id);
-    public boolean insertItem(String name, String amount, String expire_date, String unit, String memo, String user_id) {
+    public boolean insertItem(String name, String amount, String unit, String expire_date, String memo, String user_id) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -184,7 +184,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(ITEM_NAME, item);
         contentValues.put(ITEM_AMOUNT, amount);
-       // contentValues.put(ITEM_UNIT,unit);
+        contentValues.put(ITEM_UNIT,unit);
         contentValues.put(ITEM_EXPIRE_DATE, date);
         contentValues.put(ITEM_MEMO, memo);
 

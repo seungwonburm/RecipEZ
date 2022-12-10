@@ -23,8 +23,8 @@ import java.util.Locale;
 
 public class AddnewItems extends AppCompatActivity{
     Button submit_Btn;
-    EditText title, memo, oneTimeConsume, rateTxT;
-    Spinner totalAmountConsumeUnit, oneTimeConsumeUnit, rateUnit;
+    EditText title, memo, oneTimeConsume;
+    Spinner  oneTimeConsumeUnit;
     String id;
     DatabaseManager theDb;
 
@@ -46,8 +46,6 @@ public class AddnewItems extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addnew_items);
-
-
 
 
         theDb = new DatabaseManager(this);
@@ -90,10 +88,9 @@ public class AddnewItems extends AppCompatActivity{
                Boolean added = theDb.insertItem(str_title, str_amount, str_unit, str_expireDate, str_memo, id);
                 if (added == true){
                     Toast.makeText(getApplicationContext(), "Data Added", Toast.LENGTH_LONG).show();
-                }
-                else
+                } else {
                     Toast.makeText(getApplicationContext(), "Data Not Added", Toast.LENGTH_LONG).show();
-//                finish();
+                }
                 Intent goBacktoHomepage = new Intent(getApplicationContext(), Homepage_Items.class);
                 goBacktoHomepage.putExtra("userId", id);
                 startActivity(goBacktoHomepage);
@@ -105,7 +102,7 @@ public class AddnewItems extends AppCompatActivity{
     }//onCreate
 
     private void updateLabel(){
-        String format_default = "yyyy/MM/dd";
+        String format_default = "MM/dd/yyyy";
         SimpleDateFormat formatter = new SimpleDateFormat(format_default, Locale.US);
 
         EditText et_from_date = (EditText) findViewById(R.id.from_Date);

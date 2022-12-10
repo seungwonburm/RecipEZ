@@ -2,11 +2,15 @@ package com.example.orderez;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -16,6 +20,9 @@ import com.example.orderez.homepage.ItemList_Manager;
 import com.scottyab.aescrypt.AESCrypt;
 
 import java.security.GeneralSecurityException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class Update_Delete extends AppCompatActivity {
 
@@ -26,6 +33,17 @@ public class Update_Delete extends AppCompatActivity {
     DatabaseManager theDb;
     Cursor cursor;
     private BackKeyHandler backKeyHandler = new BackKeyHandler(this);
+
+    Calendar editDates = Calendar.getInstance();
+    DatePickerDialog.OnDateSetListener datePick = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+            editDates.set(Calendar.YEAR,year);
+            editDates.set(Calendar.MONTH,month);
+            editDates.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+            updateLabel();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +63,12 @@ public class Update_Delete extends AppCompatActivity {
         itemUnit = (Spinner) findViewById(R.id.editItemUnit);
 
         if (cursor.getCount()<=0){
-            Toast.makeText(getApplicationContext(), "Login Failed!!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "No Data found!!", Toast.LENGTH_LONG).show();
         }
         else if (cursor.moveToFirst() && cursor != null) {
             var0 = cursor.getString(cursor.getColumnIndexOrThrow("name"));
             var1 = cursor.getString(cursor.getColumnIndexOrThrow("amount"));
-            var2 = cursor.getString(cursor.getColumnIndexOrThrow("unit"));
+//            var2 = cursor.getString(cursor.getColumnIndexOrThrow("unit"));
             var3 = cursor.getString(cursor.getColumnIndexOrThrow("expire_date"));
             var4 = cursor.getString(cursor.getColumnIndexOrThrow("memo"));
             var5 = cursor.getString(cursor.getColumnIndexOrThrow("id"));
@@ -65,9 +83,22 @@ public class Update_Delete extends AppCompatActivity {
         //이부분에 DB에서 꺼낸 값들을 넣어주시면 됩니다.
         itemName.setText(var0);
         itemAmount.setText(var1);
-        itemexpirationDate.setText(var2);
+        itemexpirationDate.setText(var3);
         itemMemo.setText(var4);
+
         //유닛은 어떻게 설정하는지 찾아보겠음.
+
+
+        itemexpirationDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(Update_Delete.this, datePick, editDates.get(Calendar.YEAR), editDates.get(Calendar.MONTH), editDates.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+        ArrayAdapter unitAdapter = ArrayAdapter.createFromResource(this,R.array.UnitTypes,android.R.layout.simple_spinner_item);
+        unitAdapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+        itemUnit.setAdapter(unitAdapter);
 
 
         submit = (Button) findViewById(R.id.editSubmitBtn);
@@ -79,18 +110,21 @@ public class Update_Delete extends AppCompatActivity {
                 var0 = itemName.getText().toString();
                 var3 = itemexpirationDate.getText().toString();
                 var1 = itemAmount.getText().toString();
-                var2 = itemUnit.toString();
+                var2 = itemUnit.getSelectedItem().toString();
                 var4 = itemMemo.getText().toString();
 
-                //public void updateItem(String user_id, String item, String date, String amount, String unit, String memo)
-                theDb.updateItem(var5, var0, var3, var1, var2, var4);
+                if (var2.equals("Select one")){
+                    Toast.makeText(getApplicationContext(),"Please select unit",Toast.LENGTH_SHORT).show();
+                }else {
+                    //public void updateItem(String user_id, String item, String date, String amount, String unit, String memo)
+                    theDb.updateItem(var5, var0, var3, var1, var2, var4);
+                    //Back to Item List
+                    Intent backtoItem = new Intent(getApplicationContext(), Homepage_Items.class);
+                    backtoItem.putExtra("userId", Homepage_Items.id);
+                    startActivity(backtoItem);
+                    finish();
+                }
 
-
-                //Back to Item List
-                Intent backtoItem = new Intent(getApplicationContext(), Homepage_Items.class);
-                backtoItem.putExtra("userId", Homepage_Items.id);
-                startActivity(backtoItem);
-                finish();
             }
         });
 
@@ -140,6 +174,14 @@ public class Update_Delete extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void updateLabel(){
+        String format_default = "yyyy/MM/dd";
+        SimpleDateFormat formatter = new SimpleDateFormat(format_default, Locale.US);
+
+        EditText et_from_date = (EditText) findViewById(R.id.editExpirationDate);
+        et_from_date.setText(formatter.format(editDates.getTime()));
     }
 
     //Overrides BackKeyHandler's onBackPressed method
