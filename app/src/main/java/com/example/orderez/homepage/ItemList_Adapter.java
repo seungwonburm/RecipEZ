@@ -16,7 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.orderez.R;
 import com.example.orderez.Update_Delete;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.ViewHolder> {
     Context mContext;
@@ -102,6 +106,48 @@ public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.View
 
     public void addItem(ItemList_Manager item){
         itemContatiner.add(item);
+    }
+
+    public void sortItemsA_Z(ItemList_Adapter adapter){
+        Collections.sort(itemContatiner, new Comparator<ItemList_Manager>() {
+            @Override
+            public int compare(ItemList_Manager itemList_manager, ItemList_Manager t1) {
+                return itemList_manager.title.compareTo(t1.title);
+            }
+        });
+    }
+
+    public void sortItemsZ_A(ItemList_Adapter adapter){
+        Collections.sort(itemContatiner, new Comparator<ItemList_Manager>() {
+            @Override
+            public int compare(ItemList_Manager itemList_manager, ItemList_Manager t1) {
+                return t1.title.compareTo(itemList_manager.title);
+            }
+        });
+    }
+
+    public void sortItemsExpFIrst(ItemList_Adapter adapter){
+        Collections.sort(itemContatiner, new Comparator<ItemList_Manager>() {
+            @Override
+            public int compare(ItemList_Manager itemList_manager, ItemList_Manager t1) {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+                LocalDate item1 = LocalDate.parse(itemList_manager.unit,formatter);
+                LocalDate item2 = LocalDate.parse(t1.unit,formatter);
+                return item1.compareTo(item2);
+            }
+        });
+    }
+
+    public void sortItemsExpLast(ItemList_Adapter adapter){
+        Collections.sort(itemContatiner, new Comparator<ItemList_Manager>() {
+            @Override
+            public int compare(ItemList_Manager itemList_manager, ItemList_Manager t1) {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+                LocalDate item1 = LocalDate.parse(itemList_manager.unit,formatter);
+                LocalDate item2 = LocalDate.parse(t1.unit,formatter);
+                return item2.compareTo(item1);
+            }
+        });
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder{

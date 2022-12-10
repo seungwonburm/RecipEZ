@@ -1,6 +1,7 @@
 package com.example.orderez.homepage;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,7 +32,11 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Locale;
 
@@ -44,7 +50,7 @@ public class Homepage_Items extends AppCompatActivity {
     DatabaseManager theDb;
     Cursor cursor;
     String var0, var1, var2, var3, var4, currentDate;
-    Boolean noItem = false;
+    Boolean noItem = true;
     long dateDifference=Integer.MAX_VALUE, currentDifference=0;
     public static String temp = "", recipe="";
     TextView expFirst;
@@ -61,11 +67,11 @@ public class Homepage_Items extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage_items);
 
-        itemList = findViewById(R.id.itemList);
-        layoutManager = new LinearLayoutManager(this);
-        itemList.setLayoutManager(layoutManager);
 
-        itemList_adapter = new ItemList_Adapter(this);
+        itemList = findViewById(R.id.itemList);
+
+
+
 
         theDb= new DatabaseManager(this);
 
@@ -73,14 +79,256 @@ public class Homepage_Items extends AppCompatActivity {
 
         currentDate = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format(new Date());
 
+
+
+        Intent intent = getIntent();
+        id = intent.getStringExtra("userId");
+        cursor = theDb.searchItemId(id);
         sortItems = (Spinner) findViewById(R.id.itemSorting);
         ArrayAdapter<CharSequence> sortAdapter = ArrayAdapter.createFromResource(this,R.array.Sorting,android.R.layout.simple_spinner_item);
         sortAdapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         sortItems.setAdapter(sortAdapter);
 
         sortItems.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+
+                if (sortItems.getItemAtPosition(position).equals("Recently added")){
+                    itemList_adapter = new ItemList_Adapter(getApplicationContext());
+                    id = intent.getStringExtra("userId");
+                    cursor = theDb.searchItemId(id);
+                    if (cursor.getCount()<=0){
+                        generate.setEnabled(false);
+                        noItem = true;
+                        Toast.makeText(getApplicationContext(), "No Data Yet!!", Toast.LENGTH_LONG).show();
+                    }
+                    else if (cursor.moveToFirst() && cursor != null) {
+                        noItem = false;
+                        generate.setEnabled(true);
+                        temp = "";
+                        recipe = "";
+                        do{
+                            var0 = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                            var1 = cursor.getString(cursor.getColumnIndexOrThrow("amount"));
+                            var2 = cursor.getString(cursor.getColumnIndexOrThrow("unit"));
+                            var3 = cursor.getString(cursor.getColumnIndexOrThrow("expire_date"));
+                            var4 = cursor.getString(cursor.getColumnIndexOrThrow("memo"));
+                            temp += var0 + ", ";
+
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+                            LocalDate start = LocalDate.parse(currentDate,formatter);
+                            LocalDate end = LocalDate.parse(var3,formatter);
+                            currentDifference=ChronoUnit.DAYS.between(start, end);
+                            if (dateDifference>currentDifference){
+                                dateDifference = currentDifference;
+                            }
+
+                            itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var3, var4));
+                        } while (cursor.moveToNext());
+                        recipe = temp.substring(0,temp.length()-2);
+                        layoutManager = new LinearLayoutManager(getApplicationContext());
+                        itemList.setLayoutManager(layoutManager);
+                        itemList.setAdapter(itemList_adapter);
+
+                    } else if (cursor == null){
+                        noItem = true;
+                        generate.setEnabled(false);
+                        Toast.makeText(getApplicationContext(), "NO DATA!!", Toast.LENGTH_LONG).show();
+                    }
+                    cursor.close();
+                    itemList.setAdapter(itemList_adapter);
+                }else if (sortItems.getItemAtPosition(position).equals("A-Z")){
+                    itemList_adapter = new ItemList_Adapter(getApplicationContext());
+                    ArrayList  newList = new ArrayList<>();
+                    id = intent.getStringExtra("userId");
+                    cursor = theDb.searchItemId(id);
+                    if (cursor.getCount()<=0){
+                        generate.setEnabled(false);
+                        noItem = true;
+                        Toast.makeText(getApplicationContext(), "No Data Yet!!", Toast.LENGTH_LONG).show();
+                    }
+                    else if (cursor.moveToFirst() && cursor != null) {
+                        noItem = false;
+                        generate.setEnabled(true);
+                        temp = "";
+                        recipe = "";
+                        do{
+                            var0 = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                            var1 = cursor.getString(cursor.getColumnIndexOrThrow("amount"));
+                            var2 = cursor.getString(cursor.getColumnIndexOrThrow("unit"));
+                            var3 = cursor.getString(cursor.getColumnIndexOrThrow("expire_date"));
+                            var4 = cursor.getString(cursor.getColumnIndexOrThrow("memo"));
+                            temp += var0 + ", ";
+
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+                            LocalDate start = LocalDate.parse(currentDate,formatter);
+                            LocalDate end = LocalDate.parse(var3,formatter);
+                            currentDifference=ChronoUnit.DAYS.between(start, end);
+                            if (dateDifference>currentDifference){
+                                dateDifference = currentDifference;
+                            }
+
+                            itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var3, var4));
+
+                        } while (cursor.moveToNext());
+                        recipe = temp.substring(0,temp.length()-2);
+                        layoutManager = new LinearLayoutManager(getApplicationContext());
+                        itemList_adapter.sortItemsA_Z(itemList_adapter);
+                        itemList.setLayoutManager(layoutManager);
+                        itemList.setAdapter(itemList_adapter);
+
+                    } else if (cursor == null){
+                        noItem = true;
+                        generate.setEnabled(false);
+                        Toast.makeText(getApplicationContext(), "NO DATA!!", Toast.LENGTH_LONG).show();
+                    }
+                    cursor.close();
+                    itemList.setAdapter(itemList_adapter);
+                }else if (sortItems.getItemAtPosition(position).equals("Z-A")){
+                    itemList_adapter = new ItemList_Adapter(getApplicationContext());
+                    ArrayList  newList = new ArrayList<>();
+                    id = intent.getStringExtra("userId");
+                    cursor = theDb.searchItemId(id);
+                    if (cursor.getCount()<=0){
+                        generate.setEnabled(false);
+                        noItem = true;
+                        Toast.makeText(getApplicationContext(), "No Data Yet!!", Toast.LENGTH_LONG).show();
+                    }
+                    else if (cursor.moveToFirst() && cursor != null) {
+                        noItem = false;
+                        generate.setEnabled(true);
+                        temp = "";
+                        recipe = "";
+                        do{
+                            var0 = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                            var1 = cursor.getString(cursor.getColumnIndexOrThrow("amount"));
+                            var2 = cursor.getString(cursor.getColumnIndexOrThrow("unit"));
+                            var3 = cursor.getString(cursor.getColumnIndexOrThrow("expire_date"));
+                            var4 = cursor.getString(cursor.getColumnIndexOrThrow("memo"));
+                            temp += var0 + ", ";
+
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+                            LocalDate start = LocalDate.parse(currentDate,formatter);
+                            LocalDate end = LocalDate.parse(var3,formatter);
+                            currentDifference=ChronoUnit.DAYS.between(start, end);
+                            if (dateDifference>currentDifference){
+                                dateDifference = currentDifference;
+                            }
+
+                            itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var3, var4));
+
+                        } while (cursor.moveToNext());
+                        recipe = temp.substring(0,temp.length()-2);
+                        layoutManager = new LinearLayoutManager(getApplicationContext());
+                        itemList_adapter.sortItemsZ_A(itemList_adapter);
+                        itemList.setLayoutManager(layoutManager);
+                        itemList.setAdapter(itemList_adapter);
+
+                    } else if (cursor == null){
+                        noItem = true;
+                        generate.setEnabled(false);
+                        Toast.makeText(getApplicationContext(), "NO DATA!!", Toast.LENGTH_LONG).show();
+                    }
+                    cursor.close();
+                    itemList.setAdapter(itemList_adapter);
+
+                }else if (sortItems.getItemAtPosition(position).equals("Expires first")){
+                    itemList_adapter = new ItemList_Adapter(getApplicationContext());
+                    ArrayList  newList = new ArrayList<>();
+                    id = intent.getStringExtra("userId");
+                    cursor = theDb.searchItemId(id);
+                    if (cursor.getCount()<=0){
+                        generate.setEnabled(false);
+                        noItem = true;
+                        Toast.makeText(getApplicationContext(), "No Data Yet!!", Toast.LENGTH_LONG).show();
+                    }
+                    else if (cursor.moveToFirst() && cursor != null) {
+                        noItem = false;
+                        generate.setEnabled(true);
+                        temp = "";
+                        recipe = "";
+                        do{
+                            var0 = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                            var1 = cursor.getString(cursor.getColumnIndexOrThrow("amount"));
+                            var2 = cursor.getString(cursor.getColumnIndexOrThrow("unit"));
+                            var3 = cursor.getString(cursor.getColumnIndexOrThrow("expire_date"));
+                            var4 = cursor.getString(cursor.getColumnIndexOrThrow("memo"));
+                            temp += var0 + ", ";
+
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+                            LocalDate start = LocalDate.parse(currentDate,formatter);
+                            LocalDate end = LocalDate.parse(var3,formatter);
+                            currentDifference=ChronoUnit.DAYS.between(start, end);
+                            if (dateDifference>currentDifference){
+                                dateDifference = currentDifference;
+                            }
+
+                            itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var3, var4));
+
+                        } while (cursor.moveToNext());
+                        recipe = temp.substring(0,temp.length()-2);
+                        layoutManager = new LinearLayoutManager(getApplicationContext());
+                        itemList_adapter.sortItemsExpFIrst(itemList_adapter);
+                        itemList.setLayoutManager(layoutManager);
+                        itemList.setAdapter(itemList_adapter);
+
+                    } else if (cursor == null){
+                        noItem = true;
+                        generate.setEnabled(false);
+                        Toast.makeText(getApplicationContext(), "NO DATA!!", Toast.LENGTH_LONG).show();
+                    }
+                    cursor.close();
+                    itemList.setAdapter(itemList_adapter);
+
+                }else if (sortItems.getItemAtPosition(position).equals("Expires last")){
+                    itemList_adapter = new ItemList_Adapter(getApplicationContext());
+                    ArrayList  newList = new ArrayList<>();
+                    id = intent.getStringExtra("userId");
+                    cursor = theDb.searchItemId(id);
+                    if (cursor.getCount()<=0){
+                        generate.setEnabled(false);
+                        noItem = true;
+                        Toast.makeText(getApplicationContext(), "No Data Yet!!", Toast.LENGTH_LONG).show();
+                    }
+                    else if (cursor.moveToFirst() && cursor != null) {
+                        noItem = false;
+                        generate.setEnabled(true);
+                        temp = "";
+                        recipe = "";
+                        do{
+                            var0 = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                            var1 = cursor.getString(cursor.getColumnIndexOrThrow("amount"));
+                            var2 = cursor.getString(cursor.getColumnIndexOrThrow("unit"));
+                            var3 = cursor.getString(cursor.getColumnIndexOrThrow("expire_date"));
+                            var4 = cursor.getString(cursor.getColumnIndexOrThrow("memo"));
+                            temp += var0 + ", ";
+
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+                            LocalDate start = LocalDate.parse(currentDate,formatter);
+                            LocalDate end = LocalDate.parse(var3,formatter);
+                            currentDifference=ChronoUnit.DAYS.between(start, end);
+                            if (dateDifference>currentDifference){
+                                dateDifference = currentDifference;
+                            }
+
+                            itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var3, var4));
+
+                        } while (cursor.moveToNext());
+                        recipe = temp.substring(0,temp.length()-2);
+                        layoutManager = new LinearLayoutManager(getApplicationContext());
+                        itemList_adapter.sortItemsExpLast(itemList_adapter);
+                        itemList.setLayoutManager(layoutManager);
+                        itemList.setAdapter(itemList_adapter);
+
+                    } else if (cursor == null){
+                        noItem = true;
+                        generate.setEnabled(false);
+                        Toast.makeText(getApplicationContext(), "NO DATA!!", Toast.LENGTH_LONG).show();
+                    }
+                    cursor.close();
+                    itemList.setAdapter(itemList_adapter);
+                }
 
             }
 
@@ -91,49 +339,11 @@ public class Homepage_Items extends AppCompatActivity {
         });
 
 
-        Intent intent = getIntent();
-        id = intent.getStringExtra("userId");
 
-        cursor = theDb.searchItemId(id);
 
-        if (cursor.getCount()<=0){
-            generate.setEnabled(false);
-            noItem = true;
-            Toast.makeText(getApplicationContext(), "No Data Yet!!", Toast.LENGTH_LONG).show();
-        }
-        else if (cursor.moveToFirst() && cursor != null) {
-            noItem = false;
-            generate.setEnabled(true);
-            temp = "";
-            recipe = "";
-            do{
-                var0 = cursor.getString(cursor.getColumnIndexOrThrow("name"));
-                var1 = cursor.getString(cursor.getColumnIndexOrThrow("amount"));
-                var2 = cursor.getString(cursor.getColumnIndexOrThrow("unit"));
-                var3 = cursor.getString(cursor.getColumnIndexOrThrow("expire_date"));
-                var4 = cursor.getString(cursor.getColumnIndexOrThrow("memo"));
-                temp += var0 + ", ";
 
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-                LocalDate start = LocalDate.parse(currentDate,formatter);
-                LocalDate end = LocalDate.parse(var3,formatter);
-                currentDifference=ChronoUnit.DAYS.between(start, end);
-                if (dateDifference>currentDifference){
-                    dateDifference = currentDifference;
-                }
 
-                itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var3, var4));
-            } while (cursor.moveToNext());
-            recipe = temp.substring(0,temp.length()-2);
-            itemList.setAdapter(itemList_adapter);
 
-        } else if (cursor == null){
-            noItem = true;
-            generate.setEnabled(false);
-            Toast.makeText(getApplicationContext(), "NO DATA!!", Toast.LENGTH_LONG).show();
-        }
-        cursor.close();
-        itemList.setAdapter(itemList_adapter);
 
         expFirst = (TextView) findViewById(R.id.expFirst);
 

@@ -68,7 +68,6 @@ public class Update_Delete extends AppCompatActivity {
         else if (cursor.moveToFirst() && cursor != null) {
             var0 = cursor.getString(cursor.getColumnIndexOrThrow("name"));
             var1 = cursor.getString(cursor.getColumnIndexOrThrow("amount"));
-//            var2 = cursor.getString(cursor.getColumnIndexOrThrow("unit"));
             var3 = cursor.getString(cursor.getColumnIndexOrThrow("expire_date"));
             var4 = cursor.getString(cursor.getColumnIndexOrThrow("memo"));
             var5 = cursor.getString(cursor.getColumnIndexOrThrow("id"));
