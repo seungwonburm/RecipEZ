@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="UnitTypes">
+        <item>Recently added</item>
+        <item>A-Z</item>
+        <item>Z-A</item>
+        <item>Expires first</item>
+        <item>Expires last</item>
+    </string-array>
+</resources>
