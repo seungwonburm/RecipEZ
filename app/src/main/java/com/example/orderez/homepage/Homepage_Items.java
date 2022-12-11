@@ -344,6 +344,7 @@ public class Homepage_Items extends AppCompatActivity {
                 else
                     message += "At least one item is expiring on " + expiryDate;
                 expFirst.setText(message + "");
+
             }
 
             @Override
