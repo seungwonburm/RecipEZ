@@ -81,20 +81,25 @@ public class AddnewItems extends AppCompatActivity{
                 String str_unit = oneTimeConsumeUnit.getSelectedItem().toString();
 
                 String str_memo= memo.getText().toString();
-                String str_expireDateOriginal  = pickDates.getTime().toString();
-                String str_expireDate = str_expireDateOriginal.substring(4,10) + str_expireDateOriginal.substring(23);
                 String date = et_from_Date.getText().toString();
+                Boolean added = false;
+                if (!str_title.equals("") && !str_amount.equals("") && !str_unit.equals("Select one") && !date.equals("")){
+                    added = theDb.insertItem(str_title, str_amount, str_unit, date, str_memo, id);
+                }else{
+                    Toast.makeText(getApplicationContext(), "Please Add Required Information!", Toast.LENGTH_LONG).show();
+                }
 
-               Boolean added = theDb.insertItem(str_title, str_amount, str_unit, date, str_memo, id);
                 if (added == true){
                     Toast.makeText(getApplicationContext(), "Data Added", Toast.LENGTH_LONG).show();
+
+                    Intent goBacktoHomepage = new Intent(getApplicationContext(), Homepage_Items.class);
+                    goBacktoHomepage.putExtra("userId", id);
+                    startActivity(goBacktoHomepage);
+                    finish();
                 } else {
                     Toast.makeText(getApplicationContext(), "Data Not Added", Toast.LENGTH_LONG).show();
                 }
-                Intent goBacktoHomepage = new Intent(getApplicationContext(), Homepage_Items.class);
-                goBacktoHomepage.putExtra("userId", id);
-                startActivity(goBacktoHomepage);
-                finish();
+
             }
         });
 

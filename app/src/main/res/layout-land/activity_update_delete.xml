@@ -108,14 +108,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_weight="5">
+
         <EditText
+            android:id="@+id/editMemo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Memo"
-            android:textSize="20sp"
             android:gravity="top"
-            android:id="@+id/editMemo">
-        </EditText>
+            android:hint="Memo (Optional)"
+            android:textSize="20sp"></EditText>
     </LinearLayout>
     <Button
         android:id="@+id/editSubmitBtn"

@@ -53,6 +53,7 @@ public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.View
                 intent.putExtra("ItemName",holder.itemName.getText().toString());
                 intent.putExtra("userId", Homepage_Items.id);
                 view.getContext().startActivity(intent);
+//                ((Homepage_Items)mContext).finish();
             }
         });
         holder.expDate.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +64,7 @@ public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.View
                 intent.putExtra("ItemName",holder.itemName.getText().toString());
                 intent.putExtra("userId", Homepage_Items.id);
                 view.getContext().startActivity(intent);
+//                ((Homepage_Items)mContext).finish();
             }
         });
         holder.count.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +75,7 @@ public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.View
                 intent.putExtra("ItemName",holder.itemName.getText().toString());
                 intent.putExtra("userId", Homepage_Items.id);
                 view.getContext().startActivity(intent);
+//                ((Homepage_Items)mContext).finish();
             }
         });
         holder.itemUnit.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +86,7 @@ public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.View
                 intent.putExtra("ItemName",holder.itemName.getText().toString());
                 intent.putExtra("userId", Homepage_Items.id);
                 view.getContext().startActivity(intent);
+//                ((Homepage_Items)mContext).finish();
             }
         });
         holder.itemmemo.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +97,7 @@ public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.View
                 intent.putExtra("ItemName",holder.itemName.getText().toString());
                 intent.putExtra("userId", Homepage_Items.id);
                 view.getContext().startActivity(intent);
+//                ((Homepage_Items)mContext).finish();
             }
         });
     }

@@ -79,13 +79,10 @@ public class Update_Delete extends AppCompatActivity {
 
 
 
-        //이부분에 DB에서 꺼낸 값들을 넣어주시면 됩니다.
         itemName.setText(var0);
         itemAmount.setText(var1);
         itemexpirationDate.setText(var3);
         itemMemo.setText(var4);
-
-        //유닛은 어떻게 설정하는지 찾아보겠음.
 
 
         itemexpirationDate.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +109,7 @@ public class Update_Delete extends AppCompatActivity {
 
                 if (var2.equals("Select one")){
                     Toast.makeText(getApplicationContext(),"Please select unit",Toast.LENGTH_SHORT).show();
-                }else {
+                }else if (!var0.equals("") && !var1.equals("") && !var2.equals("")&& !var3.equals("")){
                     //public void updateItem(String user_id, String item, String date, String amount, String unit, String memo)
                     theDb.updateItem(var5, var0, var3, var1, var2, var4);
                     //Back to Item List
@@ -120,6 +117,8 @@ public class Update_Delete extends AppCompatActivity {
                     backtoItem.putExtra("userId", Homepage_Items.id);
                     startActivity(backtoItem);
                     finish();
+                } else{
+                    Toast.makeText(getApplicationContext(),"Please Provide Required Information!",Toast.LENGTH_SHORT).show();
                 }
 
             }
