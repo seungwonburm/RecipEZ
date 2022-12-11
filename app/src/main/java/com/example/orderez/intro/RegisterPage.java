@@ -75,8 +75,12 @@ public class RegisterPage extends AppCompatActivity {
 
                     } else if (result == -2){
                         Toast.makeText(getApplicationContext(), "Invalid Email Format", Toast.LENGTH_LONG).show();
-                    } else if (!password.getText().toString().equals(passwordVerify.getText().toString())) {
+                    } else if (!(4<= password.getText().length() && password.getText().length()<=20) || !(4<= passwordVerify.getText().length() && passwordVerify.getText().length()<=20)){
+                        Toast.makeText(getApplicationContext(), "Password Should be Between 4~20 Characters!", Toast.LENGTH_LONG).show();
+                    }else if (!password.getText().toString().equals(passwordVerify.getText().toString())) {
                         Toast.makeText(getApplicationContext(), "Passwords Do Not Match!", Toast.LENGTH_LONG).show();
+                    } else if (first.getText().toString().length()>100 || last.getText().toString().length()>100 || email.getText().toString().length()>100 || security_ans.getText().toString().length()>100 ) {
+                        Toast.makeText(getApplicationContext(), "Too Much Information!", Toast.LENGTH_LONG).show();
                     } else {
                         String text = spinner.getSelectedItem().toString();
                         added = theDB.insert(first.getText().toString(), last.getText().toString(), email.getText().toString(), password.getText().toString(), text, security_ans.getText().toString());

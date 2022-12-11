@@ -98,7 +98,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(ITEM_NAME, name);
+        contentValues.put(ITEM_NAME, name.substring(0,1).toUpperCase() + name.substring(1).toLowerCase());
         contentValues.put(ITEM_AMOUNT, amount);
         contentValues.put(ITEM_UNIT,unit);
         contentValues.put(ITEM_EXPIRE_DATE, expire_date);
@@ -185,7 +185,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(ITEM_NAME, item);
+        contentValues.put(ITEM_NAME, item.substring(0,1).toUpperCase() + item.substring(1).toLowerCase());
         contentValues.put(ITEM_AMOUNT, amount);
         contentValues.put(ITEM_UNIT,unit);
         contentValues.put(ITEM_EXPIRE_DATE, date);

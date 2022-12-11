@@ -115,7 +115,10 @@ public class ForgotPassword extends AppCompatActivity {
             public void onClick(View view) {
                 boolean added = false;
                 if (!password_forgot.getText().toString().equals("") && !password_verify_forgot.getText().toString().equals("") ){
-                    if (!password_forgot.getText().toString().equals(password_verify_forgot.getText().toString())) {
+                    if (!(4<= password_forgot.getText().length() && password_forgot.getText().length()<=20) || !(4<= password_verify_forgot.getText().length() && password_verify_forgot.getText().length()<=20)){
+                        Toast.makeText(getApplicationContext(), "New Password Should be Between 4~20 Characters!", Toast.LENGTH_LONG).show();
+                    }
+                    else if (!password_forgot.getText().toString().equals(password_verify_forgot.getText().toString())) {
                         Toast.makeText(getApplicationContext(), "Passwords Do Not Match!", Toast.LENGTH_LONG).show();
                     }
                     else {

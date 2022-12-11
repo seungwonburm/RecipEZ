@@ -55,8 +55,13 @@ public class ChangePassword extends AppCompatActivity {
                         try {
                             String decrypted = AESCrypt.decrypt(oldPassword.getText().toString(), pw);
                             if (decrypted.equals(email)) {
-                                if (!newPassword.getText().toString().equals(verifyNewPassword.getText().toString())) {
+                                if (!(4<= newPassword.getText().length() && newPassword.getText().length()<=20) || !(4<= verifyNewPassword.getText().length() && verifyNewPassword.getText().length()<=20)){
+                                    Toast.makeText(getApplicationContext(), "New Password Should be Between 4~20 Characters!", Toast.LENGTH_LONG).show();
+                                }
+                                else if (!newPassword.getText().toString().equals(verifyNewPassword.getText().toString())) {
                                     Toast.makeText(getApplicationContext(), "New Passwords Do Not Match!", Toast.LENGTH_LONG).show();
+                                }else if (oldPassword.getText().toString().length()>100 ){
+                                    Toast.makeText(getApplicationContext(), "Too Much Information!", Toast.LENGTH_LONG).show();
                                 } else {
                                     added = theDb.updatePW(id, email, newPassword.getText().toString());
                                 }
