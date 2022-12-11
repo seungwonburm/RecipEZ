@@ -127,6 +127,7 @@ public class ForgotPassword extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Successfully Updated Password", Toast.LENGTH_LONG).show();
                         Intent LogInPage = new Intent(getApplicationContext(), com.example.orderez.intro.LogInPage.class);
                         startActivity(LogInPage);
+                        finish();
                     }
                     else
                         Toast.makeText(getApplicationContext(), "Failed to Update Password", Toast.LENGTH_LONG).show();

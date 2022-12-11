@@ -79,6 +79,7 @@ public class LogInPage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent ForgotPasswordPage = new Intent(getApplicationContext(), ForgotPassword.class);
                 startActivity(ForgotPasswordPage);
+                finish();
             }
         });
 
