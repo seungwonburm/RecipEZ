@@ -399,6 +399,15 @@ public class Homepage_Items extends AppCompatActivity {
                 return false;
             }
         });
+        if (savedInstanceState != null) {
+            String idCheck = savedInstanceState.getString("id");
+        }
+
+    }// onCreate
+
+    @Override
+    protected  void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
 
     }
 
