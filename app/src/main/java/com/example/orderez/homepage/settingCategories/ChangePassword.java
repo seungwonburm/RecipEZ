@@ -23,7 +23,7 @@ public class ChangePassword extends AppCompatActivity {
     EditText oldPassword, newPassword, verifyNewPassword;
     Button submit;
     String id, var1, var2, var3;
-    Boolean added;
+    Boolean added=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

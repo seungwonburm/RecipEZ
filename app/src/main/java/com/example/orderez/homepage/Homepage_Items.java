@@ -76,7 +76,7 @@ public class Homepage_Items extends AppCompatActivity {
         theDb= new DatabaseManager(this);
 
         generate = (Button) findViewById(R.id.generate);
-
+        expFirst = (TextView) findViewById(R.id.expFirst);
         currentDate = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format(new Date());
 
 
@@ -346,41 +346,12 @@ public class Homepage_Items extends AppCompatActivity {
                 expFirst.setText(message + "");
             }
 
-
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
 
-
-
-
-
-
-
-
-        expFirst = (TextView) findViewById(R.id.expFirst);
-
-
-
-        Calendar c = Calendar.getInstance();
-        c.add(Calendar.DATE, Math.toIntExact(dateDifference));
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-        String expiryDate = sdf.format(c.getTime());
-
-
-        String message = "Today's Date: " + currentDate +"\n";
-        if (noItem == true)
-            message += "There is no expiring items.";
-        else if (dateDifference<0)
-            message += "At least one item has expired on " + expiryDate;
-        else if (dateDifference==0)
-            message += "At least one item is expiring today";
-        else
-            message += "At least one item is expiring on " + expiryDate;
-        expFirst.setText(message + "");
 
         generate.setOnClickListener(new View.OnClickListener() {
             @Override
