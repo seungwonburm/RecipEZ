@@ -17,12 +17,6 @@
         android:theme="@style/Theme.OrderEZ"
         tools:targetApi="30">
         <activity
-            android:name=".homepage.settingCategories.Setting04"
-            android:exported="false" />
-        <activity
-            android:name=".homepage.settingCategories.Setting03"
-            android:exported="false" />
-        <activity
             android:name=".Update_Delete"
             android:exported="false" />
         <activity

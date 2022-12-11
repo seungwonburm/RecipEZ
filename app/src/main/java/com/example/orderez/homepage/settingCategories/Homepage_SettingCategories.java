@@ -99,45 +99,7 @@ public class Homepage_SettingCategories extends AppCompatActivity {
             }
         });
 
-        setting03_icon = findViewById(R.id.setting03_icon);
-        setting03_icon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent gotoSetting03 = new Intent (getApplicationContext(),Setting03.class);
-                gotoSetting03.putExtra("userId", str);
-                startActivity(gotoSetting03);
-            }
-        });
 
-        setting03_text = findViewById(R.id.setting03_text);
-        setting03_text.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent gotoSetting03 = new Intent (getApplicationContext(),Setting03.class);
-                gotoSetting03.putExtra("userId", str);
-                startActivity(gotoSetting03);
-            }
-        });
-
-        setting04_icon = findViewById(R.id.setting04_icon);
-        setting04_icon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent gotoSetting04 = new Intent (getApplicationContext(),Setting04.class);
-                gotoSetting04.putExtra("userId", str);
-                startActivity(gotoSetting04);
-            }
-        });
-
-        setting04_text = findViewById(R.id.setting04_text);
-        setting04_text.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent gotoSetting04 = new Intent (getApplicationContext(),Setting04.class);
-                gotoSetting04.putExtra("userId", str);
-                startActivity(gotoSetting04);
-            }
-        });
 
 
 
