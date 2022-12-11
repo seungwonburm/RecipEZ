@@ -1,49 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".homepage.settingCategories.AccountSettings">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <TextView
+        android:id="@+id/welcome"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/welcome"
-            android:layout_width="323dp"
-            android:layout_height="49dp"
-            android:layout_marginTop="48dp"
-            android:gravity="center"
-            android:text="Welcome"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="left"
+        android:text="User Profile"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        />
 
-        <TextView
-            android:id="@+id/email"
-            android:layout_width="252dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="24dp"
-            android:gravity="center"
-            android:text="Email"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/welcome" />
+    <TextView
+        android:id="@+id/emailTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="left"
+        android:text="Email"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="left"
+        android:text="Email"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="15sp" />
 
-        <Button
-            android:id="@+id/logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="96dp"
-            android:text="Logout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/email" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-</ScrollView>
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+</LinearLayout>
