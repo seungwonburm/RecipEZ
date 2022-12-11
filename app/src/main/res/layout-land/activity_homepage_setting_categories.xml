@@ -89,26 +89,7 @@
         android:clickable="true"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/change_password_linear"
-        android:focusable="true">
-
-        <ImageButton
-            android:id="@+id/setting03_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/icon_setting" />
-
-        <TextView
-            android:id="@+id/setting03_text"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clickable="true"
-            android:focusable="true"
-            android:text="Setting03"
-            android:textSize="25sp"
-            app:autoSizeMaxTextSize="25sp"
-            app:autoSizeMinTextSize="45sp" />
-
-    </LinearLayout>
+        android:focusable="true"/>
 
     <LinearLayout
         android:id="@+id/setting04_linear"
@@ -117,26 +98,7 @@
         android:clickable="true"
         app:layout_constraintTop_toBottomOf="@+id/setting03"
         android:orientation="horizontal"
-        >
-
-        <ImageButton
-            android:id="@+id/setting04_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/icon_setting" />
-
-        <TextView
-            android:id="@+id/setting04_text"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clickable="true"
-            android:focusable="true"
-            android:text="Setting04"
-            android:textSize="25sp"
-            app:autoSizeMaxTextSize="25sp"
-            app:autoSizeMinTextSize="45sp" />
-
-    </LinearLayout>
+        />
 
 
 

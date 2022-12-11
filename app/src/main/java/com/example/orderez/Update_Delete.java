@@ -109,9 +109,11 @@ public class Update_Delete extends AppCompatActivity {
 
                 if (var2.equals("Select one")){
                     Toast.makeText(getApplicationContext(),"Please select unit",Toast.LENGTH_SHORT).show();
-                } else if (var0.length() >100 || var1.length() >10 || var3.length() >100 || var4.length() >100){
-                    Toast.makeText(getApplicationContext(), "Too much Information!", Toast.LENGTH_LONG).show();
-                } else if (!var0.equals("") && !var1.equals("") && !var2.equals("")&& !var3.equals("")){
+                }else if (var0.length() >100 ||  var3.length() >100 || var4.length() >100){
+                    Toast.makeText(getApplicationContext(), "Please enter no more than 100 words", Toast.LENGTH_LONG).show();
+                }else if (var1.length() >10 ){
+                    Toast.makeText(getApplicationContext(), "Please enter amount no more than 10 digits", Toast.LENGTH_LONG).show();
+                }else if (!var0.equals("") && !var1.equals("") && !var2.equals("")&& !var3.equals("")){
                     //public void updateItem(String user_id, String item, String date, String amount, String unit, String memo)
                     theDb.updateItem(var5, var0, var3, var1, var2, var4);
                     //Back to Item List

@@ -80,12 +80,14 @@ public class AddnewItems extends AppCompatActivity{
                 String str_amount = amount.getText().toString();
                 String str_unit = oneTimeConsumeUnit.getSelectedItem().toString();
 
-                String str_memo= memo.getText().toString();
+                String str_memo = memo.getText().toString();
                 String date = et_from_Date.getText().toString();
                 Boolean added = false;
-                if (str_title.length() >100 || str_amount.length() >10 || str_memo.length() >100 || date.length() >100){
-                    Toast.makeText(getApplicationContext(), "Too much Information!", Toast.LENGTH_LONG).show();
-                } else if (!str_title.equals("") && !str_amount.equals("") && !str_unit.equals("Select one") && !date.equals("")){
+                if (str_title.length() > 100 ||str_memo.length() >100|| date.length() > 100) {
+                    Toast.makeText(getApplicationContext(), "Please enter no more than 100 words", Toast.LENGTH_LONG).show();
+                }else if ( str_amount.length() > 10 ){
+                    Toast.makeText(getApplicationContext(), "Please enter amount no more than 10 digits", Toast.LENGTH_LONG).show();
+                }else if (!str_title.equals("") && !str_amount.equals("") && !str_unit.equals("Select one") && !date.equals("")){
                     added = theDb.insertItem(str_title, str_amount, str_unit, date, str_memo, id);
                 }else{
                     Toast.makeText(getApplicationContext(), "Please Add Required Information!", Toast.LENGTH_LONG).show();
