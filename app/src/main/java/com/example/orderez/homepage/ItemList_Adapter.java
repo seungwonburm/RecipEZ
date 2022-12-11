@@ -2,7 +2,6 @@ package com.example.orderez.homepage;
 
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -164,8 +163,8 @@ public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.View
             super(itemView);
 
             itemName = itemView.findViewById(R.id.itemNameTV);
-            count = itemView.findViewById(R.id.itemDate);
-            expDate = itemView.findViewById(R.id.countNum);
+            count = itemView.findViewById(R.id.item_amount);
+            expDate = itemView.findViewById(R.id.item_unit);
             itemmemo = itemView.findViewById(R.id.itemMemo);
             itemUnit = itemView.findViewById(R.id.countUnit);
 
