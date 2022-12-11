@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Setting"
-        android:textSize="45sp"
+        android:text="Settings"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:autoSizeMaxTextSize="30sp"
         app:autoSizeMinTextSize="50sp"
@@ -45,11 +45,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clickable="true"
+            android:focusable="true"
             android:text="Account Settings"
-            android:textSize="40sp"
+            android:textSize="25sp"
             app:autoSizeMaxTextSize="25sp"
-            app:autoSizeMinTextSize="45sp"
-            android:focusable="true" />
+            app:autoSizeMinTextSize="45sp" />
 
     </LinearLayout>
 
@@ -74,11 +74,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clickable="true"
+            android:focusable="true"
             android:text="Change Password"
-            android:textSize="40sp"
+            android:textSize="25sp"
             app:autoSizeMaxTextSize="25sp"
-            app:autoSizeMinTextSize="45sp"
-            android:focusable="true" />
+            app:autoSizeMinTextSize="45sp" />
 
     </LinearLayout>
 
@@ -102,11 +102,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clickable="true"
+            android:focusable="true"
             android:text="Setting03"
-            android:textSize="40sp"
+            android:textSize="25sp"
             app:autoSizeMaxTextSize="25sp"
-            app:autoSizeMinTextSize="45sp"
-            android:focusable="true" />
+            app:autoSizeMinTextSize="45sp" />
 
     </LinearLayout>
 
@@ -130,11 +130,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clickable="true"
+            android:focusable="true"
             android:text="Setting04"
-            android:textSize="40sp"
+            android:textSize="25sp"
             app:autoSizeMaxTextSize="25sp"
-            app:autoSizeMinTextSize="45sp"
-            android:focusable="true" />
+            app:autoSizeMinTextSize="45sp" />
 
     </LinearLayout>
 

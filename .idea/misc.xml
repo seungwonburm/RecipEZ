@@ -16,17 +16,17 @@
         <entry key="app/src/main/res/layout-land/activity_account_setting.xml" value="0.36070559610705594" />
         <entry key="app/src/main/res/layout-land/activity_account_settings.xml" value="0.31666666666666665" />
         <entry key="app/src/main/res/layout-land/activity_addnew_items.xml" value="0.25396575927734377" />
-        <entry key="app/src/main/res/layout-land/activity_change_password.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/activity_change_password.xml" value="0.35223999023437497" />
         <entry key="app/src/main/res/layout-land/activity_forgot_password.xml" value="0.1" />
         <entry key="app/src/main/res/layout-land/activity_homepage_items.xml" value="0.1" />
         <entry key="app/src/main/res/layout-land/activity_homepage_setting_categories.xml" value="0.348681640625" />
-        <entry key="app/src/main/res/layout-land/activity_log_in_page.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/activity_log_in_page.xml" value="0.1562286376953125" />
         <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout-land/activity_recipe_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout-land/activity_register_page.xml" value="0.1" />
         <entry key="app/src/main/res/layout-land/activity_update_delete.xml" value="0.1" />
-        <entry key="app/src/main/res/layout-land/activity_welcome.xml" value="0.1" />
-        <entry key="app/src/main/res/layout-land/itemlist_listview_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/activity_welcome.xml" value="0.2973541259765625" />
+        <entry key="app/src/main/res/layout-land/itemlist_listview_item.xml" value="0.2952896118164063" />
         <entry key="app/src/main/res/layout-land/list_meal_ingredients.xml" value="0.1" />
         <entry key="app/src/main/res/layout-land/list_random_recipe.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_account_settings.xml" value="0.2924218219259511" />

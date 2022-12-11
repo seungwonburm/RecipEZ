@@ -11,13 +11,13 @@
         android:id="@+id/backtomainBtnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="12dp"
         android:text="Back to Main Page"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.565"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/forgotPasswordBtnLogin" />
+        app:layout_constraintTop_toBottomOf="@id/forgotPasswordBtnLogin" />
 
     <EditText
         android:id="@+id/emailLogin"
@@ -49,10 +49,11 @@
         android:id="@+id/loginbtLogin"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:text="Login"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordLogin" />
 
@@ -62,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="Forgot Password"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/loginbtLogin" />
@@ -71,14 +72,14 @@
         android:id="@+id/emailTextLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="16dp"
         android:text="E-Mail"
         android:textColor="#090909"
-        android:textSize="30sp"
+        android:textSize="25sp"
         app:autoSizeMaxTextSize="20sp"
         app:autoSizeMinTextSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.257"
+        app:layout_constraintHorizontal_bias="0.271"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -86,14 +87,14 @@
         android:id="@+id/pwTextLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="8dp"
         android:text="Password"
         android:textColor="#090909"
-        android:textSize="30sp"
+        android:textSize="25sp"
         app:autoSizeMaxTextSize="20sp"
         app:autoSizeMinTextSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.294"
+        app:layout_constraintHorizontal_bias="0.282"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailLogin" />
 

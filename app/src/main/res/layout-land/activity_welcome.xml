@@ -10,26 +10,26 @@
         android:id="@+id/toLoginPagebtnMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="28dp"
         android:text="login"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.744"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/loginTextMain"
+        app:layout_constraintTop_toBottomOf="@id/loginTextMain"
         app:layout_constraintWidth_percent="1.0" />
 
     <Button
         android:id="@+id/toRegPagebtnMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="28dp"
         android:text="register now"
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/loginTextMain"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/registerTextMain"
+        app:layout_constraintTop_toBottomOf="@id/registerTextMain"
         app:layout_constraintWidth_percent="1.0" />
 
     <ImageView
@@ -38,44 +38,45 @@
         android:layout_height="250dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_baseline_thumb_up_24"
         app:layout_constraintBottom_toTopOf="@+id/registerTextMain"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.064"
         app:layout_constraintWidth_percent="1.0"
         tools:src="@tools:sample/backgrounds/scenic"
-        tools:srcCompat="@tools:sample/backgrounds/scenic"
-        android:src="@drawable/ic_baseline_thumb_up_24"/>
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
         android:id="@+id/registerTextMain"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="ARE YOU NEW USER?"
         android:textSize="30sp"
         app:autoSizeMaxTextSize="30sp"
         app:autoSizeMinTextSize="45sp"
-        app:layout_constraintBottom_toTopOf="@+id/toRegPagebtnMain"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/loginTextMain"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/welcomeImageMain"
         app:layout_constraintWidth_percent="1.0" />
 
     <TextView
         android:id="@+id/loginTextMain"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="14dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="DO YOU HAVE AN ACCOUNT?"
         android:textSize="30sp"
         app:autoSizeMaxTextSize="30sp"
         app:autoSizeMinTextSize="45sp"
-        app:layout_constraintBottom_toTopOf="@+id/toLoginPagebtnMain"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.952"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/toRegPagebtnMain"
+        app:layout_constraintTop_toBottomOf="@id/welcomeImageMain"
         app:layout_constraintWidth_percent="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
