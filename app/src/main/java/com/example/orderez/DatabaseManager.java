@@ -68,8 +68,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public boolean insert(String first, String last, String email, String password, String security, String security_ans) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(USERS_FIRST, first.toLowerCase());
-        contentValues.put(USERS_LAST, last.toLowerCase());
+        contentValues.put(USERS_FIRST, first.substring(0,1).toUpperCase() + first.substring(1).toLowerCase());
+        contentValues.put(USERS_LAST, last.substring(0,1).toUpperCase() + last.substring(1).toLowerCase());
         contentValues.put(USERS_EMAIL, email.toLowerCase());
         String encryptedPwd, encryptedAns;
         try {

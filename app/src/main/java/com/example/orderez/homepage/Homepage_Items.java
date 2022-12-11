@@ -48,12 +48,12 @@ public class Homepage_Items extends AppCompatActivity {
     Button generate;
     public static String id;
     DatabaseManager theDb;
-    Cursor cursor;
+    Cursor cursor, cursor2;
     String var0, var1, var2, var3, var4, currentDate;
     Boolean noItem = true;
     long dateDifference=Integer.MAX_VALUE, currentDifference=0;
     public static String temp = "", recipe="";
-    TextView expFirst;
+    TextView expFirst, itemList_MyItemTV;
     Spinner sortItems;
 
     private BackKeyHandler backKeyHandler = new BackKeyHandler(this);
@@ -78,16 +78,28 @@ public class Homepage_Items extends AppCompatActivity {
         generate = (Button) findViewById(R.id.generate);
         expFirst = (TextView) findViewById(R.id.expFirst);
         currentDate = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format(new Date());
-
+        itemList_MyItemTV = (TextView) findViewById(R.id.itemList_MyItemTV);
 
 
         Intent intent = getIntent();
         id = intent.getStringExtra("userId");
         cursor = theDb.searchItemId(id);
+        cursor2 = theDb.searchId(id);
         sortItems = (Spinner) findViewById(R.id.itemSorting);
         ArrayAdapter<CharSequence> sortAdapter = ArrayAdapter.createFromResource(this,R.array.Sorting,android.R.layout.simple_spinner_item);
         sortAdapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         sortItems.setAdapter(sortAdapter);
+
+
+        if (cursor2.getCount()<=0){
+            Toast.makeText(getApplicationContext(), "Account Not Initialized!!", Toast.LENGTH_LONG).show();
+        } else if ((cursor2.moveToFirst() && cursor2 != null)){
+
+            String firstName = cursor2.getString(cursor2.getColumnIndexOrThrow("first"));
+            itemList_MyItemTV.setText(firstName + "'s Item List");
+        }else if (cursor2 == null){
+            Toast.makeText(getApplicationContext(), "NO DATA!!", Toast.LENGTH_LONG).show();
+        }
 
         sortItems.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -336,7 +348,7 @@ public class Homepage_Items extends AppCompatActivity {
 
                 String message = "Today's Date: " + currentDate +"\n";
                 if (noItem == true)
-                    message += "There is no expiring items.";
+                    message += "There is no expiring item.";
                 else if (dateDifference<0)
                     message += "At least one item has expired on " + expiryDate;
                 else if (dateDifference==0)
