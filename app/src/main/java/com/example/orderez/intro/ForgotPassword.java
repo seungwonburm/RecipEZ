@@ -138,7 +138,30 @@ public class ForgotPassword extends AppCompatActivity {
             }
         });
 
+        if (savedInstanceState != null) {
+            String emailContinue = savedInstanceState.getString("forgot_email");
+            email_forgot.setText(emailContinue);
+            String passwordContinue = savedInstanceState.getString("forgot_password");
+            password_forgot.setText(passwordContinue);
+            String passwordVersifyContinue = savedInstanceState.getString("forgot_verifyPassword");
+            password_verify_forgot.setText(passwordVersifyContinue);
+            String firstnameContinue = savedInstanceState.getString("forgot_securityans");
+            security_ans_forgot.setText(firstnameContinue);
+            String secondnameContinue = savedInstanceState.getString("forgot_newPassword");
+            newPasswordText.setText(secondnameContinue);
+        }
+
     }// onCreate
+
+    @Override
+    protected  void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("forgot_email",email_forgot.getText().toString());
+        outState.putString("forgot_password",password_forgot.getText().toString());
+        outState.putString("forgot_verifyPassword",password_verify_forgot.getText().toString());
+        outState.putString("forgot_securityans",security_ans_forgot.getText().toString());
+        outState.putString("forgot_newPassword",newPasswordText.getText().toString());
+    }
 
     //Overrides BackKeyHandler's onBackPressed method
     //Finish the app if user clicks the back button twice in 2 seconds.

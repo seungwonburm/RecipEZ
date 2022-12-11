@@ -170,7 +170,29 @@ public class Update_Delete extends AppCompatActivity {
                 finish();
             }
         });
+
+        if (savedInstanceState != null) {
+            String emailContinue = savedInstanceState.getString("title");
+            itemName.setText(emailContinue);
+            String amountContinue = savedInstanceState.getString("amount");
+            itemAmount.setText(amountContinue);
+            String dateContinue = savedInstanceState.getString("date");
+            itemexpirationDate.setText(dateContinue);
+            String memoCountinue = savedInstanceState.getString("memo");
+            itemMemo.setText(memoCountinue);
+        }
+
+    }// onCreate
+
+    @Override
+    protected  void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("title",itemName.getText().toString());
+        outState.putString("memo",itemMemo.getText().toString());
+        outState.putString("amount",itemAmount.getText().toString());
+        outState.putString("date",itemexpirationDate.getText().toString());
     }
+
 
     private void updateLabel(){
         String format_default = "MM/dd/yyyy";

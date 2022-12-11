@@ -22,11 +22,11 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class AddnewItems extends AppCompatActivity{
-    Button submit_Btn;
-    EditText title, memo, oneTimeConsume;
-    Spinner  oneTimeConsumeUnit;
-    String id;
-    DatabaseManager theDb;
+    private Button submit_Btn;
+    private EditText title, memo, amount;
+    private Spinner  oneTimeConsumeUnit;
+    private String id;
+    private DatabaseManager theDb;
 
     private BackKeyHandler backKeyHandler = new BackKeyHandler(this);
 
@@ -51,7 +51,7 @@ public class AddnewItems extends AppCompatActivity{
         theDb = new DatabaseManager(this);
         title = (EditText) findViewById(R.id.addItem_title);
         memo = (EditText) findViewById(R.id.addItem_memo);
-        oneTimeConsume = (EditText) findViewById(R.id.addItem_oneTimeConsume);
+        amount = (EditText) findViewById(R.id.addItem_oneTimeConsume);
 
         Intent intent = getIntent();
         id = intent.getStringExtra("userId");
@@ -77,7 +77,7 @@ public class AddnewItems extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 String str_title = title.getText().toString();
-                String str_amount = oneTimeConsume.getText().toString();
+                String str_amount = amount.getText().toString();
                 String str_unit = oneTimeConsumeUnit.getSelectedItem().toString();
 
                 String str_memo= memo.getText().toString();
@@ -102,10 +102,24 @@ public class AddnewItems extends AppCompatActivity{
 
             }
         });
+        if (savedInstanceState != null) {
+            String emailContinue = savedInstanceState.getString("forgot_email");
+            title.setText(emailContinue);
+            String passwordContinue = savedInstanceState.getString("forgot_password");
+            memo.setText(passwordContinue);
+            String passwordVersifyContinue = savedInstanceState.getString("forgot_verifyPassword");
+            amount.setText(passwordVersifyContinue);
+        }
 
+    }// onCreate
 
-    }//onCreate
-
+    @Override
+    protected  void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("title",title.getText().toString());
+        outState.putString("memo",memo.getText().toString());
+        outState.putString("amount",amount.getText().toString());
+    }
     private void updateLabel(){
         String format_default = "MM/dd/yyyy";
         SimpleDateFormat formatter = new SimpleDateFormat(format_default, Locale.US);

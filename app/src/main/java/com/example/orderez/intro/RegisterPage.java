@@ -96,7 +96,36 @@ public class RegisterPage extends AppCompatActivity {
                 }
             }
         });
+
+
+        if (savedInstanceState != null) {
+            String emailContinue = savedInstanceState.getString("email");
+            email.setText(emailContinue);
+            String passwordContinue = savedInstanceState.getString("password");
+            password.setText(passwordContinue);
+            String passwordVersifyContinue = savedInstanceState.getString("passwordVerify");
+            passwordVerify.setText(passwordVersifyContinue);
+            String firstnameContinue = savedInstanceState.getString("firstname");
+            first.setText(firstnameContinue);
+            String secondnameContinue = savedInstanceState.getString("lastname");
+            last.setText(secondnameContinue);
+            String securityAnsContinue = savedInstanceState.getString("securityAns");
+            security_ans.setText(securityAnsContinue);
+        }
+
+
     }// onCreate
+
+    @Override
+    protected  void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("email", email.getText().toString());
+        outState.putString("password", password.getText().toString());
+        outState.putString("passwordVerify", passwordVerify.getText().toString());
+        outState.putString("firstname", first.getText().toString());
+        outState.putString("lastname", last.getText().toString());
+        outState.putString("securityAns", security_ans.getText().toString());
+    }
 
 
     //Overrides BackKeyHandler's onBackPressed method

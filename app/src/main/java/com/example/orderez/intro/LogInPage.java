@@ -92,7 +92,27 @@ public class LogInPage extends AppCompatActivity {
                finish();
             }
         });
+
+
+        if (savedInstanceState != null) {
+            String emailContinue = savedInstanceState.getString("email");
+            emailLogin.setText(emailContinue);
+            String passwordContinue = savedInstanceState.getString("password");
+            passwordLogin.setText(passwordContinue);
+
+        }
+
+
+
     }// onCreate
+
+    @Override
+    protected  void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("email", emailLogin.getText().toString());
+        outState.putString("password", passwordLogin.getText().toString());
+
+    }
 
     //Overrides BackKeyHandler's onBackPressed method
     //Finish the app if user clicks the back button twice in 2 seconds.
