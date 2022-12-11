@@ -48,51 +48,51 @@ public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.View
         holder.itemName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(((Activity)view.getContext()).getApplicationContext(), Update_Delete.class);
+                Intent intent =new Intent(view.getContext().getApplicationContext(), Update_Delete.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("ItemName",holder.itemName.getText().toString());
                 intent.putExtra("userId", Homepage_Items.id);
-                ((Activity)view.getContext()).startActivity(intent);
-                ((Activity)view.getContext()).finish();
+                view.getContext().startActivity(intent);
             }
         });
         holder.expDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(((Activity)view.getContext()).getApplicationContext(),Update_Delete.class);
+                Intent intent =new Intent(view.getContext().getApplicationContext(),Update_Delete.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("ItemName",holder.itemName.getText().toString());
                 intent.putExtra("userId", Homepage_Items.id);
-                ((Activity)view.getContext()).startActivity(intent);
-                ((Activity)view.getContext()).finish();
+                view.getContext().startActivity(intent);
             }
         });
         holder.count.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(((Activity)view.getContext()).getApplicationContext(),Update_Delete.class);
+                Intent intent =new Intent(view.getContext().getApplicationContext(),Update_Delete.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("ItemName",holder.itemName.getText().toString());
                 intent.putExtra("userId", Homepage_Items.id);
-                ((Activity)view.getContext()).startActivity(intent);
-                ((Activity)view.getContext()).finish();
+                view.getContext().startActivity(intent);
             }
         });
         holder.itemUnit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(((Activity)view.getContext()).getApplicationContext(),Update_Delete.class);
+                Intent intent =new Intent(view.getContext().getApplicationContext(),Update_Delete.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("ItemName",holder.itemName.getText().toString());
                 intent.putExtra("userId", Homepage_Items.id);
-                ((Activity)view.getContext()).startActivity(intent);
-                ((Activity)view.getContext()).finish();
+                view.getContext().startActivity(intent);
             }
         });
         holder.itemmemo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(((Activity)view.getContext()).getApplicationContext(),Update_Delete.class);
+                Intent intent =new Intent(view.getContext().getApplicationContext(),Update_Delete.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("ItemName",holder.itemName.getText().toString());
                 intent.putExtra("userId", Homepage_Items.id);
-                ((Activity)view.getContext()).startActivity(intent);
-                ((Activity)view.getContext()).finish();
+                view.getContext().startActivity(intent);
             }
         });
     }
