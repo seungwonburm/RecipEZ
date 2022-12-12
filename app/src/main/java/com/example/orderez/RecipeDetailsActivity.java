@@ -47,7 +47,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         textView_meal_summary = findViewById(R.id.textView_meal_summary);
         imageView_meal_image = findViewById(R.id.imageView_meal_image);
         recycler_meal_ingredients = findViewById(R.id.recycler_meal_ingredients);
-
     }
 
     private final RecipeDetailsListener recipeDetailsListener = new RecipeDetailsListener() {
@@ -68,7 +67,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         @Override
         public void didError(String message) {
             Toast.makeText(RecipeDetailsActivity.this, message, Toast.LENGTH_SHORT).show();
-
         }
     };
 
