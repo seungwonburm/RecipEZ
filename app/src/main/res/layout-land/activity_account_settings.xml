@@ -15,7 +15,7 @@
         android:gravity="left"
         android:text="User Profile"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-         />
+        />
 
     <TextView
         android:id="@+id/emailTV"

@@ -3,13 +3,16 @@ package com.example.orderez.homepage;
 public class ItemList_Manager {
     String title;
     String count;
-    String startDate, endDate;
+    String unit;
+    String expDate;
+    String memo;
 
-    public ItemList_Manager(String title, String count, String startDate, String endDate) {
+    public ItemList_Manager(String title,String expDate, String count,String unit,String memo) {
         this.title = title;
         this.count = count;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.unit = unit;
+        this.expDate = expDate;
+        this.memo = memo;
     }
 
     public String getTitle() {
@@ -28,19 +31,25 @@ public class ItemList_Manager {
         this.count = count;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public String getUnit() {return unit;}
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public String getExpDate() {
+        return expDate;
     }
 
-    public String getEndDate() {
-        return endDate;
+    public void setExpDate(String expDate) {
+        this.expDate = expDate;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public String getMemo() {
+        return memo;
+    }
+
+    public void setMemo(String memo) {
+        this.memo = memo;
     }
 }

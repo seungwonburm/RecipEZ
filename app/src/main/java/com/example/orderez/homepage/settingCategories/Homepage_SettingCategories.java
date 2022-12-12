@@ -12,16 +12,18 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.orderez.BackKeyHandler;
 import com.example.orderez.R;
-import com.example.orderez.homepage.Homepage_Calendar_Month;
 import com.example.orderez.homepage.Homepage_Items;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Homepage_SettingCategories extends AppCompatActivity {
 
-    ImageButton account_settings_icon,change_password_icon;
-    TextView account_settings_text, change_password_text;
+    ImageButton account_settings_icon,change_password_icon, setting03_icon, setting04_icon;
+    TextView account_settings_text, change_password_text, setting03_text, setting04_text;
     LinearLayout account_settings_linear, change_password_linear;
+
+    private BackKeyHandler backKeyHandler = new BackKeyHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,6 @@ public class Homepage_SettingCategories extends AppCompatActivity {
                 Intent gotoAccountSettings = new Intent(getApplicationContext(), AccountSettings.class);
                 gotoAccountSettings.putExtra("userId", str);
                 startActivity(gotoAccountSettings);
-
             }
         });
 
@@ -98,6 +99,11 @@ public class Homepage_SettingCategories extends AppCompatActivity {
             }
         });
 
+
+
+
+
+
         bottomNavigationView_Setting= (BottomNavigationView) findViewById(R.id.item_menubar);
         bottomNavigationView_Setting.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
 
@@ -106,19 +112,15 @@ public class Homepage_SettingCategories extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.itemListIcon_02:
-//                        Intent intent = new Intent(getApplicationContext(), Homepage_Items.class);
-//                        intent.putExtra("userId", str);
-//                        startActivity(intent);
+                        Intent intent = new Intent(getApplicationContext(), Homepage_Items.class);
+                        intent.putExtra("userId", str);
+                        startActivity(intent);
                         finish();
                         break;
-//                    case R.id.settingIcon_02:
-//                        Intent intent2 = new Intent(getApplicationContext(), Homepage_SettingCategories.class);
-//                        startActivity(intent2);
-//                        break;
-                    case R.id.calendarIcon_02:
-                        Intent refresh = new Intent(getApplicationContext(), Homepage_Calendar_Month.class);
-                        refresh.putExtra("userId", str);
-                        startActivity(refresh);
+                    case R.id.settingIcon_02:
+                        Intent intent2 = new Intent(getApplicationContext(), Homepage_SettingCategories.class);
+                        intent2.putExtra("userId", str);
+                        startActivity(intent2);
                         finish();
                         break;
                 }
@@ -126,5 +128,12 @@ public class Homepage_SettingCategories extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    //Overrides BackKeyHandler's onBackPressed method
+    //Finish the app if user clicks the back button twice in 2 seconds.
+    @Override
+    public void onBackPressed() {
+        backKeyHandler.onBackPressed();
     }
 }

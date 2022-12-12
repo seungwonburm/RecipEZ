@@ -68,19 +68,22 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public boolean insert(String first, String last, String email, String password, String security, String security_ans) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(USERS_FIRST, first.toLowerCase());
-        contentValues.put(USERS_LAST, last.toLowerCase());
+        contentValues.put(USERS_FIRST, first.substring(0,1).toUpperCase() + first.substring(1).toLowerCase());
+        contentValues.put(USERS_LAST, last.substring(0,1).toUpperCase() + last.substring(1).toLowerCase());
         contentValues.put(USERS_EMAIL, email.toLowerCase());
-        String encryptedMsg;
+        String encryptedPwd, encryptedAns;
         try {
-            encryptedMsg = AESCrypt.encrypt(password, email.toLowerCase());
-            contentValues.put(USERS_PASSWORD, encryptedMsg);
+            encryptedPwd = AESCrypt.encrypt(password, email.toLowerCase());
+            encryptedAns = AESCrypt.encrypt(security_ans, email.toLowerCase());
+            contentValues.put(USERS_PASSWORD, encryptedPwd);
+            contentValues.put(USERS_SECURITY_ANS, encryptedAns);
+
         }catch (GeneralSecurityException e){
             return false;
             //handle error
         }
         contentValues.put(USERS_SECURITY, security.toLowerCase());
-        contentValues.put(USERS_SECURITY_ANS, security_ans.toLowerCase());
+
 
         long result = db.insert(TABLE_USERS, null, contentValues);
 
@@ -90,12 +93,12 @@ public class DatabaseManager extends SQLiteOpenHelper {
             return true;
 
     }
-//theDb.insertItem(str_title, str_amount, str_unit, str_expireDate, str_memo, id);
-    public boolean insertItem(String name, String amount, String expire_date, String unit, String memo, String user_id) {
+    //theDb.insertItem(str_title, str_amount, str_unit, str_expireDate, str_memo, id);
+    public boolean insertItem(String name, String amount, String unit, String expire_date, String memo, String user_id) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(ITEM_NAME, name);
+        contentValues.put(ITEM_NAME, name.substring(0,1).toUpperCase() + name.substring(1).toLowerCase());
         contentValues.put(ITEM_AMOUNT, amount);
         contentValues.put(ITEM_UNIT,unit);
         contentValues.put(ITEM_EXPIRE_DATE, expire_date);
@@ -136,6 +139,13 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor searchItemNameId(String user_id, String item){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from " + TABLE_ITEM + " where user_id = ? AND name = ? ", new String[]{user_id, item});
+        return cursor;
+
+    }
+
     public int verify(String email){
         SQLiteDatabase db = this.getWritableDatabase();
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -170,13 +180,28 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return true;
     }
 
-//    public void delete(String id) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        String sqlDelete ="delete from " + TABLE_USERS + " where id = " + id;
-//        db.execSQL(sqlDelete);
-//        db.close();
-//
-//    }
+    public void updateItem(String item_id, String item, String date, String amount, String unit, String memo){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ITEM_NAME, item.substring(0,1).toUpperCase() + item.substring(1).toLowerCase());
+        contentValues.put(ITEM_AMOUNT, amount);
+        contentValues.put(ITEM_UNIT,unit);
+        contentValues.put(ITEM_EXPIRE_DATE, date);
+        contentValues.put(ITEM_MEMO, memo);
+
+        db.update(TABLE_ITEM, contentValues, "ID = ?", new String[] {item_id});
+
+    }
+
+    public void delete(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sqlDelete ="delete from " + TABLE_ITEM + " where id = " + id;
+        db.execSQL(sqlDelete);
+        db.close();
+
+    }
 
 
 //    public String[] autoComplete() {
@@ -201,4 +226,3 @@ public class DatabaseManager extends SQLiteOpenHelper {
 //    }
 
 }
-

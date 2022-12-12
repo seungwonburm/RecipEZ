@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:icon="@drawable/icon_calendar"
-        android:id="@+id/calendarIcon_02"
-        android:title="Schedules"/>
-    <item
         android:icon="@drawable/icon_bullet_list"
         android:id="@+id/itemListIcon_02"
         android:title="Items"

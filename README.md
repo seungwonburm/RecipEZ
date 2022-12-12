@@ -1,9 +1,11 @@
-# ~~OrderEZ~~ -> CookEZ
+# ~~OrderEZ~~ -> RecipEZ
+
+
 
 Our App
 (description)
 
-API Package Installation
+API Information
 
 Attributes
 Icons: 
