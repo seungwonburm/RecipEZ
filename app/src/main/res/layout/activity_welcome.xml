@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".intro.WelcomePage">
+    tools:context=".intro.WelcomePage"
+    android:background="@color/white">
 
     <Button
         android:id="@+id/toLoginPagebtnMain"
@@ -13,6 +14,7 @@
         android:layout_marginTop="8dp"
         android:text="login"
         android:textSize="25sp"
+        android:fontFamily="@font/poppins_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,8 +55,9 @@
         android:gravity="center"
         android:text="ARE YOU NEW USER?"
         android:textSize="30sp"
-        app:autoSizeMaxTextSize="30sp"
-        app:autoSizeMinTextSize="45sp"
+        android:fontFamily="@font/poppins_regular"
+        app:autoSizeMaxTextSize="45sp"
+        app:autoSizeMinTextSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/welcomeImageMain"
@@ -70,6 +73,7 @@
         android:textSize="30sp"
         app:autoSizeMaxTextSize="30sp"
         app:autoSizeMinTextSize="45sp"
+        android:fontFamily="@font/poppins_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
