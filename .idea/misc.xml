@@ -11,8 +11,15 @@
         <entry key="app/src/main/res/drawable/ic_baseline_calendar_month_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_format_list_bulleted_24.xml" value="0.3305" />
         <entry key="app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1565" />
+        <entry key="app/src/main/res/drawable/ic_baseline_thumb_up_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.362" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.172" />
+        <entry key="app/src/main/res/drawable/ic_servings.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/ic_time.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/icon_add_circle.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/icon_arrow_left.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/icon_bullet_list.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/rounded_corner.xml" value="0.181" />
         <entry key="app/src/main/res/layout-land/activity_account_setting.xml" value="0.36070559610705594" />
         <entry key="app/src/main/res/layout-land/activity_account_settings.xml" value="0.31666666666666665" />
         <entry key="app/src/main/res/layout-land/activity_addnew_items.xml" value="0.25396575927734377" />
@@ -54,7 +61,7 @@
         <entry key="app/src/main/res/layout/activity_setting_account.xml" value="0.2969901706189249" />
         <entry key="app/src/main/res/layout/activity_setting_user_profile.xml" value="0.19022289766970618" />
         <entry key="app/src/main/res/layout/activity_update_delete.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.25" />
         <entry key="app/src/main/res/layout/addingproces.xml" value="0.375" />
         <entry key="app/src/main/res/layout/calendar_cell.xml" value="0.20697463768115942" />
         <entry key="app/src/main/res/layout/calendar_recycleview_item.xml" value="0.25" />
