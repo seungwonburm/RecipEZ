@@ -113,7 +113,7 @@ public class Homepage_Items extends AppCompatActivity {
                     if (cursor.getCount()<=0){ //If no items available
                         generate.setEnabled(false);
                         noItem = true;
-                        Toast.makeText(getApplicationContext(), "No Data Yet!!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "No Ingredients Yet!", Toast.LENGTH_LONG).show();
                     }
                     else if (cursor.moveToFirst() && cursor != null) { //If items available
                         noItem = false;
