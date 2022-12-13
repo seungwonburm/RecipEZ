@@ -2,8 +2,10 @@ package com.example.orderez;
 
 import android.content.Context;
 
+import com.example.orderez.Listeners.InstructionsListener;
 import com.example.orderez.Listeners.RandomRecipeResponseListener;
 import com.example.orderez.Listeners.RecipeDetailsListener;
+import com.example.orderez.Models.InstructionsResponse;
 import com.example.orderez.Models.RandomRecipeAPIResponse;
 import com.example.orderez.Models.RecipeDetailsResponse;
 import com.example.orderez.Models.Root;
@@ -86,6 +88,26 @@ public class RequestManager { //This is our Request manager to request GET infor
         });
     }
 
+    public void getInstructions(InstructionsListener listener, int id){
+        CallInstructions callInstructions = retrofit.create(CallInstructions.class);
+        Call<List<InstructionsResponse>> call = callInstructions.callIntructions(id, context.getString(R.string.api_key));
+        call.enqueue(new Callback<List<InstructionsResponse>>() {
+            @Override
+            public void onResponse(Call<List<InstructionsResponse>> call, Response<List<InstructionsResponse>> response) {
+               if (!response.isSuccessful()){
+                   listener.didError(response.message());
+                   return;
+               }
+               listener.didFetch(response.body(), response.message());
+            }
+
+            @Override
+            public void onFailure(Call<List<InstructionsResponse>> call, Throwable t) {
+                listener.didError(t.getMessage());
+            }
+        });
+    }
+
 
 //    https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2
     private interface CallRandomRecipes{ //interface to call random recipes
@@ -102,6 +124,15 @@ public class RequestManager { //This is our Request manager to request GET infor
     private interface CallRecipeDetails{
         @GET("recipes/{id}/information")
         Call<RecipeDetailsResponse> callRecipeDetails(
+                @Path("id") int id,
+                @Query("apiKey") String apiKey
+        );
+    }
+
+
+    private interface CallInstructions{
+        @GET("recipes/{id}/analyzedInstructions")
+        Call<List<InstructionsResponse>> callIntructions(
                 @Path("id") int id,
                 @Query("apiKey") String apiKey
         );
