@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
     app:cardBackgroundColor="@color/white"
     android:id="@+id/random_list_container"
     app:cardElevation="8dp"
@@ -21,6 +22,7 @@
             android:textStyle="bold"
             android:textColor="@color/medblue"
             android:textSize="22sp"
+            android:fontFamily="@font/poppins_regular"
             android:padding="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -41,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
                 <ImageView
-                    android:src="@drawable/ic_servings"
+                    android:src="@drawable/ic_baseline_fastfood_24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
@@ -49,7 +51,7 @@
                     android:textSize="14sp"
                     android:padding="8dp"
                     android:text="2 persons"
-                    android:textColor="@color/black"
+                    android:textColor="@color/darkblue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -69,7 +71,7 @@
                     android:textSize="14sp"
                     android:padding="8dp"
                     android:text="2 persons"
-                    android:textColor="@color/black"
+                    android:textColor="@color/darkblue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -81,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
                 <ImageView
-                    android:src="@drawable/ic_time"
+                    android:src="@drawable/ic_baseline_no_food_24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
@@ -89,7 +91,7 @@
                     android:textSize="14sp"
                     android:padding="8dp"
                     android:text="2 persons"
-                    android:textColor="@color/black"
+                    android:textColor="@color/darkblue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 

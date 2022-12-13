@@ -411,17 +411,9 @@ public class Homepage_Items extends AppCompatActivity {
                 return false;
             }
         });
-        if (savedInstanceState != null) {
-            String idCheck = savedInstanceState.getString("id");
-        }
 
     }// onCreate
 
-    @Override
-    protected  void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-    }
 
     //Overrides BackKeyHandler's onBackPressed method
     //Finish the app if user clicks the back button twice in 2 seconds.
