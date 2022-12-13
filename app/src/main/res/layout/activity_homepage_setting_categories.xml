@@ -5,16 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".homepage.settingCategories.Homepage_SettingCategories"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <TextView
         android:id="@+id/Setting_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:gravity="center"
         android:text="Settings"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:textColor="@color/medblue"
+        android:fontFamily="@font/poppins_regular"
         app:autoSizeMaxTextSize="30sp"
         app:autoSizeMinTextSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,6 +30,7 @@
         android:id="@+id/account_settings_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:clickable="true"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +43,9 @@
             android:id="@+id/account_settings_icon"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/icon_setting" />
+            android:layout_margin="8dp"
+            android:src="@drawable/icon_setting"
+            android:background="@drawable/box"/>
 
         <TextView
             android:id="@+id/account_settings_text"
@@ -47,9 +54,11 @@
             android:clickable="true"
             android:focusable="true"
             android:text="Account Settings"
+            android:textColor="@color/medblue"
             android:textSize="25sp"
             app:autoSizeMaxTextSize="25sp"
-            app:autoSizeMinTextSize="45sp" />
+            app:autoSizeMinTextSize="45sp"
+            android:fontFamily="@font/poppins_regular" />
 
     </LinearLayout>
 
@@ -58,6 +67,7 @@
         android:id="@+id/change_password_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:clickable="true"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/account_settings_linear"
@@ -67,7 +77,10 @@
             android:id="@+id/change_password_icon"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/icon_setting" />
+            android:layout_margin="8dp"
+            android:layout_gravity="center"
+            android:src="@drawable/icon_setting"
+            android:background="@drawable/box"/>
 
         <TextView
             android:id="@+id/change_password_text"
@@ -76,9 +89,11 @@
             android:clickable="true"
             android:focusable="true"
             android:text="Change Password"
+            android:textColor="@color/medblue"
             android:textSize="25sp"
             app:autoSizeMaxTextSize="25sp"
-            app:autoSizeMinTextSize="45sp" />
+            app:autoSizeMinTextSize="45sp"
+            android:fontFamily="@font/poppins_regular"/>
 
     </LinearLayout>
 
