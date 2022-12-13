@@ -5,7 +5,5 @@ Test
 Our App
 (description)
 
-API Information
-
 Attributes
-Icons: 
+App icon: created by @freepix, modified by Lauren Pearson 
