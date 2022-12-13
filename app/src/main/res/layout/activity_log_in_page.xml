@@ -7,6 +7,18 @@
     android:background="@color/lightblue"
     tools:context=".intro.LogInPage">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="304dp"
+        android:layout_height="400dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/backtomainBtnLogin"
         android:layout_width="300dp"
@@ -18,7 +30,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/forgotPasswordBtnLogin" />
 
@@ -59,32 +71,29 @@
         android:id="@+id/loginbtLogin"
         android:layout_width="210dp"
         android:layout_height="54dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginBottom="348dp"
+        android:layout_marginTop="48dp"
         android:background="@drawable/rounded_corner"
         android:text="Login"
         android:textSize="20sp"
         android:translationZ="90dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordLogin"
-        app:layout_constraintVertical_bias="0.027" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordLogin" />
 
     <Button
         android:id="@+id/forgotPasswordBtnLogin"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/rounded_corner"
         android:text="Forgot Password"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/backtomainBtnLogin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/loginbtLogin"
         app:layout_constraintVertical_bias="0.0" />
@@ -124,18 +133,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.267"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="304dp"
-        android:layout_height="400dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="64dp"
-        android:background="@drawable/box"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/lgintext"
