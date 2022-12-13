@@ -27,7 +27,6 @@ public class AddnewItems extends AppCompatActivity{
     private Spinner  oneTimeConsumeUnit;
     private String id;
     private DatabaseManager theDb;
-
     private BackKeyHandler backKeyHandler = new BackKeyHandler(this);
 
 
@@ -54,7 +53,7 @@ public class AddnewItems extends AppCompatActivity{
         amount = (EditText) findViewById(R.id.addItem_oneTimeConsume);
 
         Intent intent = getIntent();
-        id = intent.getStringExtra("userId");
+        id = intent.getStringExtra("userId"); //user_id from previous activity using Intent
 
         EditText et_from_Date = (EditText) findViewById(R.id.from_Date);
         et_from_Date.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +75,8 @@ public class AddnewItems extends AppCompatActivity{
         submit_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Grabs Texts from EditText, Stores into String
+
                 String str_title = title.getText().toString();
                 String str_amount = amount.getText().toString();
                 String str_unit = oneTimeConsumeUnit.getSelectedItem().toString();
@@ -83,6 +84,8 @@ public class AddnewItems extends AppCompatActivity{
                 String str_memo = memo.getText().toString();
                 String date = et_from_Date.getText().toString();
                 Boolean added = false;
+
+                //Error Handlers
                 if (str_title.length() > 100 ||str_memo.length() >100|| date.length() > 100) {
                     Toast.makeText(getApplicationContext(), "Please enter no more than 100 words", Toast.LENGTH_LONG).show();
                 }else if ( str_amount.length() > 10 ){

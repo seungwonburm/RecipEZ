@@ -38,26 +38,26 @@ public class AccountSettings extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getStringExtra("userId");
 
-        cursor =theDb.searchId(id);
-        if (cursor.getCount()<=0){
+        cursor =theDb.searchId(id); //Search account using userid
+        if (cursor.getCount()<=0){  // If no account is found
 
             Toast.makeText(getApplicationContext(), "Failed To Load Data!", Toast.LENGTH_LONG).show();
         }
-        else if (cursor.moveToFirst() && cursor != null) {
+        else if (cursor.moveToFirst() && cursor != null) { // If account is found
 
             var1 = cursor.getString(cursor.getColumnIndexOrThrow("first"));
             var2 = cursor.getString(cursor.getColumnIndexOrThrow("last"));
             var3 = cursor.getString(cursor.getColumnIndexOrThrow("email"));
 
-            welcome.setText("Welcome " + var1 + " " + var2 + "!");
+            welcome.setText("Welcome " + var1 + " " + var2 + "!"); //Sets welcome text
             email.setText(var3+"");
 
         }
-        logout.setOnClickListener(new View.OnClickListener() {
+        logout.setOnClickListener(new View.OnClickListener() { //Logout Function
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), WelcomePage.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK); //Finishes all activity except the welcome activity
                 startActivity(intent);
             }
         });

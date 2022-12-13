@@ -64,30 +64,32 @@ public class ForgotPassword extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String email = email_forgot.getText().toString();
-                cursor = theDb.search(email);
+                cursor = theDb.search(email);//Search account associated with email
                 String text = spinner.getSelectedItem().toString();
 
-                if (cursor.getCount()<=0){
+                if (cursor.getCount()<=0){  //If No Account Found
                     Toast.makeText(getApplicationContext(), "Account Not Found!", Toast.LENGTH_LONG).show();
                 }
-                else if (cursor.moveToFirst() && cursor != null){
+                else if (cursor.moveToFirst() && cursor != null){ //If Account Found
 
-                    var0 = cursor.getString(cursor.getColumnIndexOrThrow("security"));
+                    var0 = cursor.getString(cursor.getColumnIndexOrThrow("security")); // Stores DB Element values in Strings
                     var1 = cursor.getString(cursor.getColumnIndexOrThrow("security_ans"));
                     var2 = cursor.getString(cursor.getColumnIndexOrThrow("id"));
                     var3 = cursor.getString(cursor.getColumnIndexOrThrow("email"));
                     var4 = cursor.getString(cursor.getColumnIndexOrThrow("password"));
 
-                    if (!var0.equals(text.toLowerCase()) ){
+                    if (!var0.equals(text.toLowerCase()) ){ //If Security Question is Incorrect
                         Toast.makeText(getApplicationContext(), "Account Not Found!!", Toast.LENGTH_LONG).show();
                     }else {
                         try {
-                            String decrypted = AESCrypt.decrypt(security_ans_forgot.getText().toString(), var1);
+                            String decrypted = AESCrypt.decrypt(security_ans_forgot.getText().toString(), var1); //Security Answer Decryption, returns email if correct
                             if (decrypted.equals(email)){
                                 if (view != null) {
                                     InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                                     imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                                 }
+
+                                //Next Step becomes Visible if Account is found
                                 password_forgot.setVisibility(View.VISIBLE);
                                 password_verify_forgot.setVisibility(View.VISIBLE);
                                 button2.setVisibility(View.VISIBLE);
@@ -96,10 +98,9 @@ public class ForgotPassword extends AppCompatActivity {
 
                             }
                         }catch (GeneralSecurityException e){
-                            //handle error - could be due to incorrect password or tampered encryptedMsg
+                            // Error due to incorrect security answers or tampered encryptedMsg
                             Toast.makeText(getApplicationContext(), "Account Not Found!", Toast.LENGTH_LONG).show();
                         }
-
 
                     }
                 }else if (cursor == null){
@@ -114,6 +115,8 @@ public class ForgotPassword extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 boolean added = false;
+
+                //Error Handlers
                 if (!password_forgot.getText().toString().equals("") && !password_verify_forgot.getText().toString().equals("") ){
                     if (!(4<= password_forgot.getText().length() && password_forgot.getText().length()<=20) || !(4<= password_verify_forgot.getText().length() && password_verify_forgot.getText().length()<=20)){
                         Toast.makeText(getApplicationContext(), "New Password Should be Between 4~20 Characters!", Toast.LENGTH_LONG).show();

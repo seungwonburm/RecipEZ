@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dialog = new ProgressDialog(this); //on create we want to show a progress dialog as we fetch our api information
-        dialog.setTitle("Presenting data to you by Yuchan, Jeet, Andrew, Lauren, please wait :)"); //this is the message we wanna show while user waits for info
+        dialog.setTitle("Presenting data to you by Yuchan, Jeet, Seungwon, Lauren, please wait :)"); //this is the message we wanna show while user waits for info
         System.out.println("========setTitle DONE=============");
         manager = new RequestManager(this); //we make our manager make a new request to our request manager in this context
         manager.getRandomRecipes(randomRecipeResponseListener); //we then ask manager to get random recipe and pass in a response listener to know if we did get information

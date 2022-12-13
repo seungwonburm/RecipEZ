@@ -49,8 +49,8 @@ public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.View
             public void onClick(View view) {
                 Intent intent =new Intent(view.getContext().getApplicationContext(), Update_Delete.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("ItemName",holder.itemName.getText().toString());
-                intent.putExtra("userId", Homepage_Items.id);
+                intent.putExtra("ItemName",holder.itemName.getText().toString());//Sends ItemName to Next Activity
+                intent.putExtra("userId", Homepage_Items.id); //Sends UserId to Next Activity
                 view.getContext().startActivity(intent);
 //                ((Homepage_Items)mContext).finish();
 
@@ -61,8 +61,8 @@ public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.View
             public void onClick(View view) {
                 Intent intent =new Intent(view.getContext().getApplicationContext(),Update_Delete.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("ItemName",holder.itemName.getText().toString());
-                intent.putExtra("userId", Homepage_Items.id);
+                intent.putExtra("ItemName",holder.itemName.getText().toString()); //Sends ItemName to Next Activity
+                intent.putExtra("userId", Homepage_Items.id);//Sends UserId to Next Activity
                 view.getContext().startActivity(intent);
 
 //                ((Homepage_Items)mContext).finish();
@@ -73,8 +73,8 @@ public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.View
             public void onClick(View view) {
                 Intent intent =new Intent(view.getContext().getApplicationContext(),Update_Delete.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("ItemName",holder.itemName.getText().toString());
-                intent.putExtra("userId", Homepage_Items.id);
+                intent.putExtra("ItemName",holder.itemName.getText().toString());//Sends ItemName to Next Activity
+                intent.putExtra("userId", Homepage_Items.id);//Sends UserId to Next Activity
                 view.getContext().startActivity(intent);
 //                ((Homepage_Items)mContext).finish();
             }
@@ -84,8 +84,8 @@ public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.View
             public void onClick(View view) {
                 Intent intent =new Intent(view.getContext().getApplicationContext(),Update_Delete.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("ItemName",holder.itemName.getText().toString());
-                intent.putExtra("userId", Homepage_Items.id);
+                intent.putExtra("ItemName",holder.itemName.getText().toString());//Sends ItemName to Next Activity
+                intent.putExtra("userId", Homepage_Items.id);//Sends UserId to Next Activity
                 view.getContext().startActivity(intent);
 //                ((Homepage_Items)mContext).finish();
             }
@@ -95,8 +95,8 @@ public class ItemList_Adapter extends RecyclerView.Adapter<ItemList_Adapter.View
             public void onClick(View view) {
                 Intent intent =new Intent(view.getContext().getApplicationContext(),Update_Delete.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("ItemName",holder.itemName.getText().toString());
-                intent.putExtra("userId", Homepage_Items.id);
+                intent.putExtra("ItemName",holder.itemName.getText().toString());//Sends ItemName to Next Activity
+                intent.putExtra("userId", Homepage_Items.id);//Sends UserId to Next Activity
                 view.getContext().startActivity(intent);
 //                ((Homepage_Items)mContext).finish();
             }

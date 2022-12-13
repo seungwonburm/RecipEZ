@@ -15,8 +15,8 @@ import java.util.Locale;
 
 public class DatabaseManager extends SQLiteOpenHelper {
 
-
-    private static final String DATABASE_NAME = "OrderEZ";
+    //Database Information
+    private static final String DATABASE_NAME = "RecipEZ";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_USERS = "Users";
     private static final String USERS_ID = "id";
@@ -42,7 +42,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
+    public void onCreate(SQLiteDatabase db) { //Creates Table using execSQL
 
 
         String sqlCreate_users = "create table " + TABLE_USERS + " ( " + USERS_ID;
@@ -59,15 +59,15 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) { //Upgrades Table using execSQL
         db.execSQL("drop table if exists " + TABLE_USERS);
         db.execSQL("drop table if exists " + TABLE_ITEM);
         onCreate(db);
     }
 
-    public boolean insert(String first, String last, String email, String password, String security, String security_ans) {
+    public boolean insert(String first, String last, String email, String password, String security, String security_ans) {//Insert a new row in User Table
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
+        ContentValues contentValues = new ContentValues();//Using ContentValues to put all elements in User Table
         contentValues.put(USERS_FIRST, first.substring(0,1).toUpperCase() + first.substring(1).toLowerCase());
         contentValues.put(USERS_LAST, last.substring(0,1).toUpperCase() + last.substring(1).toLowerCase());
         contentValues.put(USERS_EMAIL, email.toLowerCase());
@@ -75,8 +75,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
         try {
             encryptedPwd = AESCrypt.encrypt(password, email.toLowerCase());
             encryptedAns = AESCrypt.encrypt(security_ans, email.toLowerCase());
-            contentValues.put(USERS_PASSWORD, encryptedPwd);
-            contentValues.put(USERS_SECURITY_ANS, encryptedAns);
+            contentValues.put(USERS_PASSWORD, encryptedPwd); //Password Encryption
+            contentValues.put(USERS_SECURITY_ANS, encryptedAns); //Security Answer Encryption
 
         }catch (GeneralSecurityException e){
             return false;
@@ -88,16 +88,15 @@ public class DatabaseManager extends SQLiteOpenHelper {
         long result = db.insert(TABLE_USERS, null, contentValues);
 
         if (result == -1) {
-            return false;
+            return false;// Item not added in the DB
         } else
-            return true;
+            return true;// Item added in the DB
 
     }
-    //theDb.insertItem(str_title, str_amount, str_unit, str_expireDate, str_memo, id);
-    public boolean insertItem(String name, String amount, String unit, String expire_date, String memo, String user_id) {
+    public boolean insertItem(String name, String amount, String unit, String expire_date, String memo, String user_id) { //Insert a new row in Item Table
 
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
+        ContentValues contentValues = new ContentValues(); //Using ContentValues to put all elements in Item Table
         contentValues.put(ITEM_NAME, name.substring(0,1).toUpperCase() + name.substring(1).toLowerCase());
         contentValues.put(ITEM_AMOUNT, amount);
         contentValues.put(ITEM_UNIT,unit);
@@ -108,14 +107,14 @@ public class DatabaseManager extends SQLiteOpenHelper {
         long result = db.insert(TABLE_ITEM, null, contentValues);
 
         if (result == -1) {
-            return false;
+            return false; // Item not added in the DB
         } else
-            return true;
+            return true; // Item added in the DB
 
     }
 
 
-    public Cursor search(String email) {
+    public Cursor search(String email) { //Search user account using email
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor = db.rawQuery("select * from " + TABLE_USERS + " where email = ?  ", new String[]{email});
@@ -123,7 +122,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Cursor searchId(String id){
+    public Cursor searchId(String id){ // Search user account using user_id
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor = db.rawQuery("select * from " + TABLE_USERS + " where id = ?  ", new String[]{id});
@@ -131,7 +130,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Cursor searchItemId(String user_id){
+    public Cursor searchItemId(String user_id){ // Search items associated with the user account
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor = db.rawQuery("select * from " + TABLE_ITEM + " where user_id = ?  ", new String[]{user_id});
@@ -139,35 +138,35 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Cursor searchItemNameId(String user_id, String item){
+    public Cursor searchItemNameId(String user_id, String item){ //Search item name associated with the user account
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from " + TABLE_ITEM + " where user_id = ? AND name = ? ", new String[]{user_id, item});
         return cursor;
 
     }
 
-    public int verify(String email){
+    public int verify(String email){  //Checks if email is valid for registration
         SQLiteDatabase db = this.getWritableDatabase();
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         Cursor cursor = db.rawQuery("select * from " + TABLE_USERS + " where email = ?  ", new String[]{email});
-        if(cursor.moveToFirst())
+        if(cursor.moveToFirst())  // Checks if email already exists
         {
             return -1;
         }
 
-        if (!email.matches(emailPattern)){
+        if (!email.matches(emailPattern)){ //Checks if email is valid
             return -2;
         }
 
-        return 1;
+        return 1; // Passes the test
     }
 
-    public boolean updatePW(String id, String email, String password){
+    public boolean updatePW(String id, String email, String password){ //Updates Password in a row in User Table
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(USERS_ID, id);
-        String encryptedMsg;
+        String encryptedMsg; //Password Encryption
         try {
             encryptedMsg = AESCrypt.encrypt(password, email.toLowerCase());
             contentValues.put(USERS_PASSWORD, encryptedMsg);
@@ -180,11 +179,11 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return true;
     }
 
-    public void updateItem(String item_id, String item, String date, String amount, String unit, String memo){
+    public void updateItem(String item_id, String item, String date, String amount, String unit, String memo){ //Updates a row in Item Table
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        ContentValues contentValues = new ContentValues();
+        ContentValues contentValues = new ContentValues(); //Using ContentValues to put all elements in Item Table
         contentValues.put(ITEM_NAME, item.substring(0,1).toUpperCase() + item.substring(1).toLowerCase());
         contentValues.put(ITEM_AMOUNT, amount);
         contentValues.put(ITEM_UNIT,unit);
@@ -195,7 +194,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     }
 
-    public void delete(String id) {
+    public void delete(String id) { // Deletes a row in Item Table using item_id
         SQLiteDatabase db = this.getWritableDatabase();
         String sqlDelete ="delete from " + TABLE_ITEM + " where id = " + id;
         db.execSQL(sqlDelete);
@@ -203,26 +202,5 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     }
 
-
-//    public String[] autoComplete() {
-//        ArrayList<String> data =new ArrayList();
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        String sql = "SELECT * FROM " + TABLE_USERS;
-//        Cursor cursor = db.rawQuery(sql, null);
-//        String[] theData = new String[cursor.getCount()];
-//        if (cursor != null && cursor.getCount()>0){
-//            cursor.moveToFirst();
-//
-//            int i=0;
-//            do {
-//                theData[i]=cursor.getString(3);
-//                i++;
-//            }while(cursor.moveToNext());
-//
-//        }
-//
-//        return theData;
-//
-//    }
 
 }

@@ -40,23 +40,22 @@ public class LogInPage extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Login the user here if correct pass and email
 
                 String email = emailLogin.getText().toString();
-                cursor =theDb.search(email);
-                if (cursor.getCount()<=0){
+                cursor =theDb.search(email); // Grabs Account If Exists
+                if (cursor.getCount()<=0){ // If Account Does Not Exists
                     Toast.makeText(getApplicationContext(), "Login Failed!!", Toast.LENGTH_LONG).show();
                 }
-                else if (cursor.moveToFirst() && cursor != null) {
+                else if (cursor.moveToFirst() && cursor != null) { // If Account Does Exists
                     String pw = cursor.getString(cursor.getColumnIndexOrThrow("password"));
                     try {
-                        String decrypted = AESCrypt.decrypt(passwordLogin.getText().toString(), pw);
-                        System.out.println("");
-                        if (decrypted.equals(email)){
+                        String decrypted = AESCrypt.decrypt(passwordLogin.getText().toString(), pw); //Returns Email if Password is Correct
+
+                        if (decrypted.equals(email)){ //Login Successful
 
                             String id = cursor.getString(cursor.getColumnIndexOrThrow("id"));
 
-                            Intent intent = new Intent(getApplicationContext(), Homepage_Items.class);
+                            Intent intent = new Intent(getApplicationContext(), Homepage_Items.class); //Sends User_Id to Next Activity
                             intent.putExtra("userId", id);
                             Toast.makeText(getApplicationContext(),"Login Successful!",Toast.LENGTH_LONG).show();
                             startActivity(intent);
@@ -64,7 +63,7 @@ public class LogInPage extends AppCompatActivity {
 
                         }
                     }catch (GeneralSecurityException e){
-                        //handle error - could be due to incorrect password or tampered encryptedMsg
+                        //Login Failed due to  incorrect password or tampered encryptedMsg
                         Toast.makeText(getApplicationContext(), "Login Failed!", Toast.LENGTH_LONG).show();
                     }
                 } else if (cursor == null){
@@ -74,7 +73,7 @@ public class LogInPage extends AppCompatActivity {
             }});
 
         ForgotPasswordBtn = (Button) findViewById(R.id.forgotPasswordBtnLogin);
-        ForgotPasswordBtn.setOnClickListener(new View.OnClickListener() {
+        ForgotPasswordBtn.setOnClickListener(new View.OnClickListener() { //Forgot Password Button
             @Override
             public void onClick(View v) {
                 Intent ForgotPasswordPage = new Intent(getApplicationContext(), ForgotPassword.class);
@@ -84,7 +83,7 @@ public class LogInPage extends AppCompatActivity {
         });
 
         backtoMain = (Button)  findViewById(R.id.backtomainBtnLogin);
-        backtoMain.setOnClickListener(new View.OnClickListener() {
+        backtoMain.setOnClickListener(new View.OnClickListener() { // Back to Main Button
             @Override
             public void onClick(View view) {
                Intent backtoMain = new Intent(getApplicationContext(),WelcomePage.class);
@@ -104,7 +103,7 @@ public class LogInPage extends AppCompatActivity {
 
 
 
-    }// onCreate
+    }
 
     @Override
     protected  void onSaveInstanceState(Bundle outState) {

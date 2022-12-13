@@ -77,26 +77,26 @@ public class Homepage_Items extends AppCompatActivity {
 
         generate = (Button) findViewById(R.id.generate);
         expFirst = (TextView) findViewById(R.id.expFirst);
-        currentDate = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format(new Date());
+        currentDate = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format(new Date()); //Grabs today's date and stores into selected date Format
         itemList_MyItemTV = (TextView) findViewById(R.id.itemList_MyItemTV);
 
 
         Intent intent = getIntent();
-        id = intent.getStringExtra("userId");
-        cursor = theDb.searchItemId(id);
-        cursor2 = theDb.searchId(id);
+        id = intent.getStringExtra("userId"); //UserId from Previous Activity
+        cursor = theDb.searchItemId(id); // Cursor for Item Table
+        cursor2 = theDb.searchId(id); // Cursor for User Table
         sortItems = (Spinner) findViewById(R.id.itemSorting);
         ArrayAdapter<CharSequence> sortAdapter = ArrayAdapter.createFromResource(this,R.array.Sorting,android.R.layout.simple_spinner_item);
         sortAdapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         sortItems.setAdapter(sortAdapter);
 
 
-        if (cursor2.getCount()<=0){
+        if (cursor2.getCount()<=0){ //If No User Account Found
             Toast.makeText(getApplicationContext(), "Account Not Initialized!!", Toast.LENGTH_LONG).show();
-        } else if ((cursor2.moveToFirst() && cursor2 != null)){
+        } else if ((cursor2.moveToFirst() && cursor2 != null)){  //If User Account Found
 
             String firstName = cursor2.getString(cursor2.getColumnIndexOrThrow("first"));
-            itemList_MyItemTV.setText(firstName + "'s Item List");
+            itemList_MyItemTV.setText(firstName + "'s Item List"); // Sets title using user's first name
         }else if (cursor2 == null){
             Toast.makeText(getApplicationContext(), "NO DATA!!", Toast.LENGTH_LONG).show();
         }
@@ -106,41 +106,41 @@ public class Homepage_Items extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
 
-                if (sortItems.getItemAtPosition(position).equals("Recently added")){
+                if (sortItems.getItemAtPosition(position).equals("Recently added")){ //Sorts items by recently added
                     itemList_adapter = new ItemList_Adapter(getApplicationContext());
-                    id = intent.getStringExtra("userId");
-                    cursor = theDb.searchItemId(id);
-                    if (cursor.getCount()<=0){
+                    id = intent.getStringExtra("userId"); //id from previous activity
+                    cursor = theDb.searchItemId(id); //Search User's Items
+                    if (cursor.getCount()<=0){ //If no items available
                         generate.setEnabled(false);
                         noItem = true;
                         Toast.makeText(getApplicationContext(), "No Data Yet!!", Toast.LENGTH_LONG).show();
                     }
-                    else if (cursor.moveToFirst() && cursor != null) {
+                    else if (cursor.moveToFirst() && cursor != null) { //If items available
                         noItem = false;
                         generate.setEnabled(true);
                         temp = "";
                         recipe = "";
                         do{
-                            var0 = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                            var0 = cursor.getString(cursor.getColumnIndexOrThrow("name")); //Stores elements values from DB into String
                             var1 = cursor.getString(cursor.getColumnIndexOrThrow("amount"));
                             var2 = cursor.getString(cursor.getColumnIndexOrThrow("unit"));
                             var3 = cursor.getString(cursor.getColumnIndexOrThrow("expire_date"));
                             var4 = cursor.getString(cursor.getColumnIndexOrThrow("memo"));
-                            temp += var0 + ", ";
+                            temp += var0 + ", "; // Adds item names into a String, separated by comma and whitespace
 
                             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-                            LocalDate start = LocalDate.parse(currentDate,formatter);
-                            LocalDate end = LocalDate.parse(var3,formatter);
-                            currentDifference=ChronoUnit.DAYS.between(start, end);
+                            LocalDate start = LocalDate.parse(currentDate,formatter); //Date Format for today's date
+                            LocalDate end = LocalDate.parse(var3,formatter); // Date Format for item's expiration date
+                            currentDifference=ChronoUnit.DAYS.between(start, end); //Date difference between two dates
                             if (dateDifference>currentDifference){
-                                dateDifference = currentDifference;
+                                dateDifference = currentDifference; // Calculates and updates item expiring first
                             }
 
-                            itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var3, var4));
+                            itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var3, var4)); // Item is added
                         } while (cursor.moveToNext());
-                        recipe = temp.substring(0,temp.length()-2);
+                        recipe = temp.substring(0,temp.length()-2); //Removes last comma and whitespace
                         layoutManager = new LinearLayoutManager(getApplicationContext());
-                        itemList.setLayoutManager(layoutManager);
+                        itemList.setLayoutManager(layoutManager); //Sets item adapter and layoutmanager
                         itemList.setAdapter(itemList_adapter);
 
                     } else if (cursor == null){
@@ -150,44 +150,42 @@ public class Homepage_Items extends AppCompatActivity {
                     }
                     cursor.close();
                     itemList.setAdapter(itemList_adapter);
-                }else if (sortItems.getItemAtPosition(position).equals("A-Z")){
+                }else if (sortItems.getItemAtPosition(position).equals("A-Z")){ //Sorts items by A-Z
                     itemList_adapter = new ItemList_Adapter(getApplicationContext());
                     ArrayList  newList = new ArrayList<>();
-                    id = intent.getStringExtra("userId");
-                    cursor = theDb.searchItemId(id);
+                    id = intent.getStringExtra("userId"); //id from previous activity
+                    cursor = theDb.searchItemId(id);//Search User's Items
                     if (cursor.getCount()<=0){
                         generate.setEnabled(false);
                         noItem = true;
                         Toast.makeText(getApplicationContext(), "No Data Yet!!", Toast.LENGTH_LONG).show();
                     }
-                    else if (cursor.moveToFirst() && cursor != null) {
+                    else if (cursor.moveToFirst() && cursor != null) { //If items available
                         noItem = false;
                         generate.setEnabled(true);
                         temp = "";
                         recipe = "";
                         do{
-                            var0 = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                            var0 = cursor.getString(cursor.getColumnIndexOrThrow("name")); //Stores elements values from DB into String
                             var1 = cursor.getString(cursor.getColumnIndexOrThrow("amount"));
                             var2 = cursor.getString(cursor.getColumnIndexOrThrow("unit"));
                             var3 = cursor.getString(cursor.getColumnIndexOrThrow("expire_date"));
                             var4 = cursor.getString(cursor.getColumnIndexOrThrow("memo"));
-                            temp += var0 + ", ";
+                            temp += var0 + ", "; // Adds item names into a String, separated by comma and whitespace
 
                             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-                            LocalDate start = LocalDate.parse(currentDate,formatter);
-                            LocalDate end = LocalDate.parse(var3,formatter);
-                            currentDifference=ChronoUnit.DAYS.between(start, end);
+                            LocalDate start = LocalDate.parse(currentDate,formatter); //Date Format for today's date
+                            LocalDate end = LocalDate.parse(var3,formatter); // Date Format for item's expiration date
+                            currentDifference=ChronoUnit.DAYS.between(start, end); //Date difference between two dates
                             if (dateDifference>currentDifference){
-                                dateDifference = currentDifference;
+                                dateDifference = currentDifference; // Calculates and updates item expiring first
                             }
 
-                            itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var3, var4));
-
+                            itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var3, var4)); // Item is added
                         } while (cursor.moveToNext());
-                        recipe = temp.substring(0,temp.length()-2);
+                        recipe = temp.substring(0,temp.length()-2); //Removes last comma and whitespace
                         layoutManager = new LinearLayoutManager(getApplicationContext());
-                        itemList_adapter.sortItemsA_Z(itemList_adapter);
-                        itemList.setLayoutManager(layoutManager);
+                        itemList.setLayoutManager(layoutManager); //Sets item adapter and layoutmanager
                         itemList.setAdapter(itemList_adapter);
 
                     } else if (cursor == null){
@@ -200,41 +198,39 @@ public class Homepage_Items extends AppCompatActivity {
                 }else if (sortItems.getItemAtPosition(position).equals("Z-A")){
                     itemList_adapter = new ItemList_Adapter(getApplicationContext());
                     ArrayList  newList = new ArrayList<>();
-                    id = intent.getStringExtra("userId");
-                    cursor = theDb.searchItemId(id);
+                    id = intent.getStringExtra("userId"); //id from previous activity
+                    cursor = theDb.searchItemId(id); //Search User's Items
                     if (cursor.getCount()<=0){
                         generate.setEnabled(false);
                         noItem = true;
                         Toast.makeText(getApplicationContext(), "No Data Yet!!", Toast.LENGTH_LONG).show();
                     }
-                    else if (cursor.moveToFirst() && cursor != null) {
+                    else if (cursor.moveToFirst() && cursor != null) { //If items available
                         noItem = false;
                         generate.setEnabled(true);
                         temp = "";
                         recipe = "";
                         do{
-                            var0 = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                            var0 = cursor.getString(cursor.getColumnIndexOrThrow("name")); //Stores elements values from DB into String
                             var1 = cursor.getString(cursor.getColumnIndexOrThrow("amount"));
                             var2 = cursor.getString(cursor.getColumnIndexOrThrow("unit"));
                             var3 = cursor.getString(cursor.getColumnIndexOrThrow("expire_date"));
                             var4 = cursor.getString(cursor.getColumnIndexOrThrow("memo"));
-                            temp += var0 + ", ";
+                            temp += var0 + ", "; // Adds item names into a String, separated by comma and whitespace
 
                             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-                            LocalDate start = LocalDate.parse(currentDate,formatter);
-                            LocalDate end = LocalDate.parse(var3,formatter);
-                            currentDifference=ChronoUnit.DAYS.between(start, end);
+                            LocalDate start = LocalDate.parse(currentDate,formatter); //Date Format for today's date
+                            LocalDate end = LocalDate.parse(var3,formatter); // Date Format for item's expiration date
+                            currentDifference=ChronoUnit.DAYS.between(start, end); //Date difference between two dates
                             if (dateDifference>currentDifference){
-                                dateDifference = currentDifference;
+                                dateDifference = currentDifference; // Calculates and updates item expiring first
                             }
 
-                            itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var3, var4));
-
+                            itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var3, var4)); // Item is added
                         } while (cursor.moveToNext());
-                        recipe = temp.substring(0,temp.length()-2);
+                        recipe = temp.substring(0,temp.length()-2); //Removes last comma and whitespace
                         layoutManager = new LinearLayoutManager(getApplicationContext());
-                        itemList_adapter.sortItemsZ_A(itemList_adapter);
-                        itemList.setLayoutManager(layoutManager);
+                        itemList.setLayoutManager(layoutManager); //Sets item adapter and layoutmanager
                         itemList.setAdapter(itemList_adapter);
 
                     } else if (cursor == null){
@@ -248,41 +244,39 @@ public class Homepage_Items extends AppCompatActivity {
                 }else if (sortItems.getItemAtPosition(position).equals("Expires first")){
                     itemList_adapter = new ItemList_Adapter(getApplicationContext());
                     ArrayList  newList = new ArrayList<>();
-                    id = intent.getStringExtra("userId");
-                    cursor = theDb.searchItemId(id);
+                    id = intent.getStringExtra("userId"); //id from previous activity
+                    cursor = theDb.searchItemId(id); //Search User's Items
                     if (cursor.getCount()<=0){
                         generate.setEnabled(false);
                         noItem = true;
                         Toast.makeText(getApplicationContext(), "No Data Yet!!", Toast.LENGTH_LONG).show();
                     }
-                    else if (cursor.moveToFirst() && cursor != null) {
+                    else if (cursor.moveToFirst() && cursor != null) { //If items available
                         noItem = false;
                         generate.setEnabled(true);
                         temp = "";
                         recipe = "";
                         do{
-                            var0 = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                            var0 = cursor.getString(cursor.getColumnIndexOrThrow("name")); //Stores elements values from DB into String
                             var1 = cursor.getString(cursor.getColumnIndexOrThrow("amount"));
                             var2 = cursor.getString(cursor.getColumnIndexOrThrow("unit"));
                             var3 = cursor.getString(cursor.getColumnIndexOrThrow("expire_date"));
                             var4 = cursor.getString(cursor.getColumnIndexOrThrow("memo"));
-                            temp += var0 + ", ";
+                            temp += var0 + ", "; // Adds item names into a String, separated by comma and whitespace
 
                             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-                            LocalDate start = LocalDate.parse(currentDate,formatter);
-                            LocalDate end = LocalDate.parse(var3,formatter);
-                            currentDifference=ChronoUnit.DAYS.between(start, end);
+                            LocalDate start = LocalDate.parse(currentDate,formatter); //Date Format for today's date
+                            LocalDate end = LocalDate.parse(var3,formatter); // Date Format for item's expiration date
+                            currentDifference=ChronoUnit.DAYS.between(start, end); //Date difference between two dates
                             if (dateDifference>currentDifference){
-                                dateDifference = currentDifference;
+                                dateDifference = currentDifference; // Calculates and updates item expiring first
                             }
 
-                            itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var3, var4));
-
+                            itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var3, var4)); // Item is added
                         } while (cursor.moveToNext());
-                        recipe = temp.substring(0,temp.length()-2);
+                        recipe = temp.substring(0,temp.length()-2); //Removes last comma and whitespace
                         layoutManager = new LinearLayoutManager(getApplicationContext());
-                        itemList_adapter.sortItemsExpFIrst(itemList_adapter);
-                        itemList.setLayoutManager(layoutManager);
+                        itemList.setLayoutManager(layoutManager); //Sets item adapter and layoutmanager
                         itemList.setAdapter(itemList_adapter);
 
                     } else if (cursor == null){
@@ -296,41 +290,39 @@ public class Homepage_Items extends AppCompatActivity {
                 }else if (sortItems.getItemAtPosition(position).equals("Expires last")){
                     itemList_adapter = new ItemList_Adapter(getApplicationContext());
                     ArrayList  newList = new ArrayList<>();
-                    id = intent.getStringExtra("userId");
-                    cursor = theDb.searchItemId(id);
+                    id = intent.getStringExtra("userId"); //id from previous activity
+                    cursor = theDb.searchItemId(id); //Search User's Items
                     if (cursor.getCount()<=0){
                         generate.setEnabled(false);
                         noItem = true;
                         Toast.makeText(getApplicationContext(), "No Data Yet!!", Toast.LENGTH_LONG).show();
                     }
-                    else if (cursor.moveToFirst() && cursor != null) {
+                    else if (cursor.moveToFirst() && cursor != null) { //If items available
                         noItem = false;
                         generate.setEnabled(true);
                         temp = "";
                         recipe = "";
                         do{
-                            var0 = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                            var0 = cursor.getString(cursor.getColumnIndexOrThrow("name")); //Stores elements values from DB into String
                             var1 = cursor.getString(cursor.getColumnIndexOrThrow("amount"));
                             var2 = cursor.getString(cursor.getColumnIndexOrThrow("unit"));
                             var3 = cursor.getString(cursor.getColumnIndexOrThrow("expire_date"));
                             var4 = cursor.getString(cursor.getColumnIndexOrThrow("memo"));
-                            temp += var0 + ", ";
+                            temp += var0 + ", "; // Adds item names into a String, separated by comma and whitespace
 
                             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-                            LocalDate start = LocalDate.parse(currentDate,formatter);
-                            LocalDate end = LocalDate.parse(var3,formatter);
-                            currentDifference=ChronoUnit.DAYS.between(start, end);
+                            LocalDate start = LocalDate.parse(currentDate,formatter); //Date Format for today's date
+                            LocalDate end = LocalDate.parse(var3,formatter); // Date Format for item's expiration date
+                            currentDifference=ChronoUnit.DAYS.between(start, end); //Date difference between two dates
                             if (dateDifference>currentDifference){
-                                dateDifference = currentDifference;
+                                dateDifference = currentDifference; // Calculates and updates item expiring first
                             }
 
-                            itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var3, var4));
-
+                            itemList_adapter.addItem(new ItemList_Manager(var0, var2,  var1, var3, var4)); // Item is added
                         } while (cursor.moveToNext());
-                        recipe = temp.substring(0,temp.length()-2);
+                        recipe = temp.substring(0,temp.length()-2); //Removes last comma and whitespace
                         layoutManager = new LinearLayoutManager(getApplicationContext());
-                        itemList_adapter.sortItemsExpLast(itemList_adapter);
-                        itemList.setLayoutManager(layoutManager);
+                        itemList.setLayoutManager(layoutManager); //Sets item adapter and layoutmanager
                         itemList.setAdapter(itemList_adapter);
 
                     } else if (cursor == null){
@@ -397,15 +389,15 @@ public class Homepage_Items extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.settingIcon_02:
                         Intent intent2 = new Intent(getApplicationContext(), Homepage_SettingCategories.class);
-                        intent2.putExtra("userId", id);
+                        intent2.putExtra("userId", id); //sends userId to next activity
                         startActivity(intent2);
-                        finish();
+                        finish();//ends current activity
                         break;
                     case R.id.itemListIcon_02:
                         Intent intent1 = new Intent(getApplicationContext(), Homepage_Items.class);
-                        intent1.putExtra("userId",id);
+                        intent1.putExtra("userId",id);//sends userId to next activity
                         startActivity(intent1);
-                        finish();
+                        finish(); //ends current activity
                         break;
                 }
                 return false;

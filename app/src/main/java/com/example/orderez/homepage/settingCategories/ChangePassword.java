@@ -37,20 +37,22 @@ public class ChangePassword extends AppCompatActivity {
         theDb = new DatabaseManager(this);
 
         Intent intent = getIntent();
-        id = intent.getStringExtra("userId");
+        id = intent.getStringExtra("userId"); //UserId from previous activity
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cursor = theDb.searchId(id);
-                if (cursor.getCount()<=0){
+                cursor = theDb.searchId(id); //Searches account using id
+                if (cursor.getCount()<=0){ //If no account is found
 
                     Toast.makeText(getApplicationContext(), "Failed!!", Toast.LENGTH_LONG).show();
                 }
-                else if (cursor.moveToFirst() && cursor != null) {
+                else if (cursor.moveToFirst() && cursor != null) { //If account is found
 
-                    String pw = cursor.getString(cursor.getColumnIndexOrThrow("password"));
-                    String email = cursor.getString(cursor.getColumnIndexOrThrow("email"));
+                    String pw = cursor.getString(cursor.getColumnIndexOrThrow("password")); //Encrypted password from database
+                    String email = cursor.getString(cursor.getColumnIndexOrThrow("email")); //Email from database
+
+                    //Error Handlers
                     if (!oldPassword.getText().toString().equals("") && !newPassword.getText().toString().equals("") && !verifyNewPassword.getText().toString().equals("")) {
                         try {
                             String decrypted = AESCrypt.decrypt(oldPassword.getText().toString(), pw);
@@ -63,7 +65,7 @@ public class ChangePassword extends AppCompatActivity {
                                 }else if (oldPassword.getText().toString().length()>100 ){
                                     Toast.makeText(getApplicationContext(), "Too Much Information!", Toast.LENGTH_LONG).show();
                                 } else {
-                                    added = theDb.updatePW(id, email, newPassword.getText().toString());
+                                    added = theDb.updatePW(id, email, newPassword.getText().toString()); // Passes Error Handlers
                                 }
 
 

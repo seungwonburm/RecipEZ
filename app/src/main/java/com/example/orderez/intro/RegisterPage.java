@@ -49,7 +49,7 @@ public class RegisterPage extends AppCompatActivity {
 
 
         backtoMain = (Button) findViewById(R.id.backtomainBtnReg);
-        backtoMain.setOnClickListener(new View.OnClickListener() {
+        backtoMain.setOnClickListener(new View.OnClickListener() { //Back to Main Button
             @Override
             public void onClick(View view) {
                 Intent gobackToMain = new Intent(getApplicationContext(),WelcomePage.class);
@@ -62,10 +62,11 @@ public class RegisterPage extends AppCompatActivity {
 
         register = (Button) findViewById(R.id.registerReg);
 
-        register.setOnClickListener(new View.OnClickListener() {
+        register.setOnClickListener(new View.OnClickListener() { //User Presses Register Button
             @Override
             public void onClick(View view) {
 
+                //Error Handlers
                 boolean added = false;
                 if (!first.getText().toString().equals("") && !last.getText().toString().equals("") && !email.getText().toString().equals("") && !passwordVerify.getText().toString().equals("") && !security_ans.getText().toString().equals("") && !password.getText().toString().equals("") ){
                     int result =theDB.verify(email.getText().toString());

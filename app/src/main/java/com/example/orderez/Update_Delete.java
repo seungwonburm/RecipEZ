@@ -51,10 +51,10 @@ public class Update_Delete extends AppCompatActivity {
         setContentView(R.layout.activity_update_delete);
 
         Intent intent = getIntent();
-        id = intent.getStringExtra("userId");
-        item = intent.getStringExtra("ItemName");
+        id = intent.getStringExtra("userId"); //UserId From Previous Activity
+        item = intent.getStringExtra("ItemName"); //ItemName From Previous Activity
         theDb = new DatabaseManager(this);
-        cursor = theDb.searchItemNameId(id, item);
+        cursor = theDb.searchItemNameId(id, item); // Grabs Item Rows from the DB using Cursor
 
         itemName = (EditText) findViewById(R.id.editItemName);
         itemAmount = (EditText) findViewById(R.id.editItemAmount);
@@ -62,11 +62,11 @@ public class Update_Delete extends AppCompatActivity {
         itemMemo = (EditText) findViewById(R.id.editMemo);
         itemUnit = (Spinner) findViewById(R.id.editItemUnit);
 
-        if (cursor.getCount()<=0){
+        if (cursor.getCount()<=0){ //If No Items Available
             Toast.makeText(getApplicationContext(), "No Data found!!", Toast.LENGTH_LONG).show();
         }
-        else if (cursor.moveToFirst() && cursor != null) {
-            var0 = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+        else if (cursor.moveToFirst() && cursor != null) { //If Items Available
+            var0 = cursor.getString(cursor.getColumnIndexOrThrow("name")); //Stores Elements from DB into Strings
             var1 = cursor.getString(cursor.getColumnIndexOrThrow("amount"));
             var3 = cursor.getString(cursor.getColumnIndexOrThrow("expire_date"));
             var4 = cursor.getString(cursor.getColumnIndexOrThrow("memo"));
@@ -107,6 +107,7 @@ public class Update_Delete extends AppCompatActivity {
                 var2 = itemUnit.getSelectedItem().toString();
                 var4 = itemMemo.getText().toString();
 
+                //Error Handlers
                 if (var2.equals("Select one")){
                     Toast.makeText(getApplicationContext(),"Please select unit",Toast.LENGTH_SHORT).show();
                 }else if (var0.length() >100 ||  var3.length() >100 || var4.length() >100){
@@ -136,14 +137,13 @@ public class Update_Delete extends AppCompatActivity {
 
                 theDb.delete(var5);
 
-                cursor = theDb.searchItemId(id);
+                cursor = theDb.searchItemId(id); // Grabs Item Rows from the DB using Cursor
                 String temp = "";
                 String recipe = "";
-                if (cursor.getCount()<=0){
+                if (cursor.getCount()<=0){ //If Not Items Selected
                     Homepage_Items.recipe = "";
 
-                } else if (cursor.moveToFirst() && cursor != null) {
-
+                } else if (cursor.moveToFirst() && cursor != null) { // If an Item is Selected
 
 
                    do {
