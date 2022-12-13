@@ -5,18 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightblue">
+    android:background="@color/white">
 
-
-    <TextView
-        android:id="@+id/box2"
-        android:layout_width="398dp"
-        android:layout_height="135dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/box" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -46,20 +36,25 @@
             android:id="@+id/itemSorting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/medblue"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/expFirst" />
+            app:layout_constraintTop_toBottomOf="@+id/generate" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/itemList"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintBottom_toTopOf="@id/item_menubar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/generate"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/itemSorting" />
 
         <TextView
             android:id="@+id/expFirst"
@@ -67,6 +62,9 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="exp_first"
+            android:textColor="@color/lightblue"
+            android:fontFamily="@font/poppins_regular"
+            android:textColorHint="@color/lightblue"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -90,12 +88,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Generate"
             android:background="@drawable/rounded_corner"
+            android:text="Generate Recipes"
+            android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/itemSorting" />
+            app:layout_constraintTop_toBottomOf="@+id/expFirst" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/item_menubar"
