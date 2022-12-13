@@ -63,7 +63,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             dialog.dismiss();
             textView_meal_name.setText(response.title);
             textView_meal_source.setText(response.sourceName);
-            textView_meal_summary.setText(response.summary);
+//            textView_meal_summary.setText(response.summary);
             Picasso.get().load(response.image).into(imageView_meal_image);
 
             recycler_meal_ingredients.setHasFixedSize(true);
