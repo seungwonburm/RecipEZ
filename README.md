@@ -19,4 +19,4 @@ Logo created by Lauren Pearson
 Developed By: Seungwon Burm, Yuchan Kim, Jeetkumar Vijaywargi, Lauren Pearson
 
 Google Play Store Link: https://play.google.com/store/apps/details?id=com.recipez 
-(Pending)
+(App is Under Review)
